@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://eksp5e7et5mc"]
+
+[ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scripts/Player/Player.gd" id="1_ft8w5"]
+[ext_resource type="PackedScene" uid="uid://3au58xikx43r" path="res://Assets/Models/Blender/BebeBear.blend" id="2_h54ih"]
+[ext_resource type="Script" uid="uid://c60i7wte8dtvs" path="res://Scripts/Player/PlayerStateMachine.gd" id="3_h54ih"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
+radius = 0.302857
+height = 1.12784
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_ft8w5")
+
+[node name="BebeBear" parent="." instance=ExtResource("2_h54ih")]
+
+[node name="cs_grp" parent="BebeBear/char_grp" index="0"]
+visible = false
+
+[node name="cs_user_c_shoulder_l" parent="BebeBear/char_grp/cs_grp" index="23"]
+visible = false
+
+[node name="cs_user_c_shoulder_r" parent="BebeBear/char_grp/cs_grp" index="24"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56222, 0)
+shape = SubResource("CapsuleShape3D_kpjcp")
+
+[node name="CameraRig" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.741603, 0.341686)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+
+[node name="PlayerStateMachine" type="Node" parent="."]
+script = ExtResource("3_h54ih")
+
+[editable path="BebeBear"]
