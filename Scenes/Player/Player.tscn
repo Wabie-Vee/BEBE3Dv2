@@ -1,15 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://eksp5e7et5mc"]
+[gd_scene load_steps=13 format=3 uid="uid://eksp5e7et5mc"]
 
 [ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scripts/Player/Player.gd" id="1_ft8w5"]
 [ext_resource type="PackedScene" uid="uid://3au58xikx43r" path="res://Assets/Models/Blender/BebeBear.blend" id="2_h54ih"]
 [ext_resource type="Script" uid="uid://c60i7wte8dtvs" path="res://Scripts/Player/PlayerStateMachine.gd" id="3_h54ih"]
+[ext_resource type="Script" uid="uid://t7f315gvt78o" path="res://Scripts/Player/BaseState.gd" id="4_4wape"]
+[ext_resource type="Script" uid="uid://bvut87bk1i5g2" path="res://Scripts/Player/IdleState.gd" id="5_t26db"]
+[ext_resource type="Script" uid="uid://br0luw1pliqnm" path="res://Scripts/Player/WalkState.gd" id="6_fk5o5"]
+[ext_resource type="Script" uid="uid://b2v6jg3d7i71a" path="res://Scripts/Player/JumpState.gd" id="7_t26db"]
+[ext_resource type="Script" uid="uid://cgbvjhh0deebq" path="res://Scenes/Player/FallState.gd" id="8_fk5o5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4wape"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_t26db"]
+sky_material = SubResource("ProceduralSkyMaterial_4wape")
+
+[sub_resource type="Environment" id="Environment_fk5o5"]
+background_mode = 2
+sky = SubResource("Sky_t26db")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
 radius = 0.302857
 height = 1.12784
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_ft8w5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fk5o5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="BebeBear" parent="." instance=ExtResource("2_h54ih")]
 
@@ -27,13 +52,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56222, 0)
 shape = SubResource("CapsuleShape3D_kpjcp")
 
 [node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.742, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.741603, 0.341686)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.342)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource("3_h54ih")
+
+[node name="BaseState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("4_4wape")
+
+[node name="IdleState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_t26db")
+
+[node name="WalkState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("6_fk5o5")
+
+[node name="JumpState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_t26db")
+
+[node name="FallState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("8_fk5o5")
 
 [editable path="BebeBear"]

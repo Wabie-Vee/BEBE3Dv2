@@ -6,14 +6,11 @@ var player = null
 
 func init(_player):
 	player = _player
-	_load_states()
+	for child in get_children():
+		if child is BaseState:
+			states[child.name] = child
+			child.init(self, player)
 	change_state("IdleState")
-
-func _load_states():
-	for state_node in get_children():
-		if state_node is BaseState:
-			states[state_node.name] = state_node
-			state_node.init(self, player)
 
 func update_state(delta):
 	if current_state:

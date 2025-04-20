@@ -1,8 +1,8 @@
 extends Node
 class_name BaseState
 
-var state_machine = null
-var player = null
+var state_machine
+var player
 
 func init(_state_machine, _player):
 	state_machine = _state_machine
