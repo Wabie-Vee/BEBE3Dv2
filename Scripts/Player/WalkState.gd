@@ -6,8 +6,13 @@ func update(delta):
 		state_machine.change_state("IdleState")
 		return
 
-	var direction = (player.transform.basis * Vector3(-input.x, 0, -input.y)).normalized()
+	var cam_basis = player.camera_rig.global_transform.basis
+	var forward = -cam_basis.z
+	var right = -cam_basis.x
+	var direction = (right * input.x) + (forward * input.y)
+	direction = direction.normalized()
 
+	
 
 	var speed = player.move_speed
 	if player.sprinting:
@@ -15,6 +20,8 @@ func update(delta):
 
 	player.velocity.x = lerp(player.velocity.x, direction.x * speed, player.slide_factor * delta)
 	player.velocity.z = lerp(player.velocity.z, direction.z * speed, player.slide_factor * delta)
+	
+
 
 	# Keep gravity falling
 	if not player.is_on_floor():

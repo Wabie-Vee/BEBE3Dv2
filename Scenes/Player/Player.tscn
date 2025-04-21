@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://eksp5e7et5mc"]
+[gd_scene load_steps=15 format=3 uid="uid://eksp5e7et5mc"]
 
 [ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scripts/Player/Player.gd" id="1_ft8w5"]
-[ext_resource type="PackedScene" uid="uid://3au58xikx43r" path="res://Assets/Models/Blender/BebeBear.blend" id="2_h54ih"]
+[ext_resource type="PackedScene" uid="uid://b20ifxdcjdda4" path="res://Assets/Models/Blender/BebeBear.blend" id="2_h54ih"]
+[ext_resource type="AudioStream" uid="uid://b1ap1ne0ntcky" path="res://Assets/Audio/sfx_footstep2.wav" id="2_ji083"]
+[ext_resource type="AudioStream" uid="uid://b2mspkqpk20g0" path="res://Assets/Audio/sfx_jump2.wav" id="3_0kmp4"]
 [ext_resource type="Script" uid="uid://c60i7wte8dtvs" path="res://Scripts/Player/PlayerStateMachine.gd" id="3_h54ih"]
 [ext_resource type="Script" uid="uid://t7f315gvt78o" path="res://Scripts/Player/BaseState.gd" id="4_4wape"]
 [ext_resource type="Script" uid="uid://bvut87bk1i5g2" path="res://Scripts/Player/IdleState.gd" id="5_t26db"]
@@ -28,6 +30,32 @@ height = 1.12784
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_ft8w5")
+sfx_step = ExtResource("2_ji083")
+sfx_jump = ExtResource("3_0kmp4")
+
+[node name="BebePivot" type="Node3D" parent="."]
+
+[node name="BebeBear" parent="BebePivot" instance=ExtResource("2_h54ih")]
+
+[node name="cs_grp" parent="BebePivot/BebeBear/char_grp" index="0"]
+visible = false
+
+[node name="cs_user_c_shoulder_l" parent="BebePivot/BebeBear/char_grp/cs_grp" index="23"]
+visible = false
+
+[node name="cs_user_c_shoulder_r" parent="BebePivot/BebeBear/char_grp/cs_grp" index="24"]
+visible = false
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="BebePivot/BebeBear/char_grp/rig/Skeleton3D" index="1"]
+target_node = NodePath("../../../../../../CameraRig/Camera3D/Marker3D")
+bone_name = "head.x"
+bone = 119
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 2.55115
+primary_damp_threshold = 1.0
+secondary_limit_angle = 6.28319
+secondary_damp_threshold = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fk5o5")
@@ -35,17 +63,6 @@ environment = SubResource("Environment_fk5o5")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
-
-[node name="BebeBear" parent="." instance=ExtResource("2_h54ih")]
-
-[node name="cs_grp" parent="BebeBear/char_grp" index="0"]
-visible = false
-
-[node name="cs_user_c_shoulder_l" parent="BebeBear/char_grp/cs_grp" index="23"]
-visible = false
-
-[node name="cs_user_c_shoulder_r" parent="BebeBear/char_grp/cs_grp" index="24"]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56222, 0)
@@ -55,7 +72,11 @@ shape = SubResource("CapsuleShape3D_kpjcp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.742, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.342)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.0872241, 0.342)
+fov = 88.4
+
+[node name="Marker3D" type="Marker3D" parent="CameraRig/Camera3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.75242e-08, -0.0872241, -0.658)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 
@@ -77,4 +98,4 @@ script = ExtResource("7_t26db")
 [node name="FallState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("8_fk5o5")
 
-[editable path="BebeBear"]
+[editable path="BebePivot/BebeBear"]
