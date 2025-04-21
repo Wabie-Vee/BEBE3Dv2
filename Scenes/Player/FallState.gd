@@ -4,6 +4,9 @@ var last_input_dir := Vector3.ZERO
 
 func enter():
 	player.is_jumping = false
+	
+func exit():
+	player.air_direction = Vector3.ZERO
 
 func update(delta):
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")

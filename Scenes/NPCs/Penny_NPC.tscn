@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://kdhh2u8bwstf"]
+
+[ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable.tscn" id="1_m3gyh"]
+[ext_resource type="PackedScene" uid="uid://dc2qidw7d1u26" path="res://Assets/Models/Blender/Bunny.blend" id="2_ypwo2"]
+
+[node name="Interactable" instance=ExtResource("1_m3gyh")]
+
+[node name="Bunny" parent="." index="1" instance=ExtResource("2_ypwo2")]
+
+[editable path="Bunny"]

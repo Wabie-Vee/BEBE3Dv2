@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbwwr11iexuaw"]
+
+[ext_resource type="Script" uid="uid://ciii0kppdywd8" path="res://Scenes/NPCs/interactable.gd" id="1_4midk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kg5ov"]
+height = 1.0
+radius = 2.0
+
+[node name="Interactable" type="Area3D" groups=["interactables"]]
+script = ExtResource("1_4midk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+shape = SubResource("CylinderShape3D_kg5ov")

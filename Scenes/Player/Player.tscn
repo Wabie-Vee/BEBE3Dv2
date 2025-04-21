@@ -28,10 +28,11 @@ glow_enabled = true
 radius = 0.302857
 height = 1.12784
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_ft8w5")
 sfx_step = ExtResource("2_ji083")
 sfx_jump = ExtResource("3_0kmp4")
+jump_velocity = 5.0
 
 [node name="BebePivot" type="Node3D" parent="."]
 
@@ -47,15 +48,16 @@ visible = false
 visible = false
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="BebePivot/BebeBear/char_grp/rig/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00236702, -0.00797033, 0.000579059)
 target_node = NodePath("../../../../../../CameraRig/Camera3D/Marker3D")
 bone_name = "head.x"
 bone = 119
 use_angle_limitation = true
 symmetry_limitation = true
-primary_limit_angle = 2.55115
+primary_limit_angle = 6.28319
 primary_damp_threshold = 1.0
-secondary_limit_angle = 6.28319
-secondary_damp_threshold = 1.0
+secondary_limit_angle = 1.08647
+secondary_damp_threshold = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fk5o5")
@@ -72,13 +74,15 @@ shape = SubResource("CapsuleShape3D_kpjcp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.742, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.0872241, 0.342)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.376)
 fov = 88.4
 
 [node name="Marker3D" type="Marker3D" parent="CameraRig/Camera3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.75242e-08, -0.0872241, -0.658)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.75242e-08, -0.00896215, -0.658)
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="CameraRig/Camera3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+target_position = Vector3(0, 0, 2.62)
 
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource("3_h54ih")
