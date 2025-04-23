@@ -1,21 +1,70 @@
 extends Node
 
-@onready var audio_bus := "SFX"
+enum Bus {
+	SFX,
+	MUSIC,
+	UI
+}
 
-func play_sfx(stream: AudioStream, pitch_variation: bool = true, volume_db := 0.0):
-	if stream == null:
-		print("SoundManager: Tried to play a null stream.")
-		return
+var players = {}
 
-	var audio = AudioStreamPlayer.new()
-	add_child(audio)
+# You can preload some reusable sound players if you want
+var max_sfx_players := 10
+var sfx_players := []
 
-	audio.bus = audio_bus
-	audio.stream = stream
-	audio.volume_db = volume_db
+func _ready():
+	# Create multiple SFX players so you can overlap sounds
+	for i in max_sfx_players:
+		var sfx = AudioStreamPlayer.new()
+		add_child(sfx)
+		sfx.bus = "SFX"
+		sfx_players.append(sfx)
 
-	if pitch_variation:
-		audio.pitch_scale = randf_range(0.95, 1.05)
+	# One player for music
+	var music = AudioStreamPlayer.new()
+	music.bus = "Music"
+	add_child(music)
+	players[Bus.MUSIC] = music
 
-	audio.play()
-	audio.finished.connect(audio.queue_free)
+	# One for UI
+	var ui = AudioStreamPlayer.new()
+	ui.bus = "UI"
+	add_child(ui)
+	players[Bus.UI] = ui
+
+func play_sfx(stream: AudioStream, pitch_randomize := true, volume_db := 0.0):
+	for sfx in sfx_players:
+		if not sfx.playing:
+			sfx.stream = stream
+			sfx.volume_db = volume_db
+			sfx.pitch_scale = randf_range(1.0, 2.0) if pitch_randomize else 1.0
+			sfx.play()
+			return
+	# fallback (if all are busy)
+	var fallback = sfx_players[0]
+	fallback.stop()
+	fallback.stream = stream
+	fallback.volume_db = volume_db
+	fallback.pitch_scale = 1.0
+	fallback.play()
+	
+func stop_sfx(stream: AudioStream):
+	for sfx in sfx_players:
+		if sfx.playing and sfx.stream == stream:
+			sfx.stop()
+			return
+
+func play_music(stream: AudioStream, restart := false):
+	var music = players[Bus.MUSIC]
+	if music.stream != stream or restart:
+		music.stop()
+		music.stream = stream
+		music.play()
+
+func stop_music():
+	players[Bus.MUSIC].stop()
+
+func play_ui(stream: AudioStream):
+	var ui = players[Bus.UI]
+	ui.stream = stream
+	ui.play()

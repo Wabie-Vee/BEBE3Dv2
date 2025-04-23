@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://777dty02tueb"]
+
+[ext_resource type="Script" uid="uid://dlxqmcam6kfv0" path="res://Scenes/UI/Textbox/Textbox.gd" id="1_ogua0"]
+[ext_resource type="FontFile" uid="uid://byfq3qt1ttygu" path="res://Assets/Fonts/Desktop-GoodDog/Fonts/gooddog.otf" id="2_dgsqs"]
+[ext_resource type="Texture2D" uid="uid://q8iffm2lbe0y" path="res://Scenes/UI/Textbox/TextboxUI/Textbox1.png" id="2_m1p10"]
+[ext_resource type="FontFile" uid="uid://dkpp2rk6dphms" path="res://Assets/Fonts/Desktop-GoodDog/Fonts/gooddog_bones.otf" id="3_afciy"]
+[ext_resource type="Texture2D" uid="uid://dx3f41avrhjk4" path="res://Scenes/UI/Textbox/TextboxUI/textbox2.png" id="3_o4tmh"]
+[ext_resource type="Texture2D" uid="uid://3o2ijeq50lha" path="res://Scenes/UI/Textbox/TextboxUI/textbox3.png" id="4_c1bit"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ouq5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m1p10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o4tmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c1bit")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Textbox" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -648.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ogua0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.44
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = 71.0
+offset_right = -150.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel"]
+position = Vector2(428, 100.38)
+scale = Vector2(0.707101, 0.610672)
+sprite_frames = SubResource("SpriteFrames_ouq5j")
+frame_progress = 0.261013
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_dgsqs")
+theme_override_fonts/italics_font = ExtResource("3_afciy")
+theme_override_fonts/bold_font = ExtResource("2_dgsqs")
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/normal_font_size = 46
+theme_override_font_sizes/bold_font_size = 66
+bbcode_enabled = true
+text = "This is some [b][color=yellow][shake]test[/shake][/color][/b] text![i] tu"

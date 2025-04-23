@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://dclas7liffkfe"]
+
+[ext_resource type="Shader" uid="uid://dq5yntyd23diy" path="res://Scenes/UI/Pixel Shader/PixelShader.gdshader" id="1_ld6mq"]
+[ext_resource type="Shader" uid="uid://cl48m4jhl6shi" path="res://Scenes/UI/Pixel Shader/PixelShaderPixels.gdshader" id="2_0cvri"]
+[ext_resource type="Texture2D" uid="uid://j8wclbtowilm" path="res://Assets/Textures/Wabie Logo.png" id="2_clu5m"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0cvri"]
+lightmap_size_hint = Vector2i(5, 5)
+uv2_padding = 0.85
+size = Vector2(1000, 1000)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clu5m"]
+render_priority = 0
+shader = ExtResource("1_ld6mq")
+shader_parameter/enable_fog = false
+shader_parameter/fog_color = Color(0.652566, 0.853953, 0.898916, 1)
+shader_parameter/noise_color = Color(0, 0, 0, 1)
+shader_parameter/fog_distance = 9.405
+shader_parameter/fog_fade_range = 8.18
+shader_parameter/enable_noise = false
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 32
+shader_parameter/enable_dithering = false
+shader_parameter/dither_strength = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fr0tr"]
+shader = ExtResource("2_0cvri")
+shader_parameter/shake = 6.83
+shader_parameter/noiseQuality = 0.1
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 2.019
+shader_parameter/grainIntensity = 0.02
+shader_parameter/use_overlay = false
+shader_parameter/use_lens_distortion = false
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.0
+
+[node name="PixelShader" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_0cvri")
+surface_material_override/0 = SubResource("ShaderMaterial_clu5m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_clu5m")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_fr0tr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

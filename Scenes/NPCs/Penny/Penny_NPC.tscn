@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://kdhh2u8bwstf"]
+
+[ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_m3gyh"]
+[ext_resource type="PackedScene" uid="uid://dc2qidw7d1u26" path="res://Scenes/NPCs/Penny/Bunny.blend" id="2_ypwo2"]
+
+[node name="Interactable" instance=ExtResource("1_m3gyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00099656, 0)
+
+[node name="Bunny" parent="." index="1" instance=ExtResource("2_ypwo2")]
+
+[editable path="Bunny"]
