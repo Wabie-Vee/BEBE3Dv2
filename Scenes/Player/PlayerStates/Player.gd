@@ -11,6 +11,7 @@ extends CharacterBody3D
 
 @export var sfx_step = AudioStream
 @export var sfx_jump = AudioStream
+@export var sfx_land = AudioStream
 @export var interact_distance := 3.0
 
 var is_jumping := false

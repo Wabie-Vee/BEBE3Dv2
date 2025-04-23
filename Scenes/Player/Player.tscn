@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://eksp5e7et5mc"]
+[gd_scene load_steps=16 format=3 uid="uid://eksp5e7et5mc"]
 
 [ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scenes/Player/PlayerStates/Player.gd" id="1_ft8w5"]
 [ext_resource type="PackedScene" uid="uid://b20ifxdcjdda4" path="res://Scenes/Player/BebeBear.blend" id="2_h54ih"]
 [ext_resource type="AudioStream" uid="uid://b1ap1ne0ntcky" path="res://Assets/Audio/sfx_footstep2.wav" id="2_ji083"]
 [ext_resource type="AudioStream" uid="uid://b2mspkqpk20g0" path="res://Assets/Audio/sfx_jump2.wav" id="3_0kmp4"]
 [ext_resource type="Script" uid="uid://c60i7wte8dtvs" path="res://Scenes/Player/PlayerStates/PlayerStateMachine.gd" id="3_h54ih"]
+[ext_resource type="AudioStream" uid="uid://bhyu1y1gw25hs" path="res://Assets/Audio/sfx_land.ogg" id="4_0kmp4"]
 [ext_resource type="Script" uid="uid://t7f315gvt78o" path="res://Scenes/Player/PlayerStates/BaseState.gd" id="4_4wape"]
 [ext_resource type="Script" uid="uid://bvut87bk1i5g2" path="res://Scenes/Player/PlayerStates/IdleState.gd" id="5_t26db"]
 [ext_resource type="Script" uid="uid://br0luw1pliqnm" path="res://Scenes/Player/PlayerStates/WalkState.gd" id="6_fk5o5"]
@@ -32,6 +33,7 @@ height = 1.12784
 script = ExtResource("1_ft8w5")
 sfx_step = ExtResource("2_ji083")
 sfx_jump = ExtResource("3_0kmp4")
+sfx_land = ExtResource("4_0kmp4")
 jump_velocity = 5.0
 camera_lean_angle = 2.0
 

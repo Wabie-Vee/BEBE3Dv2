@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bphkafnnxtl07" path="res://Scenes/UI/DebugPanel/DebugPanel.tscn" id="7_fxw30"]
 [ext_resource type="PackedScene" uid="uid://xwm3jd761iua" path="res://Assets/Models/Blender/BebeBead.blend" id="7_stwyq"]
 [ext_resource type="PackedScene" uid="uid://c2ulv5qygvmwa" path="res://Assets/Models/Blender/BlueTable.blend" id="9_njiv6"]
-[ext_resource type="AudioStream" uid="uid://de2bd7ic2vhnb" path="res://Assets/Audio/sfx_buh.ogg" id="11_bsuyt"]
+[ext_resource type="AudioStream" uid="uid://cicdgo1sd5tq4" path="res://Assets/Audio/sfx_guh.ogg" id="11_bsuyt"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_llfhh"]
 size = Vector2(25, 25)
