@@ -52,7 +52,7 @@ func _ready():
 	state_machine.init(self)
 
 func _input(event):
-	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE and !GameManager.is_in_dialogue:
 		if mouse_look_enabled:
 			mouse_look_enabled = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

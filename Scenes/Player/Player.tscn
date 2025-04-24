@@ -88,9 +88,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.752
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 target_position = Vector3(0, 0, 2.62)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="CameraRig/Camera3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.2871e-08, 0, 0.376)
-
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource("3_h54ih")
 

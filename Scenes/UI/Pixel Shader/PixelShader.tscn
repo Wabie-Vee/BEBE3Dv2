@@ -28,11 +28,11 @@ shader_parameter/dither_strength = 0.3
 shader = ExtResource("2_0cvri")
 shader_parameter/shake = 6.83
 shader_parameter/noiseQuality = 0.1
-shader_parameter/noiseIntensity = 0.001
+shader_parameter/noiseIntensity = 0.0
 shader_parameter/offsetIntensity = 0.0
 shader_parameter/colorOffsetIntensity = 0.1
-shader_parameter/pixelSize = 2.019
-shader_parameter/grainIntensity = 0.02
+shader_parameter/pixelSize = 3.134
+shader_parameter/grainIntensity = 0.0
 shader_parameter/use_overlay = false
 shader_parameter/use_lens_distortion = false
 shader_parameter/overlay_color = Color(1, 1, 1, 10)
@@ -41,6 +41,7 @@ shader_parameter/lens_distortion_strength = 0.0
 [node name="PixelShader" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_0cvri")
 surface_material_override/0 = SubResource("ShaderMaterial_clu5m")
