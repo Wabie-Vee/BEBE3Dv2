@@ -42,7 +42,7 @@ var last_headbob_value := 0.0
 var footstep_played_this_cycle := false
 
 var turn_threshold := 0
-var turn_speed := 8 
+var turn_speed := 15
 
 var last_input_dir := Vector3.ZERO
 var air_direction := Vector3.ZERO

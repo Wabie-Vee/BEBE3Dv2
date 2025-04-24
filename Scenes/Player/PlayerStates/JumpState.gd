@@ -8,6 +8,9 @@ func enter():
 	player.is_jumping = true
 	player.jump_held_time = 0.0
 	player.last_input_dir = Vector3.ZERO  # Reset on jump start
+	
+
+
 
 func update(delta):
 	player.jump_held_time += delta
@@ -51,6 +54,7 @@ func update(delta):
 		state_machine.change_state("FallState")
 		
 	if player.is_on_floor():
+		SoundManager.play_sfx(player.sfx_land, true, 4.0)
 		if input.length() > 0.1:
 			state_machine.change_state("WalkState")
 		else:

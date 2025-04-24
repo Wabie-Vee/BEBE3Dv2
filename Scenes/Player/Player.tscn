@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://eksp5e7et5mc"]
+[gd_scene load_steps=13 format=3 uid="uid://eksp5e7et5mc"]
 
 [ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scenes/Player/PlayerStates/Player.gd" id="1_ft8w5"]
 [ext_resource type="PackedScene" uid="uid://b20ifxdcjdda4" path="res://Scenes/Player/BebeBear.blend" id="2_h54ih"]
@@ -11,19 +11,6 @@
 [ext_resource type="Script" uid="uid://br0luw1pliqnm" path="res://Scenes/Player/PlayerStates/WalkState.gd" id="6_fk5o5"]
 [ext_resource type="Script" uid="uid://b2v6jg3d7i71a" path="res://Scenes/Player/PlayerStates/JumpState.gd" id="7_t26db"]
 [ext_resource type="Script" uid="uid://cgbvjhh0deebq" path="res://Scenes/Player/FallState.gd" id="8_fk5o5"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4wape"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-
-[sub_resource type="Sky" id="Sky_t26db"]
-sky_material = SubResource("ProceduralSkyMaterial_4wape")
-
-[sub_resource type="Environment" id="Environment_fk5o5"]
-background_mode = 2
-sky = SubResource("Sky_t26db")
-tonemap_mode = 2
-glow_enabled = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
 radius = 0.302857
@@ -63,13 +50,6 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 1.08647
 secondary_damp_threshold = 0.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_fk5o5")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56222, 0)
 shape = SubResource("CapsuleShape3D_kpjcp")
@@ -79,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.742, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.140864)
-fov = 88.4
+fov = 87.5
 
 [node name="Marker3D" type="Marker3D" parent="CameraRig/Camera3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.75242e-08, -0.00896215, -0.658)
