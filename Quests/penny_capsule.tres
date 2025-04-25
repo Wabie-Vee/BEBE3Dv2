@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://51rwyh4c2b0c"]
+
+[ext_resource type="Script" uid="uid://caih4ohghyf00" path="res://Scripts/QuestSystem/Quest.gd" id="1_0ap1v"]
+[ext_resource type="Script" uid="uid://cwkillll8qwbd" path="res://Scripts/QuestSystem/QuestStage.gd" id="2_i47id"]
+
+[sub_resource type="Resource" id="Resource_0876p"]
+script = ExtResource("2_i47id")
+description = "\"Talk to Penumbra\""
+conditions = Array[String](["talked_to_penny"])
+on_complete = ""
+metadata/_custom_type_script = "uid://cwkillll8qwbd"
+
+[sub_resource type="Resource" id="Resource_m254u"]
+script = ExtResource("2_i47id")
+description = "\"Bring the frog to Penumbra\"]"
+conditions = Array[String](["[\"got_frog\"]"])
+on_complete = ""
+metadata/_custom_type_script = "uid://cwkillll8qwbd"
+
+[resource]
+script = ExtResource("1_0ap1v")
+id = "penny_capsule"
+title = "Penumbra's Time Capsule"
+stages = Array[ExtResource("2_i47id")]([SubResource("Resource_0876p"), SubResource("Resource_m254u")])
+description = "Help Penumbra bury and later retrieve her mysterious time capsule."
+metadata/_custom_type_script = "uid://caih4ohghyf00"

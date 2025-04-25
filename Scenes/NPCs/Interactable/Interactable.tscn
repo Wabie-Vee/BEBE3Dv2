@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_qqwiq"]
 size = Vector3(2.91577, 1, 2.50195)
 
-[node name="Interactable" type="Area3D" groups=["interactables"]]
+[node name="Interactable2" type="Area3D" groups=["interactables"]]
 script = ExtResource("1_4midk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

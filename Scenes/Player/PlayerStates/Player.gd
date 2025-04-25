@@ -88,7 +88,6 @@ func _input(event):
 		if event.is_action_pressed("key_interact"):
 				handle_interact()
 	
-	print("👀 in_dialogue:", GameManager.is_in_dialogue, "textbox:", GameManager.current_textbox)
 	if event is InputEventKey and event.pressed:
 		if event.is_pressed() and event.keycode == KEY_F3:
 			var debug_panel = get_tree().current_scene.get_node("UILayer/DebugPanel")

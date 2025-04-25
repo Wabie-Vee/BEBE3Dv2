@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SoundManager="*res://Scripts/Utility/SoundManager.gd"
 GameManager="*res://Scripts/Utility/GameManager.gd"
+QuestManager="*res://Scripts/QuestSystem/QuestManager.gd"
 
 [global_group]
 
