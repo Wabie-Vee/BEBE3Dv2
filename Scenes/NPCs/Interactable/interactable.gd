@@ -8,6 +8,10 @@ class_name Interactable
 ]
 
 @export var voice_clip: AudioStream
+var custom_interact_handler = null
 
 func interact():
-	GameManager.start_dialogue(dialog_lines, voice_clip)
+	if custom_interact_handler != null:
+		custom_interact_handler.call()
+	else:
+		GameManager.start_dialogue(dialog_lines, voice_clip)

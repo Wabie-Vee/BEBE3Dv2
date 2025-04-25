@@ -9,7 +9,7 @@ var dialog_index = 0
 var active_dialog: Array[String] = []
 var active_voice: AudioStream = null
 
-# ✅ Extras preserved from original GameManager
+# ✅ Extras
 var current_tree = null
 var current_node_id = ""
 var debug_draw_raycast := false
@@ -17,11 +17,12 @@ var debug_draw_raycast := false
 # 🧰 Inventory system
 var inventory := {}
 
-# 🧩 Quest/Flag tracking system
+# 🧩 Flag tracking system (used by QuestManager)
 var quest_flags := {}  # e.g. { "talked_to_penny": true, "got_frog": true }
 
 func _ready():
 	print("GameManager initialized.")
+	QuestManager.autoload_all_quests_from_folder("res://Quests/")
 
 func start_dialogue(dialog_array: Array[String], voice_clip: AudioStream):
 	if current_textbox:
@@ -63,3 +64,9 @@ func end_dialogue():
 		player.state_machine.change_state("IdleState")
 		player.camera_rig.rotation_degrees.z = 0.0
 		player.headbob_timer = 0.0
+
+func update_quest_flag(flag: String, value: bool):
+	quest_flags[flag] = value
+	print("🧠 Flag set:", flag, "=", value)
+	print("🧠 All quest flags now:", quest_flags)
+	QuestManager.check_quests(quest_flags)
