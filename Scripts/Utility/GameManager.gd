@@ -70,3 +70,14 @@ func update_quest_flag(flag: String, value: bool):
 	print("🧠 Flag set:", flag, "=", value)
 	print("🧠 All quest flags now:", quest_flags)
 	QuestManager.check_quests(quest_flags)
+	
+func add_to_inventory(item_name: String):
+	inventory[item_name] = true
+	print("🎒 Collected:", item_name)
+	
+	# If this item is a quest flag trigger
+	if item_name == "frog":
+		update_quest_flag("got_frog", true)
+
+func has_item(item_name: String) -> bool:
+	return inventory.get(item_name, false)

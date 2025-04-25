@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkv3x83fvsmx8"]
+[gd_scene load_steps=24 format=3 uid="uid://dkv3x83fvsmx8"]
 
 [ext_resource type="PackedScene" uid="uid://eksp5e7et5mc" path="res://Scenes/Player/Player.tscn" id="1_jsl5n"]
 [ext_resource type="PackedScene" uid="uid://c7pumljxmqew5" path="res://Assets/Models/Blender/Bench.blend" id="2_766ta"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bphkafnnxtl07" path="res://Scenes/UI/DebugPanel/DebugPanel.tscn" id="7_fxw30"]
 [ext_resource type="PackedScene" uid="uid://xwm3jd761iua" path="res://Assets/Models/Blender/BebeBead.blend" id="7_stwyq"]
 [ext_resource type="PackedScene" uid="uid://c2ulv5qygvmwa" path="res://Assets/Models/Blender/BlueTable.blend" id="9_njiv6"]
+[ext_resource type="PackedScene" uid="uid://ceghwal4oaf08" path="res://Collectibles/Frog.tscn" id="12_stwyq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bsuyt"]
 sky_top_color = Color(0.84375, 0.529715, 0.295362, 1)
@@ -153,6 +154,9 @@ visible = false
 [node name="Player" parent="." instance=ExtResource("1_jsl5n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0929966, 0, -0.0320229)
 move_speed = 3.0
+
+[node name="Collectible" parent="." instance=ExtResource("12_stwyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.38995, 0.017428, -5.2907)
 
 [editable path="LevelGeometry/RedCoffeeTable"]
 [editable path="LevelGeometry/BebeBead"]
