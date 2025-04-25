@@ -31,7 +31,7 @@ func start_dialogue(dialog_array: Array[String], voice_clip: AudioStream):
 	dialog_index = 0
 	active_voice = voice_clip
 	is_in_dialogue = true
-	player_state = "LockedState"
+	player_state = "PlayerStateLocked"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	show_next_line()
