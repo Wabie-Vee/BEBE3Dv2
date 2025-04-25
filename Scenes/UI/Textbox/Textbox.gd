@@ -2,6 +2,8 @@ extends Control
 
 @onready var label := $Panel/RichTextLabel
 @onready var textbox_ui: AnimatedSprite2D = $Panel/AnimatedSprite2D
+@onready var icon: Sprite2D = $Panel/Sprite2D
+@onready var animation: AnimationPlayer = $Panel/AnimationPlayer
 
 
 @export var voice: AudioStream
@@ -13,6 +15,7 @@ var last_visible_ratio := 0.0
 var tween: Tween
 
 func _ready():
+	icon.visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	await get_tree().create_timer(0.15).timeout
 	ready_for_input = true
@@ -44,6 +47,10 @@ func _process(delta):
 		SoundManager.play_sfx(voice, true, voice_volume)
 
 	last_visible_ratio = label.visible_ratio
+	if label.visible_ratio == 1:
+		icon.visible = true
+		animation.play("Bounce")
+		
 
 func _unhandled_input(event):
 	if not ready_for_input:

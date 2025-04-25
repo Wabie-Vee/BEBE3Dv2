@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bo1mrjlhd8gop" path="res://Assets/Models/Blender/RedCoffeeTable.blend" id="4_njiv6"]
 [ext_resource type="PackedScene" uid="uid://dclas7liffkfe" path="res://Scenes/UI/Pixel Shader/PixelShader.tscn" id="5_bsuyt"]
 [ext_resource type="PackedScene" uid="uid://c46jjvtjm84tl" path="res://Assets/Models/Blender/TrashBin.blend" id="5_vn5ei"]
-[ext_resource type="PackedScene" uid="uid://kdhh2u8bwstf" path="res://Scenes/NPCs/Penny/Penny_NPC.tscn" id="7_766ta"]
+[ext_resource type="PackedScene" uid="uid://kdhh2u8bwstf" path="res://Scenes/NPCs/Penny_NPC.tscn" id="7_766ta"]
 [ext_resource type="PackedScene" uid="uid://bphkafnnxtl07" path="res://Scenes/UI/DebugPanel/DebugPanel.tscn" id="7_fxw30"]
 [ext_resource type="PackedScene" uid="uid://xwm3jd761iua" path="res://Assets/Models/Blender/BebeBead.blend" id="7_stwyq"]
 [ext_resource type="PackedScene" uid="uid://c2ulv5qygvmwa" path="res://Assets/Models/Blender/BlueTable.blend" id="9_njiv6"]
@@ -138,9 +138,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64067, 0, -5)
 
 [node name="BebeBead" parent="LevelGeometry" instance=ExtResource("7_stwyq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3176, 0.0139554, -0.45946)
-
-[node name="CollisionShape3D" parent="LevelGeometry/BebeBead/Collider" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Node3D" type="Node3D" parent="."]
 
