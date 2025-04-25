@@ -31,7 +31,7 @@ func _on_interacted():
 					"Want to help me bury a [color=yellow]time capsule[/color]?",
 					"There should be a [color=green]frog[/color] around here [wave]somewhere...[/wave]",
 					"I wanna [color=yellow]bury[/color] a frog!!!"
-				], $"..".voice_clip)
+				], $"..".voice_clip, interactable.audio_gain)
 
 			1:
 				if GameManager.has_item("Frog"):
@@ -41,22 +41,22 @@ func _on_interacted():
 					GameManager.start_dialogue([
 						"You found the frog!!!",
 						"Let’s bury it together. This is perfect."
-					], $"..".voice_clip)
+					], $"..".voice_clip, interactable.audio_gain)
 				else:
 					GameManager.start_dialogue([
 						"Still no [color=green]frog[/color]?",
 						"You're holding out on me, I can tell..."
-					], $"..".voice_clip)
+					], $"..".voice_clip, interactable.audio_gain)
 
 			2:
 				GameManager.start_dialogue([
 					"Thanks again for helping with the capsule.",
 					"You're the realest 🐸."
-				], $"..".voice_clip)
+				], $"..".voice_clip, interactable.audio_gain)
 	else:
 		GameManager.start_dialogue([
 			"I have nothing more to say to you... frog thief."
-		], $"..".voice_clip)
+		], $"..".voice_clip, interactable.audio_gain)
 
 func _on_interactable_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
