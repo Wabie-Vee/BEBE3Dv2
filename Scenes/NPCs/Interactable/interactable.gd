@@ -1,6 +1,8 @@
 extends Area3D
 class_name Interactable
 
+@export_enum("talk", "grab") var interaction_type: String = "talk"
+
 @export var dialog_lines: Array[String] = [
 	"[wave]Heyyyy[/wave] I'm Penny.",
 	"Did you bury the frog yet?",
@@ -9,6 +11,9 @@ class_name Interactable
 
 @export var voice_clip: AudioStream
 var custom_interact_handler = null
+
+func _ready():
+	pass
 
 func interact():
 	if custom_interact_handler != null:

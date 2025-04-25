@@ -18,30 +18,45 @@ func _ready() -> void:
 	
 
 func _on_interacted():
-	
-	
 	var quest = QuestManager.active_quests.get("penny_capsule")
+
 	if quest:
 		print("📊 Current stage:", quest.current_stage, "Completed:", quest.completed)
-	if quest != null:
+
 		match quest.current_stage:
 			0:
-				print("📬 Attempting to set flag talked_to_penny")
 				GameManager.update_quest_flag("talked_to_penny", true)
 				GameManager.start_dialogue([
 					"Hi there! I'm Penny.",
-					"Want to help me bury a time capsule?"
+					"Want to help me bury a [color=yellow]time capsule[/color]?",
+					"There should be a [color=green]frog[/color] around here [wave]somewhere...[/wave]",
+					"I wanna [color=yellow]bury[/color] a frog!!!"
 				], $"..".voice_clip)
+
 			1:
+				if GameManager.has_item("Frog"):
+					# Advance quest by setting the flag — this triggers check_quests
+					GameManager.update_quest_flag("got_frog", true)
+
+					GameManager.start_dialogue([
+						"You found the frog!!!",
+						"Let’s bury it together. This is perfect."
+					], $"..".voice_clip)
+				else:
+					GameManager.start_dialogue([
+						"Still no [color=green]frog[/color]?",
+						"You're holding out on me, I can tell..."
+					], $"..".voice_clip)
+
+			2:
 				GameManager.start_dialogue([
-					"Still working on the capsule?",
-					"Remember to bring the frog!"
+					"Thanks again for helping with the capsule.",
+					"You're the realest 🐸."
 				], $"..".voice_clip)
 	else:
 		GameManager.start_dialogue([
 			"I have nothing more to say to you... frog thief."
 		], $"..".voice_clip)
-
 
 func _on_interactable_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

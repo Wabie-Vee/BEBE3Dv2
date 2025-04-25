@@ -21,22 +21,17 @@ func load_quest(path: String):
 		push_error("❌ Failed to load quest at path: " + path)
 
 func check_quests(flags: Dictionary):
-	print("🔍 Checking all quests...")
 
 	for quest_id in active_quests.keys():
 		var quest: Quest = active_quests[quest_id]
 		if quest.completed:
-			print("⏩ Skipping completed quest:", quest_id)
 			continue
 
-		print("🔎 Quest:", quest.id, "Current stage:", quest.current_stage)
 
 		if quest.current_stage >= quest.stages.size():
-			print("❌ Stage index out of range for quest:", quest.id)
 			continue
 
 		var stage = quest.stages[quest.current_stage]
-		print("📋 Stage conditions for stage", quest.current_stage, ":", stage.conditions)
 
 		var all_met = true
 		for cond in stage.conditions:
@@ -48,12 +43,10 @@ func check_quests(flags: Dictionary):
 				break
 
 		if all_met:
-			print("🎯 All conditions met for quest:", quest.id, "→ advancing stage")
 			if stage.on_complete != "":
 				emit_signal("stage_completed", quest.id, stage.on_complete)
 
 			quest.advance_stage()
-			print("➡️ New stage for", quest.id, "is now:", quest.current_stage)
 
 			if quest.completed:
 				completed_quests[quest_id] = quest

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://0wt0bqp5t0jx"]
+
+[ext_resource type="Script" uid="uid://b8nowgpn6ganc" path="res://Scenes/Collectible/Collectible.gd" id="1_pv3rc"]
+[ext_resource type="AudioStream" uid="uid://b2mspkqpk20g0" path="res://Assets/Audio/sfx_jump2.wav" id="2_vct3f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xsg3u"]
+size = Vector3(2.22949, 1.17426, 2.24121)
+
+[node name="Collectible" type="Area3D" groups=["interactables"]]
+script = ExtResource("1_pv3rc")
+pickup_sound = ExtResource("2_vct3f")
+interaction_type = "grab"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.590179, 0)
+shape = SubResource("BoxShape3D_xsg3u")

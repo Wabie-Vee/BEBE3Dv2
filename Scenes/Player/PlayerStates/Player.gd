@@ -198,17 +198,27 @@ func handle_mesh_pivot(delta):
 		bebe_pivot.rotation.y = lerp_angle(current_yaw, target_yaw, delta * turn_speed)
 	
 func handle_reticle():
+	var next_anim = "Default"
+
 	if raycast.is_colliding():
 		var target = raycast.get_collider()
-		
+
 		while target and not target.has_method("interact"):
 			target = target.get_parent()
-		
-		if target and target.is_in_group("interactables"):
-			cursor = cursor_interact
-			cursor_animator.play("Speak")
-	else:
-		cursor_animator.play("Default")
+
+		if target and target.has_method("interact"):
+			if "interaction_type" in target:
+				match target.interaction_type:
+					"talk":
+						next_anim = "Speak"
+					"grab":
+						next_anim = "Grab"
+
+	# 🔁 Only play the animation if it's different
+	if cursor_animator.animation != next_anim:
+		cursor_animator.play(next_anim)
+
+
 	
 
 func handle_interact():
@@ -227,12 +237,8 @@ func handle_interact():
 			target = target.get_parent()
 
 		if target and target.is_in_group("interactables"):
-			print("✅ Interacting with:", target.name)
 			target.interact()
-		else:
-			print("❌ No interactable found up chain from:", start.name)
-	else:
-		print("❌ No collision detected by raycast.")
+
 
 	if raycast.is_colliding():
 		var target = raycast.get_collider()

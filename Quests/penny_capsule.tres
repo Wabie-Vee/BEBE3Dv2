@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://cwkillll8qwbd"
 [sub_resource type="Resource" id="Resource_m254u"]
 script = ExtResource("2_i47id")
 description = "\"Bring the frog to Penumbra\"]"
-conditions = Array[String](["[\"got_frog\"]"])
+conditions = Array[String](["got_frog"])
 on_complete = ""
 metadata/_custom_type_script = "uid://cwkillll8qwbd"
 
