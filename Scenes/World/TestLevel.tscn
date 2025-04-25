@@ -106,6 +106,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
 
 [node name="Floor" type="MeshInstance3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0483451, -0.0123789, -0.125875)
 mesh = SubResource("PlaneMesh_llfhh")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_stwyq")
