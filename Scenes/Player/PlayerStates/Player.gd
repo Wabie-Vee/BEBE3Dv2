@@ -6,6 +6,8 @@ extends CharacterBody3D
 @onready var raycast = $CameraRig/Camera3D/RayCast3D
 @onready var mesh = $Node3D/BebeBear
 @onready var bebe_pivot: Node3D = $BebePivot
+@onready var cursor_animator: AnimatedSprite2D = $CanvasLayer/Control/AnimatedSprite2D
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 @onready var cam_origin_y :float = camera_rig.position.y
 
@@ -23,7 +25,7 @@ var sprint_speed := 8
 var slide_factor := 10.0
 var rotation_speed := 8.0
 
-var move_speed := 4.0
+@export var move_speed := 4.0
 
 var mouse_look_enabled := true
 @export var mouse_sensitivity := 0.0025
@@ -40,6 +42,10 @@ var max_headbob_frequency := 12.0  # full speed bob
 var headbob_enabled := true
 var last_headbob_value := 0.0
 var footstep_played_this_cycle := false
+
+@export var cursor_interact = Sprite2D
+@export var cursor_default = Sprite2D
+var cursor = cursor_default
 
 var turn_threshold := 0
 var turn_speed := 15
@@ -170,7 +176,12 @@ func _physics_process(delta):
 		var current_pos = camera_rig.position
 		current_pos.y = lerp(current_pos.y, cam_origin_y, delta * 10.0)
 		camera_rig.position = current_pos
-
+	
+	if GameManager.player_state == "PlayerStateFree":
+		canvas_layer.visible = true
+	else:
+		canvas_layer.visible = false
+	handle_reticle()
 	
 	state_machine.update_state(delta)
 	
@@ -187,6 +198,20 @@ func handle_mesh_pivot(delta):
 		var current_yaw = bebe_pivot.rotation.y
 		bebe_pivot.rotation.y = lerp_angle(current_yaw, target_yaw, delta * turn_speed)
 	
+func handle_reticle():
+	if raycast.is_colliding():
+		var target = raycast.get_collider()
+		
+		while target and not target.has_method("interact"):
+			target = target.get_parent()
+		
+		if target and target.is_in_group("interactables"):
+			cursor = cursor_interact
+			cursor_animator.play("Speak")
+	else:
+		cursor_animator.play("Default")
+	
+
 func handle_interact():
 	if raycast == null:
 		print("Raycast not found!")

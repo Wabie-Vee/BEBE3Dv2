@@ -77,9 +77,6 @@ environment = SubResource("Environment_0axbc")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_jsl5n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0929966, 0, -0.0320229)
-
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="DebugPanel" parent="UILayer" node_paths=PackedStringArray("player") instance=ExtResource("7_fxw30")]
@@ -96,8 +93,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14059, 0.000505567, 6.55906
 
 [node name="RedCoffeeTable" parent="LevelGeometry" instance=ExtResource("4_njiv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
-
-[node name="PixelShader" parent="LevelGeometry/RedCoffeeTable" instance=ExtResource("5_bsuyt")]
 
 [node name="TrashBin" parent="LevelGeometry" instance=ExtResource("5_vn5ei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
@@ -139,9 +134,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64067, 0, -5)
 [node name="BebeBead" parent="LevelGeometry" instance=ExtResource("7_stwyq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3176, 0.0139554, -0.45946)
 
-[node name="CollisionShape3D" parent="LevelGeometry/BebeBead/Collider" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D"]
@@ -153,6 +145,14 @@ lifetime = 10.0
 trail_lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_g4208")
 draw_pass_1 = SubResource("SphereMesh_upenj")
+
+[node name="PixelShader" parent="." instance=ExtResource("5_bsuyt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("1_jsl5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0929966, 0, -0.0320229)
+move_speed = 3.0
 
 [editable path="LevelGeometry/RedCoffeeTable"]
 [editable path="LevelGeometry/BebeBead"]

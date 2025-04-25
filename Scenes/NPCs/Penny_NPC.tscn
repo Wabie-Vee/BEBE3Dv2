@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://kdhh2u8bwstf"]
+[gd_scene load_steps=4 format=3 uid="uid://bcn7nk5gnkw0n"]
 
 [ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_m3gyh"]
 [ext_resource type="PackedScene" uid="uid://dc2qidw7d1u26" path="res://Scenes/NPCs/Penny/Bunny.blend" id="2_ypwo2"]

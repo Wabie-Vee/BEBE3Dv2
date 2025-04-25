@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://eksp5e7et5mc"]
+[gd_scene load_steps=18 format=3 uid="uid://eksp5e7et5mc"]
 
 [ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scenes/Player/PlayerStates/Player.gd" id="1_ft8w5"]
 [ext_resource type="PackedScene" uid="uid://b20ifxdcjdda4" path="res://Scenes/Player/BebeBear.blend" id="2_h54ih"]
@@ -11,10 +11,39 @@
 [ext_resource type="Script" uid="uid://br0luw1pliqnm" path="res://Scenes/Player/PlayerStates/WalkState.gd" id="6_fk5o5"]
 [ext_resource type="Script" uid="uid://b2v6jg3d7i71a" path="res://Scenes/Player/PlayerStates/JumpState.gd" id="7_t26db"]
 [ext_resource type="Script" uid="uid://cgbvjhh0deebq" path="res://Scenes/Player/FallState.gd" id="8_fk5o5"]
+[ext_resource type="Texture2D" uid="uid://du7vshng5swf6" path="res://Assets/Textures/UI/CursorDefault.png" id="12_esmjy"]
+[ext_resource type="Texture2D" uid="uid://db30tr3w2cbt5" path="res://Assets/Textures/UI/CursorSpeak1.png" id="13_6tu5v"]
+[ext_resource type="Texture2D" uid="uid://dqghgwbl6aynv" path="res://Assets/Textures/UI/CursorSpeak2.png" id="14_spxdj"]
+[ext_resource type="Texture2D" uid="uid://mcpbaj34xaru" path="res://Assets/Textures/UI/CursorSpeak3.png" id="15_0objx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
 radius = 0.302857
 height = 1.12784
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w71ue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_esmjy")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_6tu5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_spxdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0objx")
+}],
+"loop": true,
+"name": &"Speak",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_ft8w5")
@@ -85,5 +114,22 @@ script = ExtResource("7_t26db")
 
 [node name="FallState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("8_fk5o5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+scale = Vector2(0.1875, 0.1875)
+sprite_frames = SubResource("SpriteFrames_w71ue")
+animation = &"Speak"
 
 [editable path="BebePivot/BebeBear"]
