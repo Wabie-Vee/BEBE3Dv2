@@ -1,56 +1,81 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkv3x83fvsmx8"]
+[gd_scene load_steps=23 format=3 uid="uid://dkv3x83fvsmx8"]
 
 [ext_resource type="PackedScene" uid="uid://eksp5e7et5mc" path="res://Scenes/Player/Player.tscn" id="1_jsl5n"]
 [ext_resource type="PackedScene" uid="uid://c7pumljxmqew5" path="res://Assets/Models/Blender/Bench.blend" id="2_766ta"]
 [ext_resource type="PackedScene" uid="uid://d4jfi8qfnkpna" path="res://Assets/Models/Blender/LampPost.blend" id="3_fxw30"]
+[ext_resource type="AudioStream" uid="uid://0otfp5oxxdl8" path="res://Assets/Audio/sfx_bow.ogg" id="4_bsuyt"]
 [ext_resource type="PackedScene" uid="uid://bo1mrjlhd8gop" path="res://Assets/Models/Blender/RedCoffeeTable.blend" id="4_njiv6"]
+[ext_resource type="PackedScene" uid="uid://dclas7liffkfe" path="res://Scenes/UI/Pixel Shader/PixelShader.tscn" id="5_bsuyt"]
 [ext_resource type="PackedScene" uid="uid://c46jjvtjm84tl" path="res://Assets/Models/Blender/TrashBin.blend" id="5_vn5ei"]
-[ext_resource type="PackedScene" uid="uid://kdhh2u8bwstf" path="res://Scenes/NPCs/Penny_NPC.tscn" id="7_766ta"]
+[ext_resource type="PackedScene" uid="uid://kdhh2u8bwstf" path="res://Scenes/NPCs/Penny/Penny_NPC.tscn" id="7_766ta"]
 [ext_resource type="PackedScene" uid="uid://bphkafnnxtl07" path="res://Scenes/UI/DebugPanel/DebugPanel.tscn" id="7_fxw30"]
 [ext_resource type="PackedScene" uid="uid://xwm3jd761iua" path="res://Assets/Models/Blender/BebeBead.blend" id="7_stwyq"]
+[ext_resource type="PackedScene" uid="uid://c2ulv5qygvmwa" path="res://Assets/Models/Blender/BlueTable.blend" id="9_njiv6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bsuyt"]
+sky_top_color = Color(0.84375, 0.529715, 0.295362, 1)
+sky_horizon_color = Color(0.888, 0.801741, 0.734153, 1)
+ground_horizon_color = Color(0.888, 0.801741, 0.734153, 1)
+
+[sub_resource type="Sky" id="Sky_stwyq"]
+sky_material = SubResource("ProceduralSkyMaterial_bsuyt")
+
+[sub_resource type="Environment" id="Environment_0axbc"]
+background_mode = 2
+sky = SubResource("Sky_stwyq")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_llfhh"]
 size = Vector2(25, 25)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stwyq"]
+albedo_color = Color(0.410001, 0.533125, 0.223116, 1)
+
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_766ta"]
 data = PackedVector3Array(12.5, 0, 12.5, -12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, 12.5, -12.5, 0, -12.5, 12.5, 0, -12.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsuyt"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="Curve" id="Curve_stwyq"]
+_data = [Vector2(0, 0), 0.0, 1.52878, 0, 0, Vector2(0.505747, 0.397416), -0.0233328, -0.0233328, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0axbc"]
+curve = SubResource("Curve_stwyq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4208"]
+lifetime_randomness = 0.5
+emission_shape_scale = Vector3(4.04, 2.515, 4.01)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+flatness = 0.528
+initial_velocity_max = 4.4
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_0axbc")
+turbulence_enabled = true
+turbulence_noise_scale = 0.1
+turbulence_initial_displacement_min = -100.0
+turbulence_initial_displacement_max = 1.49012e-06
+
+[sub_resource type="SphereMesh" id="SphereMesh_upenj"]
+
 [node name="TestLevel" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_jsl5n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0929966, 0, -0.0320229)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0axbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_llfhh")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D2"]
-shape = SubResource("ConcavePolygonShape3D_766ta")
-
-[node name="Bench" parent="." instance=ExtResource("2_766ta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-
-[node name="LampPost" parent="." instance=ExtResource("3_fxw30")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
-
-[node name="RedCoffeeTable" parent="." instance=ExtResource("4_njiv6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
-
-[node name="TrashBin" parent="." instance=ExtResource("5_vn5ei")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
-
-[node name="BebeBead" parent="." instance=ExtResource("7_stwyq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6824, 0.339671, 8.54054)
-
-[node name="Cube" parent="BebeBead" index="0"]
-visible = false
-
-[node name="Light" parent="BebeBead" index="1"]
-visible = false
-
-[node name="Camera" parent="BebeBead" index="2"]
-visible = false
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -58,7 +83,76 @@ visible = false
 player = NodePath("../../Player")
 
 [node name="Interactable" parent="." instance=ExtResource("7_766ta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.544, 0.00273728, -4.27384)
-message = "Hi there mother fucker"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05586, 0.0121707, -4.22818)
+voice_clip = ExtResource("4_bsuyt")
 
-[editable path="BebeBead"]
+[node name="LevelGeometry" type="Node3D" parent="."]
+
+[node name="BlueTable" parent="LevelGeometry" instance=ExtResource("9_njiv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14059, 0.000505567, 6.55906)
+
+[node name="RedCoffeeTable" parent="LevelGeometry" instance=ExtResource("4_njiv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+
+[node name="TrashBin" parent="LevelGeometry" instance=ExtResource("5_vn5ei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
+
+[node name="Floor" type="MeshInstance3D" parent="LevelGeometry"]
+mesh = SubResource("PlaneMesh_llfhh")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_stwyq")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="LevelGeometry/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGeometry/Floor/StaticBody3D2"]
+shape = SubResource("ConcavePolygonShape3D_766ta")
+
+[node name="LampPost" parent="LevelGeometry" instance=ExtResource("3_fxw30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="LampPost2" parent="LevelGeometry" instance=ExtResource("3_fxw30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
+
+[node name="LampPost3" parent="LevelGeometry" instance=ExtResource("3_fxw30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
+
+[node name="LampPost4" parent="LevelGeometry" instance=ExtResource("3_fxw30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
+
+[node name="LampPost5" parent="LevelGeometry" instance=ExtResource("3_fxw30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7)
+
+[node name="LampPost6" parent="LevelGeometry" instance=ExtResource("3_fxw30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7)
+
+[node name="Bench" parent="LevelGeometry" instance=ExtResource("2_766ta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Bench2" parent="LevelGeometry" instance=ExtResource("2_766ta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64067, 0, -5)
+
+[node name="BebeBead" parent="LevelGeometry" instance=ExtResource("7_stwyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3176, 0.0139554, -0.45946)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D"]
+transform = Transform3D(3.11127, 0, 0, 0, 1, 0, 0, 0, 3.06471, 0, 2.49862, 0)
+material_override = SubResource("StandardMaterial3D_bsuyt")
+cast_shadow = 0
+amount = 1000
+lifetime = 10.0
+trail_lifetime = 1.0
+process_material = SubResource("ParticleProcessMaterial_g4208")
+draw_pass_1 = SubResource("SphereMesh_upenj")
+
+[node name="PixelShader" parent="." instance=ExtResource("5_bsuyt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("1_jsl5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0929966, 0, -0.0320229)
+move_speed = 3.0
+
+[editable path="LevelGeometry/RedCoffeeTable"]
+[editable path="LevelGeometry/BebeBead"]

@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://777dty02tueb"]
+
+[ext_resource type="Script" uid="uid://dlxqmcam6kfv0" path="res://Scenes/UI/Textbox/Textbox.gd" id="1_ogua0"]
+[ext_resource type="FontFile" uid="uid://byfq3qt1ttygu" path="res://Assets/Fonts/Desktop-GoodDog/Fonts/gooddog.otf" id="2_dgsqs"]
+[ext_resource type="Texture2D" uid="uid://q8iffm2lbe0y" path="res://Scenes/UI/Textbox/TextboxUI/Textbox1.png" id="2_m1p10"]
+[ext_resource type="FontFile" uid="uid://dkpp2rk6dphms" path="res://Assets/Fonts/Desktop-GoodDog/Fonts/gooddog_bones.otf" id="3_afciy"]
+[ext_resource type="Texture2D" uid="uid://dx3f41avrhjk4" path="res://Scenes/UI/Textbox/TextboxUI/textbox2.png" id="3_o4tmh"]
+[ext_resource type="Texture2D" uid="uid://3o2ijeq50lha" path="res://Scenes/UI/Textbox/TextboxUI/textbox3.png" id="4_c1bit"]
+[ext_resource type="Texture2D" uid="uid://ctfqlogrj0d4y" path="res://Assets/Textures/fdace3a1b5896be18d0f1a26110177d0.png" id="7_o4tmh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1p10"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ouq5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m1p10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o4tmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c1bit")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_c1bit"]
+resource_name = "Bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.51, 0.99),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(783, 160.88), Vector2(783, 137.285), Vector2(783, 160.88)]
+}
+
+[sub_resource type="Animation" id="Animation_ouq5j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(783, 160.88)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tmjyq"]
+_data = {
+&"Bounce": SubResource("Animation_c1bit"),
+&"RESET": SubResource("Animation_ouq5j")
+}
+
+[node name="Textbox" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -648.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ogua0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -426.0
+offset_top = -291.88
+offset_right = 426.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_m1p10")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel"]
+position = Vector2(426, 105.88)
+scale = Vector2(0.639793, 0.468379)
+sprite_frames = SubResource("SpriteFrames_ouq5j")
+frame_progress = 0.261013
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -382.0
+offset_top = -187.88
+offset_right = 386.0
+offset_bottom = -24.88
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_dgsqs")
+theme_override_fonts/italics_font = ExtResource("3_afciy")
+theme_override_fonts/bold_font = ExtResource("2_dgsqs")
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/normal_font_size = 46
+theme_override_font_sizes/bold_font_size = 66
+bbcode_enabled = true
+text = "This is some [b][color=yellow][shake]test[/shake][/color][/b] text![i] tu"
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(783, 160.88)
+rotation = -3.14159
+scale = Vector2(0.078781, 0.078781)
+texture = ExtResource("7_o4tmh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+libraries = {
+&"": SubResource("AnimationLibrary_tmjyq")
+}
