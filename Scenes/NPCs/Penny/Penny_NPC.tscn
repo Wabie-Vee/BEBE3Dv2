@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://kdhh2u8bwstf"]
+[gd_scene load_steps=4 format=3 uid="uid://kdhh2u8bwstf"]
 
 [ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_m3gyh"]
 [ext_resource type="PackedScene" uid="uid://dc2qidw7d1u26" path="res://Scenes/NPCs/Penny/Bunny.blend" id="2_ypwo2"]
+[ext_resource type="Script" uid="uid://c05evjtbe60l2" path="res://Scenes/NPCs/Penny/PennyNPC.gd" id="3_0oc7c"]
 
 [node name="Interactable" instance=ExtResource("1_m3gyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00099656, 0)
 
 [node name="Bunny" parent="." index="1" instance=ExtResource("2_ypwo2")]
+script = ExtResource("3_0oc7c")
 
 [node name="Skeleton3D" parent="Bunny/char_grp/rig" index="1"]
 bones/2/position = Vector3(0, -0.00184485, 0.282989)
@@ -118,5 +120,20 @@ bones/208/rotation = Quaternion(0.530896, -0.530896, -0.467065, -0.467065)
 bones/209/rotation = Quaternion(-0.0219308, 0.92634, -0.375961, -0.0081606)
 bones/212/rotation = Quaternion(0.530896, 0.530896, 0.467065, -0.467065)
 bones/215/rotation = Quaternion(0.00130493, 0.999215, 5.19697e-05, -0.0395879)
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Bunny/char_grp/rig/Skeleton3D" index="1"]
+target_node = NodePath("../../../../LookAt")
+bone_name = "head.x"
+bone = 123
+duration = 1.0
+transition_type = 2
+ease_type = 1
+
+[node name="LookAt" type="Marker3D" parent="Bunny" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.754596, 1)
+
+[connection signal="area_entered" from="." to="Bunny" method="_on_interactable_area_entered"]
+[connection signal="body_entered" from="." to="Bunny" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="." to="Bunny" method="_on_interactable_body_exited"]
 
 [editable path="Bunny"]
