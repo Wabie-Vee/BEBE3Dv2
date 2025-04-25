@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dc2qidw7d1u26" path="res://Scenes/NPCs/Penny/Bunny.blend" id="2_ypwo2"]
 [ext_resource type="Script" uid="uid://cc6cfi3sorrjd" path="res://Assets/Models/Blender/bunny.gd" id="3_sj8oj"]
 
-[node name="Interactable" instance=ExtResource("1_m3gyh")]
+[node name="Interactable2" instance=ExtResource("1_m3gyh")]
 
 [node name="Bunny" parent="." index="1" instance=ExtResource("2_ypwo2")]
 script = ExtResource("3_sj8oj")

@@ -27,10 +27,10 @@ func _on_interacted():
 			0:
 				GameManager.update_quest_flag("talked_to_penny", true)
 				GameManager.start_dialogue([
-					"Hi there! I'm Penny.",
-					"Want to help me bury a [color=yellow]time capsule[/color]?",
+					"Hi there! I'm [color=tomato]Penny.",
+					"[tornado radius=3.0 freq=5.0 connected=1]Want to help me bury a [color=yellow]time capsule[/color]?",
 					"There should be a [color=green]frog[/color] around here [wave]somewhere...[/wave]",
-					"I wanna [color=yellow]bury[/color] a frog!!!"
+					"[shake rate=20 level=10]I wanna [color=yellow]bury[/color] a frog!!!"
 				], $"..".voice_clip, interactable.audio_gain)
 
 			1:
