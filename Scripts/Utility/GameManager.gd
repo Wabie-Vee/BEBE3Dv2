@@ -8,6 +8,7 @@ var current_textbox = null
 var dialog_index = 0
 var active_dialog: Array[String] = []
 var active_voice: AudioStream = null
+var active_audio_gain := 1.0
 
 # ✅ Extras
 var current_tree = null
@@ -24,13 +25,14 @@ func _ready():
 	print("GameManager initialized.")
 	QuestManager.autoload_all_quests_from_folder("res://Quests/")
 
-func start_dialogue(dialog_array: Array[String], voice_clip: AudioStream):
+func start_dialogue(dialog_array: Array[String], voice_clip: AudioStream, audio_gain: float = 1.00):
 	if current_textbox:
 		current_textbox.queue_free()
 
 	active_dialog = dialog_array
 	dialog_index = 0
 	active_voice = voice_clip
+	active_audio_gain = audio_gain
 	is_in_dialogue = true
 	player_state = "PlayerStateLocked"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -41,6 +43,7 @@ func show_next_line():
 	if dialog_index < active_dialog.size():
 		var textbox = textbox_scene.instantiate()
 		textbox.voice = active_voice
+		textbox.voice_volume = active_audio_gain
 		current_textbox = textbox
 		dialog_index += 1
 

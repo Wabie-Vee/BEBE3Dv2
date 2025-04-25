@@ -148,6 +148,6 @@ grow_vertical = 2
 scale = Vector2(0.1875, 0.1875)
 sprite_frames = SubResource("SpriteFrames_w71ue")
 animation = &"Grab"
-frame_progress = 0.817885
+frame_progress = 0.420957
 
 [editable path="BebePivot/BebeBear"]

@@ -2,7 +2,7 @@ extends Area3D
 class_name Interactable
 
 @export_enum("talk", "grab") var interaction_type: String = "talk"
-
+@export var audio_gain:= 1.0
 @export var dialog_lines: Array[String] = [
 	"[wave]Heyyyy[/wave] I'm Penny.",
 	"Did you bury the frog yet?",
@@ -19,4 +19,4 @@ func interact():
 	if custom_interact_handler != null:
 		custom_interact_handler.call()
 	else:
-		GameManager.start_dialogue(dialog_lines, voice_clip)
+		GameManager.start_dialogue(dialog_lines, voice_clip, audio_gain)
