@@ -20,7 +20,7 @@ func update(delta):
 	if not player.is_on_floor():
 		player.velocity.y -= 20.0 * delta
 		
-	if Input.is_action_just_pressed("key_jump"):
+	if Input.is_action_just_pressed("key_jump") and player.is_on_floor() and GameManager.player_state == "PlayerStateFree":
 		state_machine.change_state("JumpState")
 
 	player.move_and_slide()

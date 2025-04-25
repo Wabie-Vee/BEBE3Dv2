@@ -56,7 +56,7 @@ func _unhandled_input(event):
 	if not ready_for_input:
 		return
 
-	if event.is_action_pressed("key_interact"):
+	if event.is_action_pressed("key_interact") or event.is_action_pressed("left_click"):
 		if label.visible_ratio < 1:
 			if tween:
 				tween.kill()

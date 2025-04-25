@@ -36,7 +36,7 @@ func update(delta):
 			state_machine.change_state("FallState")
 			return
 		
-		if Input.is_action_just_pressed("key_jump") and player.is_on_floor():
+		if Input.is_action_just_pressed("key_jump") and player.is_on_floor() and GameManager.player_state == "PlayerStateFree":
 			state_machine.change_state("JumpState")
 
 		# Smoothly rotate the mesh to face movement direction

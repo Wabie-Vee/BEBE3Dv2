@@ -85,9 +85,7 @@ player = NodePath("../../Player")
 
 [node name="Interactable" parent="." instance=ExtResource("7_766ta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05586, 0.0121707, -4.22818)
-interaction_type = "talk"
 audio_gain = 0.5
-dialog_lines = Array[String](["[wave]Heyyyy[/wave] I'm Penny.", "Did you bury the frog yet?", "[shake]Don't lie to me. I *smell* frogs.[/shake]"])
 voice_clip = ExtResource("3_stwyq")
 
 [node name="LevelGeometry" type="Node3D" parent="."]

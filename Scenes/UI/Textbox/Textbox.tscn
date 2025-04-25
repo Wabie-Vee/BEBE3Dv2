@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://777dty02tueb"]
+[gd_scene load_steps=15 format=3 uid="uid://777dty02tueb"]
 
 [ext_resource type="Script" uid="uid://dlxqmcam6kfv0" path="res://Scenes/UI/Textbox/Textbox.gd" id="1_ogua0"]
 [ext_resource type="FontFile" uid="uid://byfq3qt1ttygu" path="res://Assets/Fonts/Desktop-GoodDog/Fonts/gooddog.otf" id="2_dgsqs"]
@@ -9,6 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://ctfqlogrj0d4y" path="res://Assets/Textures/fdace3a1b5896be18d0f1a26110177d0.png" id="7_o4tmh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1p10"]
+
+[sub_resource type="Gradient" id="Gradient_o4tmh"]
+interpolation_color_space = 2
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c1bit"]
+gradient = SubResource("Gradient_o4tmh")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ouq5j"]
 animations = [{
@@ -87,12 +94,22 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -426.0
-offset_top = -291.88
+offset_top = -234.0
 offset_right = 426.0
-offset_bottom = -79.0
+offset_bottom = -21.12
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_m1p10")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = -164.0
+offset_top = 303.0
+offset_right = 176.0
+offset_bottom = 1482.0
+rotation = -1.57079
+texture = SubResource("GradientTexture1D_c1bit")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel"]
 position = Vector2(426, 105.88)

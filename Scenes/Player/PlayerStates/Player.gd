@@ -21,7 +21,7 @@ var is_jumping := false
 var jump_held_time := 0.0
 
 var sprinting := false
-var sprint_speed := 8
+@export var sprint_speed := 6.0
 var slide_factor := 10.0
 var rotation_speed := 8.0
 
@@ -85,7 +85,7 @@ func _input(event):
 	else:
 		sprinting = false;
 	if GameManager.player_state == "PlayerStateFree":	
-		if event.is_action_pressed("key_interact"):
+		if event.is_action_pressed("key_interact") or event.is_action_pressed("left_click"):
 				handle_interact()
 	
 	if event is InputEventKey and event.pressed:
@@ -147,7 +147,7 @@ func _physics_process(delta):
 	if GameManager.player_state == "LockedState":
 		return #freeze player
 	
-	if headbob_enabled and velocity.length() > 0.1 and is_on_floor():
+	if headbob_enabled and velocity.length() > 0.1 and is_on_floor() and GameManager.player_state == "PlayerStateFree":
 		# Get horizontal speed (ignoring vertical movement)
 		var horizontal_velocity = velocity
 		horizontal_velocity.y = 0
