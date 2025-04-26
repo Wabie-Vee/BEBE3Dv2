@@ -1,27 +1,10 @@
-extends Node3D
-@onready var look_at_modifier: LookAtModifier3D = $char_grp/rig/Skeleton3D/LookAtModifier3D
-@onready var look_at: Marker3D = $LookAt
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var interactable: Interactable = $".."
-
-
-
-var quest = QuestManager.active_quests.get("penny_capsule")
-
-
-
-
-func _ready() -> void:
-	animation_player.play("BunnyIdle")
-	$"..".custom_interact_handler = _on_interacted
-	
-	
+extends NPC
 
 func _on_interacted():
 	var quest = QuestManager.active_quests.get("penny_capsule")
 
 	if quest:
-		print("📊 Current stage:", quest.current_stage, "Completed:", quest.completed)
+		print("📊 Penny talking. Current stage:", quest.current_stage, "Completed:", quest.completed)
 
 		match quest.current_stage:
 			0:
@@ -31,41 +14,27 @@ func _on_interacted():
 					"[tornado radius=3.0 freq=5.0 connected=1]Want to help me bury a [color=yellow]time capsule[/color]?",
 					"There should be a [color=green]frog[/color] around here [wave]somewhere...[/wave]",
 					"[shake rate=20 level=10]I wanna [color=yellow]bury[/color] a frog!!!"
-				], $"..".voice_clip, interactable.audio_gain)
+				], interactable.voice_clip, interactable.audio_gain)
 
 			1:
-				if GameManager.has_item("Frog"):
-					# Advance quest by setting the flag — this triggers check_quests
+				if GameManager.has_item("frog"):
 					GameManager.update_quest_flag("got_frog", true)
-
 					GameManager.start_dialogue([
 						"You found the frog!!!",
 						"Let’s bury it together. This is perfect."
-					], $"..".voice_clip, interactable.audio_gain)
+					], interactable.voice_clip, interactable.audio_gain)
 				else:
 					GameManager.start_dialogue([
 						"Still no [color=green]frog[/color]?",
 						"You're holding out on me, I can tell..."
-					], $"..".voice_clip, interactable.audio_gain)
+					], interactable.voice_clip, interactable.audio_gain)
 
 			2:
 				GameManager.start_dialogue([
 					"Thanks again for helping with the capsule.",
 					"You're the realest 🐸."
-				], $"..".voice_clip, interactable.audio_gain)
+				], interactable.voice_clip, interactable.audio_gain)
 	else:
 		GameManager.start_dialogue([
 			"I have nothing more to say to you... frog thief."
-		], $"..".voice_clip, interactable.audio_gain)
-
-func _on_interactable_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		look_at_modifier.target_node = body.camera_rig.get_path()
-		
-	pass # Replace with function body.
-
-
-func _on_interactable_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		look_at_modifier.target_node = look_at.get_path()
-	pass # Replace with function body.
+		], interactable.voice_clip, interactable.audio_gain)

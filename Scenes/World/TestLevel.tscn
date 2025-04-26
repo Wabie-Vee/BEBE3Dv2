@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://0m174mmdlf4s" path="res://Assets/Models/New Folder/Rock4-col.glb" id="10_f03ac"]
 [ext_resource type="PackedScene" uid="uid://mgxb4qof1lpp" path="res://Assets/Models/New Folder/Rock5-col.glb" id="11_0mihk"]
 [ext_resource type="PackedScene" uid="uid://ceghwal4oaf08" path="res://Collectibles/Frog.tscn" id="12_stwyq"]
-[ext_resource type="PackedScene" uid="uid://daiixq0jro3yj" path="res://Assets/Models/Blender/MenmoMouse.blend" id="13_0axbc"]
+[ext_resource type="PackedScene" uid="uid://daiixq0jro3yj" path="res://Scenes/NPCs/Menmo/MenmoMouse.blend" id="13_0axbc"]
 [ext_resource type="PackedScene" uid="uid://d04gywpxt5jbh" path="res://Assets/Models/New Folder/Rock1-col.glb" id="16_3quit"]
 [ext_resource type="PackedScene" uid="uid://bsx4edi7xetfm" path="res://Assets/Models/New Folder/rock2-col.glb" id="17_icopk"]
 [ext_resource type="PackedScene" uid="uid://lrji2c754rot" path="res://Assets/Models/New Folder/Rock3-col.glb" id="18_e7pit"]
