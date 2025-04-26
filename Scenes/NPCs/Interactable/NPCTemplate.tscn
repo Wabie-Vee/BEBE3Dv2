@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cou2s4kgjls46"]
+
+[ext_resource type="Script" uid="uid://e30334lf2fir" path="res://Scenes/NPCs/Interactable/NPC.gd" id="1_fl2qp"]
+[ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="2_hkkat"]
+
+[node name="NPCTemplate" type="Node3D"]
+script = ExtResource("1_fl2qp")
+
+[node name="LookAt" type="Marker3D" parent="."]
+
+[node name="Interactable" parent="." instance=ExtResource("2_hkkat")]

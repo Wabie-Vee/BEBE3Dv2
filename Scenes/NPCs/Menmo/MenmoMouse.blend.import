@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://daiixq0jro3yj"
-path="res://.godot/imported/MenmoMouse.blend-1c179481d689bf5599b6250290431d3f.scn"
+path="res://.godot/imported/MenmoMouse.blend-a5e7c174d0992b1b9220dfc8bc4cf789.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Blender/MenmoMouse.blend"
-dest_files=["res://.godot/imported/MenmoMouse.blend-1c179481d689bf5599b6250290431d3f.scn"]
+source_file="res://Scenes/NPCs/Menmo/MenmoMouse.blend"
+dest_files=["res://.godot/imported/MenmoMouse.blend-a5e7c174d0992b1b9220dfc8bc4cf789.scn"]
 
 [params]
 
