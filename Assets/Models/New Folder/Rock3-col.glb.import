@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b3wgeeiv4knq6"
-path="res://.godot/imported/Rock4.fbx-7cc4c266e49964ab54e3ef625be54a6f.scn"
+uid="uid://lrji2c754rot"
+path="res://.godot/imported/Rock3-col.glb-ef10f757d43bc91d396b667114943eb6.scn"
 
 [deps]
 
-source_file="res://Assets/Models/New Folder/Rock4.fbx"
-dest_files=["res://.godot/imported/Rock4.fbx-7cc4c266e49964ab54e3ef625be54a6f.scn"]
+source_file="res://Assets/Models/New Folder/Rock3-col.glb"
+dest_files=["res://.godot/imported/Rock3-col.glb-ef10f757d43bc91d396b667114943eb6.scn"]
 
 [params]
 
@@ -28,11 +28,10 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+gltf/naming_version=1
+gltf/embedded_image_handling=1
