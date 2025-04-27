@@ -20,6 +20,7 @@ func _process(_delta):
 		debug_text += "Velocity: " + str(player.velocity) + "\n"
 		debug_text += "State: " + str(player.state_machine.current_state) + "\n"
 		debug_text += "Raycast Debug: " + raycast_text + "\n"
-		debug_text += "FPS: " + str(Engine.get_frames_per_second())
+		debug_text += "FPS: " + str(Engine.get_frames_per_second()) + "\n"
+		debug_text += "Frogs: " + str(GameManager.has_item("Frog"))
 
 	debug_label.text = debug_text

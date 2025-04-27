@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://777dty02tueb"]
+[gd_scene load_steps=17 format=3 uid="uid://777dty02tueb"]
 
 [ext_resource type="Script" uid="uid://dlxqmcam6kfv0" path="res://Scenes/UI/Textbox/Textbox.gd" id="1_ogua0"]
+[ext_resource type="AudioStream" uid="uid://cnq83o2gcuvpu" path="res://Assets/Audio/cartoon_jump.ogg" id="2_c1bit"]
 [ext_resource type="FontFile" uid="uid://byfq3qt1ttygu" path="res://Assets/Fonts/Desktop-GoodDog/Fonts/gooddog.otf" id="2_dgsqs"]
 [ext_resource type="Texture2D" uid="uid://q8iffm2lbe0y" path="res://Scenes/UI/Textbox/TextboxUI/Textbox1.png" id="2_m1p10"]
 [ext_resource type="FontFile" uid="uid://dkpp2rk6dphms" path="res://Assets/Fonts/Desktop-GoodDog/Fonts/gooddog_bones.otf" id="3_afciy"]
@@ -47,7 +48,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.51, 0.99),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
-"values": [Vector2(783, 160.88), Vector2(783, 137.285), Vector2(783, 160.88)]
+"values": [Vector2(950, 160.88), Vector2(950, 137.285), Vector2(950, 160.88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_ouq5j"]
@@ -64,11 +77,130 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(783, 160.88)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [382.0]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gradient:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-634, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gradient:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(303, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextBox:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.983728, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextBox:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.631937, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_o4tmh"]
+resource_name = "textbox_open"
+length = 0.66667
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gradient:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-634, -0.25, 0, 0.25, 0, -634, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.0333333, 0.29767)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gradient:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(650, -0.25, 0, 0.25, 0, 303, -0.25, 0, 0.25, 0, 303, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.0333333, 0.348835, 0.633333)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextBox:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.984, -0.25, 0, 0.25, 0, 0.983728, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.29767, 0.63875)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextBox:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 0.631937, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.29767, 0.63875)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_open_sound"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tmjyq"]
 _data = {
 &"Bounce": SubResource("Animation_c1bit"),
-&"RESET": SubResource("Animation_ouq5j")
+&"RESET": SubResource("Animation_ouq5j"),
+&"textbox_open": SubResource("Animation_o4tmh")
 }
 
 [node name="Textbox" type="Control"]
@@ -84,6 +216,7 @@ offset_right = 576.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ogua0")
+open_sound = ExtResource("2_c1bit")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="."]
@@ -93,27 +226,26 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -426.0
-offset_top = -234.0
-offset_right = 426.0
-offset_bottom = -21.12
+offset_left = -427.0
+offset_top = -266.0
+offset_right = 425.0
+offset_bottom = -53.12
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_m1p10")
-metadata/_edit_group_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Panel"]
+[node name="Gradient" type="TextureRect" parent="Panel"]
 layout_mode = 0
-offset_left = -164.0
+offset_left = -634.0
 offset_top = 303.0
-offset_right = 176.0
-offset_bottom = 1482.0
+offset_right = -294.0
+offset_bottom = 2422.0
 rotation = -1.57079
 texture = SubResource("GradientTexture1D_c1bit")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel"]
+[node name="TextBox" type="AnimatedSprite2D" parent="Panel"]
 position = Vector2(426, 105.88)
-scale = Vector2(0.639793, 0.468379)
+scale = Vector2(0.983728, 0.631937)
 sprite_frames = SubResource("SpriteFrames_ouq5j")
 frame_progress = 0.261013
 
@@ -124,10 +256,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -382.0
-offset_top = -187.88
-offset_right = 386.0
-offset_bottom = -24.88
+offset_left = -564.0
+offset_top = -197.88
+offset_right = 568.0
+offset_bottom = -9.88
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("2_dgsqs")
@@ -140,9 +272,10 @@ bbcode_enabled = true
 text = "This is some [b][color=yellow][shake]test[/shake][/color][/b] text![i] tu"
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel"]
+visible = false
 position = Vector2(783, 160.88)
 rotation = -3.14159
-scale = Vector2(0.078781, 0.078781)
+scale = Vector2(0.078781, 0.0787812)
 texture = ExtResource("7_o4tmh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]

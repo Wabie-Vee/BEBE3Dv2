@@ -10,6 +10,9 @@ var active_dialog: Array[String] = []
 var active_voice: AudioStream = null
 var active_audio_gain := 1.0
 
+var textbox_is_open := false
+
+
 # ✅ Extras
 var current_tree = null
 var current_node_id = ""
@@ -28,7 +31,6 @@ func _ready():
 func start_dialogue(dialog_array: Array[String], voice_clip: AudioStream, audio_gain: float = 1.00):
 	if current_textbox:
 		current_textbox.queue_free()
-
 	active_dialog = dialog_array
 	dialog_index = 0
 	active_voice = voice_clip
@@ -60,6 +62,7 @@ func show_next_line():
 func end_dialogue():
 	player_state = "PlayerStateFree"
 	is_in_dialogue = false
+	textbox_is_open = false  # 🐸💥 RESET IT HERE
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	var player = get_tree().current_scene.get_node("Player")
@@ -67,6 +70,7 @@ func end_dialogue():
 		player.state_machine.change_state("IdleState")
 		player.camera_rig.rotation_degrees.z = 0.0
 		player.headbob_timer = 0.0
+
 
 func update_quest_flag(flag: String, value: bool):
 	quest_flags[flag] = value
