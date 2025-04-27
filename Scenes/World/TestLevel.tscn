@@ -14,10 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://0m174mmdlf4s" path="res://Assets/Models/New Folder/Rock4-col.glb" id="10_f03ac"]
 [ext_resource type="PackedScene" uid="uid://mgxb4qof1lpp" path="res://Assets/Models/New Folder/Rock5-col.glb" id="11_0mihk"]
 [ext_resource type="PackedScene" uid="uid://ceghwal4oaf08" path="res://Collectibles/Frog.tscn" id="12_stwyq"]
-[ext_resource type="PackedScene" uid="uid://daiixq0jro3yj" path="res://Scenes/NPCs/Menmo/MenmoMouse.blend" id="13_0axbc"]
 [ext_resource type="PackedScene" uid="uid://d04gywpxt5jbh" path="res://Assets/Models/New Folder/Rock1-col.glb" id="16_3quit"]
 [ext_resource type="PackedScene" uid="uid://bsx4edi7xetfm" path="res://Assets/Models/New Folder/rock2-col.glb" id="17_icopk"]
 [ext_resource type="PackedScene" uid="uid://lrji2c754rot" path="res://Assets/Models/New Folder/Rock3-col.glb" id="18_e7pit"]
+[ext_resource type="PackedScene" uid="uid://c4vbv6wostdc7" path="res://Scenes/NPCs/Menmo/MenmoNPC.tscn" id="18_f03ac"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bsuyt"]
 sky_top_color = Color(0.84375, 0.529715, 0.295362, 1)
@@ -172,9 +172,6 @@ move_speed = 3.0
 [node name="Collectible" parent="." instance=ExtResource("12_stwyq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.38995, 0.017428, -5.2907)
 
-[node name="MenmoMouse" parent="." instance=ExtResource("13_0axbc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01402, -0.00556098, -4.02721)
-
 [node name="Rock1-col2" parent="." instance=ExtResource("16_3quit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68531, 0.538975, 8.30864)
 
@@ -183,6 +180,9 @@ transform = Transform3D(1, 0, 0, 0, -0.0387889, -0.999247, 0, 0.999247, -0.03878
 
 [node name="Rock3-col2" parent="." instance=ExtResource("18_e7pit")]
 transform = Transform3D(0.504756, 0.16498, 0.408287, 0.162154, -0.647056, 0.0609931, 0.409417, 0.0528761, -0.527519, 2.04464, -0.0412539, 7.85359)
+
+[node name="Menmo" parent="." instance=ExtResource("18_f03ac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02243, -0.0174712, -4.3367)
 
 [editable path="LevelGeometry/RedCoffeeTable"]
 [editable path="LevelGeometry/BebeBead"]

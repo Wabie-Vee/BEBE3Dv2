@@ -1,16 +1,25 @@
 extends Node3D
 class_name NPC
 
-@onready var look_at_modifier: LookAtModifier3D = $char_grp/rig/Skeleton3D/LookAtModifier3D
-@onready var look_at: Marker3D = $LookAt
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@export var look_at_modifier: LookAtModifier3D
+@export var look_at: Marker3D
+@export var animation_player: AnimationPlayer
 @onready var interactable: Interactable = $".."
 
 # 🧠 Default values NPCs can override
-var npc_name: String = "Unnamed NPC"
+var npc_name: String = "Unnamed NPC"    
 
 func _ready() -> void:
-	animation_player.play("Idle")
+	var interactable = get_parent()  # Assuming parent is Interactable
+	if interactable.has_signal("body_entered"):
+		interactable.connect("body_entered", Callable(self, "_on_interactable_body_entered"))
+	if interactable.has_signal("body_exited"):
+		interactable.connect("body_exited", Callable(self, "_on_interactable_body_exited"))
+	look_at_modifier.duration = 1.0
+	look_at_modifier.transition_type = Tween.TRANS_QUINT
+	look_at_modifier.ease_type = Tween.EASE_OUT
+	if animation_player:
+		animation_player.play("Idle")
 	interactable.custom_interact_handler = _on_interacted
 
 func _on_interacted():

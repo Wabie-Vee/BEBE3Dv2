@@ -1,20 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4vbv6wostdc7"]
+[gd_scene load_steps=5 format=3 uid="uid://c4vbv6wostdc7"]
 
 [ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_djwho"]
 [ext_resource type="PackedScene" uid="uid://daiixq0jro3yj" path="res://Scenes/NPCs/Menmo/MenmoMouse.blend" id="2_en4ie"]
+[ext_resource type="AudioStream" uid="uid://0otfp5oxxdl8" path="res://Assets/Audio/sfx_bow.ogg" id="2_gojaa"]
 [ext_resource type="Script" uid="uid://ug2n1v4r571r" path="res://Scenes/NPCs/Menmo/MenmoNPC.gd" id="3_gojaa"]
 
 [node name="Menmo" instance=ExtResource("1_djwho")]
+voice_clip = ExtResource("2_gojaa")
 
-[node name="MenmoMouse" parent="." index="1" instance=ExtResource("2_en4ie")]
+[node name="MenmoMouse" parent="." index="1" node_paths=PackedStringArray("look_at_modifier", "look_at") instance=ExtResource("2_en4ie")]
 script = ExtResource("3_gojaa")
+look_at_modifier = NodePath("char_grp/rig/Skeleton3D/LookAtModifier3D")
+look_at = NodePath("LookAt")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="MenmoMouse/char_grp/rig/Skeleton3D" index="1"]
-target_node = NodePath("../../../../Marker3D")
+target_node = NodePath("../../../../LookAt")
 bone_name = "head.x"
 bone = 123
 
-[node name="Marker3D" type="Marker3D" parent="MenmoMouse" index="2"]
+[node name="LookAt" type="Marker3D" parent="MenmoMouse" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.590856, 0.456957)
 
 [editable path="MenmoMouse"]
