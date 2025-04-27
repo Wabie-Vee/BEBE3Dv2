@@ -5,6 +5,7 @@ class_name NPC
 @export var look_at: Marker3D
 @export var animation_player: AnimationPlayer
 @onready var interactable: Interactable = $".."
+@export var animation_idle: String
 
 # 🧠 Default values NPCs can override
 var npc_name: String = "Unnamed NPC"    
@@ -19,7 +20,7 @@ func _ready() -> void:
 	look_at_modifier.transition_type = Tween.TRANS_QUINT
 	look_at_modifier.ease_type = Tween.EASE_OUT
 	if animation_player:
-		animation_player.play("Idle")
+		animation_player.play(animation_idle)
 	interactable.custom_interact_handler = _on_interacted
 
 func _on_interacted():
