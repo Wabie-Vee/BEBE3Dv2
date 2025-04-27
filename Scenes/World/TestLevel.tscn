@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dkv3x83fvsmx8"]
+[gd_scene load_steps=31 format=3 uid="uid://dkv3x83fvsmx8"]
 
 [ext_resource type="PackedScene" uid="uid://eksp5e7et5mc" path="res://Scenes/Player/Player.tscn" id="1_jsl5n"]
 [ext_resource type="PackedScene" uid="uid://c7pumljxmqew5" path="res://Assets/Models/Blender/Bench.blend" id="2_766ta"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bo1mrjlhd8gop" path="res://Assets/Models/Blender/RedCoffeeTable.blend" id="4_njiv6"]
 [ext_resource type="PackedScene" uid="uid://dclas7liffkfe" path="res://Scenes/UI/Pixel Shader/PixelShader.tscn" id="5_bsuyt"]
 [ext_resource type="PackedScene" uid="uid://c46jjvtjm84tl" path="res://Assets/Models/Blender/TrashBin.blend" id="5_vn5ei"]
+[ext_resource type="Texture2D" uid="uid://byv4tf21c31r6" path="res://Assets/Textures/DevText1mx1m.png" id="7_0mihk"]
 [ext_resource type="PackedScene" uid="uid://kdhh2u8bwstf" path="res://Scenes/NPCs/Penny/Penny_NPC.tscn" id="7_766ta"]
 [ext_resource type="PackedScene" uid="uid://bphkafnnxtl07" path="res://Scenes/UI/DebugPanel/DebugPanel.tscn" id="7_fxw30"]
 [ext_resource type="PackedScene" uid="uid://xwm3jd761iua" path="res://Assets/Models/Blender/BebeBead.blend" id="7_stwyq"]
@@ -39,7 +40,12 @@ glow_enabled = true
 size = Vector2(25, 25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stwyq"]
-albedo_color = Color(0.410001, 0.533125, 0.223116, 1)
+albedo_texture = ExtResource("7_0mihk")
+emission = Color(1, 1, 1, 1)
+grow_amount = -2.238
+proximity_fade_distance = 0.01
+distance_fade_min_distance = 10.0
+distance_fade_max_distance = 1.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_766ta"]
 data = PackedVector3Array(12.5, 0, 12.5, -12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, 12.5, -12.5, 0, -12.5, 12.5, 0, -12.5)
