@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=31 format=3 uid="uid://dkv3x83fvsmx8"]
-=======
-[gd_scene load_steps=33 format=3 uid="uid://dkv3x83fvsmx8"]
->>>>>>> Stashed changes
+[gd_scene load_steps=31 format=3 uid="uid://cpswlkdghqrq8"]
 
 [ext_resource type="PackedScene" uid="uid://eksp5e7et5mc" path="res://Scenes/Player/Player.tscn" id="1_jsl5n"]
 [ext_resource type="PackedScene" uid="uid://c7pumljxmqew5" path="res://Assets/Models/Blender/Bench.blend" id="2_766ta"]
@@ -18,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://c2ulv5qygvmwa" path="res://Assets/Models/Blender/BlueTable.blend" id="9_njiv6"]
 [ext_resource type="PackedScene" uid="uid://0m174mmdlf4s" path="res://Assets/Models/New Folder/Rock4-col.glb" id="10_f03ac"]
 [ext_resource type="PackedScene" uid="uid://mgxb4qof1lpp" path="res://Assets/Models/New Folder/Rock5-col.glb" id="11_0mihk"]
-[ext_resource type="PackedScene" uid="uid://tb51tgq40kqb" path="res://Assets/Models/Floor.glb" id="12_0mihk"]
 [ext_resource type="PackedScene" uid="uid://ceghwal4oaf08" path="res://Collectibles/Frog.tscn" id="12_stwyq"]
 [ext_resource type="PackedScene" uid="uid://d04gywpxt5jbh" path="res://Assets/Models/New Folder/Rock1-col.glb" id="16_3quit"]
 [ext_resource type="PackedScene" uid="uid://bsx4edi7xetfm" path="res://Assets/Models/New Folder/rock2-col.glb" id="17_icopk"]
@@ -44,26 +39,11 @@ glow_enabled = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_llfhh"]
 size = Vector2(200, 200)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_f03ac"]
-frequency = 0.0401
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0mihk"]
-seamless = true
-seamless_blend_skirt = 0.313
-noise = SubResource("FastNoiseLite_f03ac")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stwyq"]
-<<<<<<< Updated upstream
-albedo_texture = ExtResource("7_0mihk")
-emission = Color(1, 1, 1, 1)
-grow_amount = -2.238
-proximity_fade_distance = 0.01
-distance_fade_min_distance = 10.0
-distance_fade_max_distance = 1.0
-=======
 albedo_color = Color(0.410001, 0.533125, 0.223116, 1)
-albedo_texture = SubResource("NoiseTexture2D_0mihk")
->>>>>>> Stashed changes
+albedo_texture = ExtResource("7_0mihk")
+uv1_scale = Vector3(-0.124, -0.124, -0.124)
+uv1_triplanar = true
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f03ac"]
 data = PackedVector3Array(100, 0, 100, -100, 0, 100, 100, 0, -100, -100, 0, 100, -100, 0, -100, 100, 0, -100)
@@ -130,8 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
 
 [node name="Floor" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0483451, -0.0123789, -0.125875)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00505029, -0.0123789, -0.00191611)
 mesh = SubResource("PlaneMesh_llfhh")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_stwyq")
@@ -206,13 +185,8 @@ transform = Transform3D(1, 0, 0, 0, -0.0387889, -0.999247, 0, 0.999247, -0.03878
 [node name="Rock3-col2" parent="." instance=ExtResource("18_e7pit")]
 transform = Transform3D(0.504756, 0.16498, 0.408287, 0.162154, -0.647056, 0.0609931, 0.409417, 0.0528761, -0.527519, 2.04464, -0.0412539, 7.85359)
 
-<<<<<<< Updated upstream
 [node name="Menmo" parent="." instance=ExtResource("18_f03ac")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02243, -0.0174712, -4.3367)
-=======
-[node name="Floor" parent="." instance=ExtResource("12_0mihk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73535, -0.107141, -1.0959)
->>>>>>> Stashed changes
 
 [editable path="LevelGeometry/RedCoffeeTable"]
 [editable path="LevelGeometry/BebeBead"]
