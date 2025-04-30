@@ -50,20 +50,20 @@ func set_image_and_text(image: Texture2D, text: String):
 	if tween:
 		tween.kill()
 
-	var duration = visible_char_count * 0.1
+	var duration = visible_char_count * 0.07
 	tween = create_tween()
 	tween.tween_property(label, "visible_ratio", 1.0, duration)
 
 func _process(delta):
 	var t = Time.get_ticks_msec() / 1000.0
-	label.position.y = label_initial_y + wave(t, 5.0, 1.0)
+	label.position.y = label_initial_y + wave(t, 2.0, 1.0)
 	if not ready_for_input:
 		return
 
 	var current_char = int(round(label.visible_ratio * visible_char_count))
 	var last_char = int(round(last_visible_ratio * visible_char_count))
 
-	if current_char > last_char and voice:
+	if current_char > last_char and current_char % 2 == 0 and voice:
 		SoundManager.stop_sfx(voice)
 		SoundManager.play_sfx(voice, true, voice_volume)
 
