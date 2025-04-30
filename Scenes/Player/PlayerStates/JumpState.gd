@@ -55,6 +55,7 @@ func update(delta):
 		
 	if player.is_on_floor():
 		SoundManager.play_sfx(player.sfx_land, true, 4.0)
+		player.air_direction = Vector3.ZERO
 		if input.length() > 0.1:
 			state_machine.change_state("WalkState")
 		else:
