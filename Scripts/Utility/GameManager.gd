@@ -10,6 +10,9 @@ var active_dialog: Array[String] = []
 var active_voice: AudioStream = null
 var active_audio_gain := 1.0
 
+var flavor_ui_scene := preload("res://Scenes/NPCs/Interactable/FlavorInspectUI.tscn")
+var active_flavor_ui = null
+
 var textbox_is_open := false
 
 
@@ -88,3 +91,18 @@ func add_to_inventory(item_name: String):
 
 func has_item(item_name: String) -> bool:
 	return inventory.get(item_name, false)
+	
+
+
+func show_flavor_image_and_text(image: Texture2D, text: String):
+	if active_flavor_ui:
+		active_flavor_ui.queue_free()
+
+	var ui_layer = get_tree().current_scene.get_node("UILayer")
+	active_flavor_ui = flavor_ui_scene.instantiate()
+
+	active_flavor_ui.initial_text = text
+	active_flavor_ui.initial_image = image
+
+	ui_layer.add_child(active_flavor_ui)
+	GameManager.player_state = "PlayerStateLocked"

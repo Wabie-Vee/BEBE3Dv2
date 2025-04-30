@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwld0226crlxm"]
+
+[ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_1160t"]
+[ext_resource type="Script" uid="uid://bdnk5qa4qy88t" path="res://Scenes/NPCs/Interactable/Lookable.gd" id="2_m32fg"]
+
+[node name="LookableTemplate" instance=ExtResource("1_1160t")]
+script = ExtResource("2_m32fg")
+image = null
+flavor_text = "HIIIIII"
+interaction_type = "inspect"
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

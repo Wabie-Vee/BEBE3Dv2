@@ -1,7 +1,7 @@
 extends Area3D
 class_name Interactable
 
-@export_enum("talk", "grab") var interaction_type: String = "talk"
+@export_enum("talk", "grab","inspect") var interaction_type: String = "talk"
 @export var audio_gain:= 1.0
 @export var dialog_lines: Array[String] = [
 	"[wave]Heyyyy[/wave] I'm Penny.",

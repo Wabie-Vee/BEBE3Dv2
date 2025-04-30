@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://eksp5e7et5mc"]
+[gd_scene load_steps=28 format=3 uid="uid://eksp5e7et5mc"]
 
 [ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scenes/Player/PlayerStates/Player.gd" id="1_ft8w5"]
 [ext_resource type="PackedScene" uid="uid://b20ifxdcjdda4" path="res://Scenes/Player/BebeBear.blend" id="2_h54ih"]
@@ -18,6 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://dj8v57abkv8y5" path="res://Assets/Textures/UI/CursorGrab2.png" id="14_w71ue"]
 [ext_resource type="Texture2D" uid="uid://mcpbaj34xaru" path="res://Assets/Textures/UI/CursorSpeak3.png" id="15_0objx"]
 [ext_resource type="Texture2D" uid="uid://du3kfrvyaeof7" path="res://Assets/Textures/UI/CursorGrab3.png" id="15_1e6p3"]
+[ext_resource type="Texture2D" uid="uid://yswaegd7kygy" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT1.png" id="16_e5iqy"]
+[ext_resource type="Texture2D" uid="uid://bx4f3ot05xkvr" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT2.png" id="17_8t5qx"]
+[ext_resource type="Texture2D" uid="uid://y1s8ejjsqipu" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT3.png" id="18_8rd5p"]
+[ext_resource type="Texture2D" uid="uid://srivuxdlkskp" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT4.png" id="19_wwmao"]
+[ext_resource type="Texture2D" uid="uid://b6tiynnp2witt" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT5.png" id="20_7xdrn"]
+[ext_resource type="Texture2D" uid="uid://ggeooadai8h2" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT6.png" id="21_wid83"]
+[ext_resource type="Texture2D" uid="uid://cho7njcietks3" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT7.png" id="22_g7gci"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
 radius = 0.302857
@@ -45,6 +52,59 @@ animations = [{
 }],
 "loop": true,
 "name": &"Grab",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_e5iqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8t5qx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8rd5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_e5iqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8t5qx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8rd5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_e5iqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8t5qx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8rd5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wwmao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7xdrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wid83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_g7gci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wid83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7xdrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wwmao")
+}],
+"loop": true,
+"name": &"Inspect",
 "speed": 5.0
 }, {
 "frames": [{
@@ -147,7 +207,7 @@ grow_vertical = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 scale = Vector2(0.1875, 0.1875)
 sprite_frames = SubResource("SpriteFrames_w71ue")
-animation = &"Grab"
-frame_progress = 0.420957
+animation = &"Inspect"
+frame_progress = 0.379834
 
 [editable path="BebePivot/BebeBear"]

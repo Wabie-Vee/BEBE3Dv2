@@ -128,6 +128,10 @@ func debug_draw_interact():
 			print("🔘 Nothing hit.")
 
 func _physics_process(delta):
+	if GameManager.player_state == "PlayerStateFree":
+		canvas_layer.visible = true
+	else:
+		canvas_layer.visible = false
 	if Input.is_action_just_pressed("left_click") and !mouse_look_enabled and !GameManager.is_in_dialogue:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if !mouse_look_enabled:
@@ -139,12 +143,12 @@ func _physics_process(delta):
 
 	# Lerp the camera rig's Z-rotation toward target
 	var current_tilt = camera_rig.rotation_degrees.z
-	if GameManager.is_in_dialogue:
+	if GameManager.player_state == "PlayerStateLocked":
 		target_tilt = 0.0
 	var new_tilt = lerp(current_tilt, target_tilt, delta * camera_lean_speed)
 	camera_rig.rotation_degrees.z = new_tilt
 	
-	if GameManager.player_state == "LockedState":
+	if GameManager.player_state == "PlayerStateLocked":
 		return #freeze player
 	
 	if headbob_enabled and velocity.length() > 0.1 and is_on_floor() and GameManager.player_state == "PlayerStateFree":
@@ -176,10 +180,7 @@ func _physics_process(delta):
 		current_pos.y = lerp(current_pos.y, cam_origin_y, delta * 10.0)
 		camera_rig.position = current_pos
 	
-	if GameManager.player_state == "PlayerStateFree":
-		canvas_layer.visible = true
-	else:
-		canvas_layer.visible = false
+
 	handle_reticle()
 	
 	state_machine.update_state(delta)
@@ -213,6 +214,8 @@ func handle_reticle():
 						next_anim = "Speak"
 					"grab":
 						next_anim = "Grab"
+					"inspect":
+						next_anim = "Inspect"
 
 	# 🔁 Only play the animation if it's different
 	if cursor_animator.animation != next_anim:

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg6hm1qxqxvfn"]
+
+[ext_resource type="PackedScene" uid="uid://bwld0226crlxm" path="res://Scenes/NPCs/Interactable/LookableTemplate.tscn" id="1_nyht0"]
+[ext_resource type="PackedScene" uid="uid://c46jjvtjm84tl" path="res://Assets/Models/Blender/TrashBin.blend" id="2_rue47"]
+
+[node name="LookableTemplate" instance=ExtResource("1_nyht0")]
+flavor_text = "One man's trash is another man's garbage..."
+
+[node name="TrashBin" parent="." index="1" instance=ExtResource("2_rue47")]
