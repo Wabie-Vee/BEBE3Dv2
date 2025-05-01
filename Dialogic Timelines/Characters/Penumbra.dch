@@ -21,10 +21,10 @@
 "mode": 0,
 "name": "Penny",
 "pitch_base": 1.0,
-"pitch_variance": 0.0,
+"pitch_variance": 0.2,
 "skip_characters": 1.0,
 "sound_path": "res://Assets/Audio/sfx_penny.wav",
-"volume_base": -0.3,
+"volume_base": -0.5,
 "volume_variance": 0.0
 }
 },
