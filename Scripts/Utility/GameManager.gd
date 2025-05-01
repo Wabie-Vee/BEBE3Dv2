@@ -10,6 +10,8 @@ var active_dialog: Array[String] = []
 var active_voice: AudioStream = null
 var active_audio_gain := 1.0
 
+var timeline_is_running := false
+
 var flavor_ui_scene := preload("res://Scenes/NPCs/Interactable/FlavorInspectUI.tscn")
 var active_flavor_ui = null
 
@@ -30,7 +32,28 @@ var quest_flags := {}  # e.g. { "talked_to_penny": true, "got_frog": true }
 func _ready():
 	print("GameManager initialized.")
 	QuestManager.autoload_all_quests_from_folder("res://Quests/")
+	Dialogic.timeline_started.connect(on_timeline_started)
+	Dialogic.timeline_ended.connect(on_timeline_ended)
 
+func is_timeline_active() -> bool:
+	var timeline := Dialogic.current_timeline
+	return timeline != null and timeline.resource_path != ""
+	
+func on_timeline_started():
+	timeline_is_running = true
+	print("timeline started!")
+	player_state = "PlayerStateLocked"
+	
+func _physics_process(delta: float) -> void:
+	if timeline_is_running:
+		if !is_timeline_active():
+			Dialogic.end_timeline()
+		
+func on_timeline_ended():
+	timeline_is_running = false
+	print("timeline ended!")
+	player_state = "PlayerStateFree"
+	
 func start_dialogue(dialog_array: Array[String], voice_clip: AudioStream, audio_gain: float = 1.00):
 	if current_textbox:
 		current_textbox.queue_free()
@@ -91,7 +114,6 @@ func add_to_inventory(item_name: String):
 
 func has_item(item_name: String) -> bool:
 	return inventory.get(item_name, false)
-	
 
 
 func show_flavor_image_and_text(image: Texture2D, text: String):

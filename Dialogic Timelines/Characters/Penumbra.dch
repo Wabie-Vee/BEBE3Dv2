@@ -7,26 +7,37 @@
 "prefix": "",
 "sound_mood_default": "",
 "sound_moods": {
-"Mood 1": {
+"Penny": {
 "mode": 0,
-"name": "Mood 1",
+"name": "Penny",
 "pitch_base": 1.0,
 "pitch_variance": 0.0,
-"skip_characters": 0.0,
-"sound_path": "",
+"skip_characters": 1.0,
+"sound_path": "res://Assets/Audio/sfx_penny.wav",
 "volume_base": 0.0,
 "volume_variance": 0.0
 }
 },
-"style": "",
+"style": "DefaultStyle",
 "suffix": ""
 },
-&"default_portrait": "",
+&"default_portrait": "PennyReal",
 &"description": "A lil bunny",
 &"display_name": "Penumbra",
 &"mirror": false,
 &"nicknames": ["Penny"],
 &"offset": Vector2(0, 0),
-&"portraits": {},
-&"scale": 1.0
+&"portraits": {
+"PennyReal": {
+"export_overrides": {
+"image": "\"res://Assets/Textures/PinkRabbit.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "res://addons/dialogic/Modules/Character/default_portrait.tscn",
+"sound_mood": "Penny"
+}
+},
+&"scale": 0.93
 }
