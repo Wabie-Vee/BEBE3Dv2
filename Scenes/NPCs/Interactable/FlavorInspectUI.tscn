@@ -19,9 +19,6 @@ metadata/_snap_enabled = true
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_f7wng"]
 gradient = SubResource("Gradient_s512c")
 
-[sub_resource type="Animation" id="Animation_ohkwu"]
-resource_name = "default"
-
 [sub_resource type="Animation" id="Animation_ti1g6"]
 length = 0.001
 tracks/0/type = "value"
@@ -58,6 +55,25 @@ tracks/2/keys = {
 "points": PackedFloat32Array(0, -0.133335, 0, 0.133335, 0),
 "times": PackedFloat32Array(0)
 }
+
+[sub_resource type="Animation" id="Animation_s512c"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.998771),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1727, 904), Vector2(1727, 850), Vector2(1727, 904)]
+}
+
+[sub_resource type="Animation" id="Animation_ohkwu"]
+resource_name = "default"
 
 [sub_resource type="Animation" id="Animation_f7wng"]
 resource_name = "open"
@@ -129,22 +145,6 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.4)
 }
 
-[sub_resource type="Animation" id="Animation_s512c"]
-resource_name = "bounce"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667, 0.998771),
-"transitions": PackedFloat32Array(0.5, 2, 1),
-"update": 0,
-"values": [Vector2(1727, 904), Vector2(1727, 850), Vector2(1727, 904)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yo63v"]
 _data = {
 &"RESET": SubResource("Animation_ti1g6"),
@@ -180,8 +180,6 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.0663336
-offset_bottom = 0.0662842
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_s512c")
@@ -228,7 +226,7 @@ offset_bottom = -117.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/normal_font = ExtResource("3_6ax1d")
-theme_override_font_sizes/normal_font_size = 86
+theme_override_font_sizes/normal_font_size = 46
 text = "this is a cool guy"
 horizontal_alignment = 1
 vertical_alignment = 1
