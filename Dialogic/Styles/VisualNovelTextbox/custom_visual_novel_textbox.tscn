@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bquja8jyk8kbr"]
+[gd_scene load_steps=21 format=3 uid="uid://bqx4ieig5gmvf"]
 
 [ext_resource type="Script" uid="uid://bl43m5qw8pso3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.gd" id="1_bpydr"]
 [ext_resource type="Script" uid="uid://bfc03rn8slceu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/animations.gd" id="2_xy7a2"]
@@ -231,12 +231,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_bpydr")
-box_panel = "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_default_panel.tres"
+box_panel = "res://Dialogic/Styles/VisualNovelTextbox/vn_textbox_default_panel.tres"
 box_color_custom = Color(0.277528, 0.277528, 0.277528, 1)
 box_size = Vector2(550, 150)
 box_animation_out = 0
 box_animation_new_text = 1
-name_label_box_panel = "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_name_label_panel.tres"
+name_label_box_panel = "res://Dialogic/Styles/VisualNovelTextbox/vn_textbox_name_label_panel.tres"
 name_label_box_modulate = Color(0, 0, 0, 1)
 next_indicator_texture = "uid://cvrmc1lhidbjd"
 
@@ -310,7 +310,7 @@ metadata/_edit_layout_mode = 1
 position = Vector2(448.5, 133)
 scale = Vector2(0.75074, 0.671937)
 sprite_frames = SubResource("SpriteFrames_5g6th")
-frame_progress = 0.912
+frame_progress = 0.536133
 
 [node name="DialogicNode_DialogText" type="RichTextLabel" parent="Anchor/AnimationParent/Sizer/DialogTextPanel" node_paths=PackedStringArray("textbox_root")]
 unique_name_in_owner = true

@@ -34,13 +34,16 @@ directories/dtl_directory={
 "Penumbra": "res://Dialogic Timelines/Penumbra.dtl"
 }
 layout/style_directory={
-"DefaultStyle": "res://Dialogic Timelines/Characters/DefaultStyle.tres",
-"testStyle": "res://Assets/Audio/testStyle.tres"
+"": "res://Dialogic/Styles/DefaultStyle.tres",
+"DefaultStyle": "res://Dialogic/Styles/DefaultStyle.tres"
 }
-layout/style_list=["res://Dialogic Timelines/Characters/DefaultStyle.tres", "res://Assets/Audio/testStyle.tres"]
-layout/default_style=""
+layout/style_list=["res://Dialogic/Styles/DefaultStyle.tres"]
+layout/default_style="res://Dialogic/Styles/DefaultStyle.tres"
 glossary/default_case_sensitive=true
 variables={
+"Menmo": {
+"talked_to_menmo": false
+},
 "Penny": {
 "frog_quest_done": false,
 "got_frog": false,
