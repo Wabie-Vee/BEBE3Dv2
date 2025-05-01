@@ -39,6 +39,17 @@ func _ready():
 	QuestManager.autoload_all_quests_from_folder("res://Quests/")
 	Dialogic.timeline_started.connect(on_timeline_started)
 	Dialogic.timeline_ended.connect(on_timeline_ended)
+	await get_tree().process_frame  # Delay one frame
+	if Dialogic.VAR:
+		Dialogic.VAR.connect("variable_changed", _on_dialogic_var_changed)
+		print("✅ Connected to Dialogic.VAR.variable_changed")
+	else:
+		print("❌ Dialogic.VAR is null")
+	
+func _on_dialogic_var_changed(name: String, value):
+	quest_flags[name] = value
+	QuestManager.check_quests(quest_flags)
+	print("💾 Synced Dialogic var to quest flag:", name, "=", value)
 
 func is_timeline_active() -> bool:
 	var timeline := Dialogic.current_timeline

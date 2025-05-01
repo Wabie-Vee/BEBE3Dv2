@@ -114,6 +114,10 @@ enum AnimationsNewText {NONE, WIGGLE}
 @export_range(0.0, 10) var typing_sounds_volume_variance: float = 0.0
 @export var typing_sounds_ignore_characters: String = " .,!?"
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $Anchor/AnimationParent/Sizer/DialogTextPanel/AnimatedSprite2D
+
+func _ready() -> void:
+	animated_sprite_2d.play("default")
 
 func _apply_export_overrides() -> void:
 	if !is_inside_tree():
