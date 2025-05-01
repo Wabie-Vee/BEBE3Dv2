@@ -68,7 +68,7 @@ func _input(event):
 
 
 	if event is InputEventMouseMotion and mouse_look_enabled:
-		if GameManager.player_state == "PlayerStateFree":
+		if GameManager.player_state == GameManager.PlayerState.FREE:
 			# Yaw: rotate player left/right
 			camera_rig.rotation.y -= event.relative.x * mouse_sensitivity
 
@@ -84,7 +84,7 @@ func _input(event):
 		sprinting = true;
 	else:
 		sprinting = false;
-	if GameManager.player_state == "PlayerStateFree":	
+	if GameManager.player_state == GameManager.PlayerState.FREE:	
 		if event.is_action_pressed("key_interact") or event.is_action_pressed("left_click"):
 				handle_interact()
 	
@@ -128,7 +128,7 @@ func debug_draw_interact():
 			print("🔘 Nothing hit.")
 
 func _physics_process(delta):
-	if GameManager.player_state == "PlayerStateFree":
+	if GameManager.player_state == GameManager.PlayerState.FREE:
 		canvas_layer.visible = true
 	else:
 		canvas_layer.visible = false
@@ -143,15 +143,15 @@ func _physics_process(delta):
 
 	# Lerp the camera rig's Z-rotation toward target
 	var current_tilt = camera_rig.rotation_degrees.z
-	if GameManager.player_state == "PlayerStateLocked":
+	if GameManager.player_state == GameManager.PlayerState.LOCKED:
 		target_tilt = 0.0
 	var new_tilt = lerp(current_tilt, target_tilt, delta * camera_lean_speed)
 	camera_rig.rotation_degrees.z = new_tilt
 	
-	if GameManager.player_state == "PlayerStateLocked":
+	if GameManager.player_state == GameManager.PlayerState.LOCKED:
 		return #freeze player
 	
-	if headbob_enabled and velocity.length() > 0.1 and is_on_floor() and GameManager.player_state == "PlayerStateFree":
+	if headbob_enabled and velocity.length() > 0.1 and is_on_floor() and GameManager.player_state == GameManager.PlayerState.FREE:
 		# Get horizontal speed (ignoring vertical movement)
 		var horizontal_velocity = velocity
 		horizontal_velocity.y = 0

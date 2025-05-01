@@ -1,7 +1,7 @@
 extends BaseState
 
 func update(delta):
-	if GameManager.player_state == "PlayerStateFree":
+	if GameManager.player_state == GameManager.PlayerState.FREE:
 		var input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 		if input.length() < 0.1:
 			state_machine.change_state("IdleState")
@@ -36,7 +36,7 @@ func update(delta):
 			state_machine.change_state("FallState")
 			return
 		
-		if Input.is_action_just_pressed("key_jump") and player.is_on_floor() and GameManager.player_state == "PlayerStateFree":
+		if Input.is_action_just_pressed("key_jump") and player.is_on_floor() and GameManager.player_state == GameManager.PlayerState.FREE:
 			state_machine.change_state("JumpState")
 
 		# Smoothly rotate the mesh to face movement direction

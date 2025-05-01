@@ -2,7 +2,12 @@ extends Node
 
 const textbox_scene = preload("res://Scenes/UI/Textbox/Textbox.tscn")
 
-var player_state := "PlayerStateFree"
+enum PlayerState {
+	LOCKED,
+	FREE,
+}
+
+var player_state = PlayerState.FREE
 var is_in_dialogue = false
 var current_textbox = null
 var dialog_index = 0
@@ -42,7 +47,7 @@ func is_timeline_active() -> bool:
 func on_timeline_started():
 	timeline_is_running = true
 	print("timeline started!")
-	player_state = "PlayerStateLocked"
+	player_state = PlayerState.LOCKED
 	
 func _physics_process(delta: float) -> void:
 	if timeline_is_running:
@@ -52,7 +57,7 @@ func _physics_process(delta: float) -> void:
 func on_timeline_ended():
 	timeline_is_running = false
 	print("timeline ended!")
-	player_state = "PlayerStateFree"
+	player_state = PlayerState.FREE
 	
 func start_dialogue(dialog_array: Array[String], voice_clip: AudioStream, audio_gain: float = 1.00):
 	if current_textbox:
@@ -62,7 +67,7 @@ func start_dialogue(dialog_array: Array[String], voice_clip: AudioStream, audio_
 	active_voice = voice_clip
 	active_audio_gain = audio_gain
 	is_in_dialogue = true
-	player_state = "PlayerStateLocked"
+	player_state = PlayerState.LOCKED
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	show_next_line()
@@ -86,7 +91,7 @@ func show_next_line():
 		end_dialogue()
 
 func end_dialogue():
-	player_state = "PlayerStateFree"
+	player_state = PlayerState.FREE
 	is_in_dialogue = false
 	textbox_is_open = false  # 🐸💥 RESET IT HERE
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -127,4 +132,4 @@ func show_flavor_image_and_text(image: Texture2D, text: String):
 	active_flavor_ui.initial_image = image
 
 	ui_layer.add_child(active_flavor_ui)
-	GameManager.player_state = "PlayerStateLocked"
+	player_state = PlayerState.LOCKED

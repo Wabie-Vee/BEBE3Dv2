@@ -93,7 +93,7 @@ func _input(event):
 
 func dismiss():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	GameManager.player_state = "PlayerStateFree"
+	GameManager.player_state = GameManager.PlayerState.FREE
 	queue_free()
 	
 func wave(time: float, amplitude: float = 1.0, frequency: float = 1.0, phase: float = 0.0) -> float:
