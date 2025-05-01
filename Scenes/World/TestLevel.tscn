@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cpswlkdghqrq8"]
+[gd_scene load_steps=31 format=3 uid="uid://deg0ed4p0oypm"]
 
 [ext_resource type="PackedScene" uid="uid://eksp5e7et5mc" path="res://Scenes/Player/Player.tscn" id="1_jsl5n"]
 [ext_resource type="PackedScene" uid="uid://c7pumljxmqew5" path="res://Assets/Models/Blender/Bench.blend" id="2_766ta"]
@@ -13,12 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://0m174mmdlf4s" path="res://Assets/Models/New Folder/Rock4-col.glb" id="10_f03ac"]
 [ext_resource type="PackedScene" uid="uid://mgxb4qof1lpp" path="res://Assets/Models/New Folder/Rock5-col.glb" id="11_0mihk"]
 [ext_resource type="PackedScene" uid="uid://ceghwal4oaf08" path="res://Collectibles/Frog.tscn" id="12_stwyq"]
-[ext_resource type="PackedScene" uid="uid://bwld0226crlxm" path="res://Scenes/NPCs/Interactable/LookableTemplate.tscn" id="13_3quit"]
 [ext_resource type="PackedScene" uid="uid://d04gywpxt5jbh" path="res://Assets/Models/New Folder/Rock1-col.glb" id="16_3quit"]
 [ext_resource type="PackedScene" uid="uid://bsx4edi7xetfm" path="res://Assets/Models/New Folder/rock2-col.glb" id="17_icopk"]
 [ext_resource type="PackedScene" uid="uid://lrji2c754rot" path="res://Assets/Models/New Folder/Rock3-col.glb" id="18_e7pit"]
 [ext_resource type="PackedScene" uid="uid://c4vbv6wostdc7" path="res://Scenes/NPCs/Menmo/MenmoNPC.tscn" id="18_f03ac"]
-[ext_resource type="PackedScene" uid="uid://djve82n2facgh" path="res://Assets/Models/Blender/RedCoffeeTable.tscn" id="20_3quit"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Blender/RedCoffeeTable.tscn" id="20_3quit"]
 [ext_resource type="PackedScene" uid="uid://cg6hm1qxqxvfn" path="res://Assets/Models/Lookables/TrashBin.tscn" id="20_icopk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bsuyt"]
@@ -148,10 +147,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82154, 0.215039, 7.35221)
 [node name="Rock5-col2" parent="LevelGeometry" instance=ExtResource("11_0mihk")]
 transform = Transform3D(1.86215, 0, 0, 0, 1.86215, 0, 0, 0, 1.80386, 2.67422, 0.656114, 9.49423)
 
-[node name="Lookable" parent="LevelGeometry" instance=ExtResource("13_3quit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99641, 0.16835, -1.04867)
-flavor_text = "*wow check out this lil tiny rock!*"
-
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D"]
@@ -192,5 +187,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.31426, -0.0506132, 4.01715)
 
 [node name="LookableTemplate" parent="." instance=ExtResource("20_icopk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+flavor_text = "... [color=red][shake]turn around[/color][/shake] ..."
 
 [editable path="LevelGeometry/BebeBead"]
