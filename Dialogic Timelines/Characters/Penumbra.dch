@@ -2,18 +2,18 @@
 "@path": "res://addons/dialogic/Resources/character.gd",
 "@subpath": NodePath(""),
 &"_translation_id": "",
-&"color": Color(0.969238, 0.753906, 1, 1),
+&"color": Color(0.875061, 0.547363, 0.921875, 1),
 &"custom_info": {
 "prefix": "",
-"sound_mood_default": "Mood 1",
+"sound_mood_default": "",
 "sound_moods": {
-"Mood 1": {
+"Penny": {
 "mode": 0,
-"name": "Mood 1",
+"name": "Penny",
 "pitch_base": 1.0,
-"pitch_variance": 0.2,
-"skip_characters": 0.0,
-"sound_path": "res://Assets/Audio/sfx_buh.ogg",
+"pitch_variance": 0.0,
+"skip_characters": 1.0,
+"sound_path": "res://Assets/Audio/sfx_penny.wav",
 "volume_base": 0.0,
 "volume_variance": 0.0
 }
@@ -21,12 +21,23 @@
 "style": "DefaultStyle",
 "suffix": ""
 },
-&"default_portrait": "",
+&"default_portrait": "PennyReal",
 &"description": "A lil bunny",
 &"display_name": "Penumbra",
 &"mirror": false,
 &"nicknames": ["Penny"],
 &"offset": Vector2(0, 0),
-&"portraits": {},
-&"scale": 1.0
+&"portraits": {
+"PennyReal": {
+"export_overrides": {
+"image": "\"res://Assets/Textures/PinkRabbit.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "res://addons/dialogic/Modules/Character/default_portrait.tscn",
+"sound_mood": "Penny"
+}
+},
+&"scale": 0.93
 }

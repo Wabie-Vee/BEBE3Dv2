@@ -12,7 +12,6 @@ voice_clip = ExtResource("2_gojaa")
 script = ExtResource("3_gojaa")
 look_at_modifier = NodePath("char_grp/rig/Skeleton3D/LookAtModifier3D")
 look_at = NodePath("LookAt")
-npc_timeline = "Menmo"
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="MenmoMouse/char_grp/rig/Skeleton3D" index="1"]
 target_node = NodePath("../../../../LookAt")

@@ -6,7 +6,6 @@ class_name NPC
 @export var animation_player: AnimationPlayer
 @onready var interactable: Interactable = $".."
 @export var animation_idle: String
-@export var npc_timeline: String = "default"
 
 # 🧠 Default values NPCs can override
 var npc_name: String = "Unnamed NPC"    
@@ -25,7 +24,6 @@ func _ready() -> void:
 	interactable.custom_interact_handler = _on_interacted
 
 func _on_interacted():
-	Dialogic.start(npc_timeline)
 	# Base interaction (you override this in child classes)
 	print("👋", npc_name, "says hello!")
 

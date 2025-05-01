@@ -25,28 +25,19 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"Bebe": "res://Assets/Audio/Bebe.dch",
-"Menmo": "res://Dialogic Timelines/Characters/Menmo.dch",
 "Penumbra": "res://Dialogic Timelines/Characters/Penumbra.dch"
 }
 directories/dtl_directory={
-"Menmo": "res://Assets/Audio/Menmo.dtl",
 "Penumbra": "res://Dialogic Timelines/Penumbra.dtl"
 }
 layout/style_directory={
+"": "res://Dialogic Timelines/Characters/DefaultStyle.tres",
 "DefaultStyle": "res://Dialogic Timelines/Characters/DefaultStyle.tres"
 }
 layout/style_list=["res://Dialogic Timelines/Characters/DefaultStyle.tres"]
-layout/default_style=""
+layout/default_style="res://Dialogic Timelines/Characters/DefaultStyle.tres"
 glossary/default_case_sensitive=true
-variables={
-"Penny": {
-"frog_quest_done": false,
-"got_frog": false,
-"penny_rejected": false,
-"talked_to_penny": false
-}
-}
+variables={}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.06
 text/initial_text_reveal_skippable=true
@@ -83,8 +74,6 @@ audio/channel_defaults={
 }
 }
 animations/leave_default="Fade Out Down"
-text/split_at_new_lines=false
-text/autoadvance_fixed_delay=0.0
 
 [display]
 

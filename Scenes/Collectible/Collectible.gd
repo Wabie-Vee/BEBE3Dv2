@@ -14,7 +14,6 @@ func _ready():
 func interact():
 	print("🧲 Interacted to collect:", item_name)
 	GameManager.add_to_inventory(item_name)
-	Dialogic.VAR.Penny.got_frog = true
 
 	if pickup_sound:
 		SoundManager.play_sfx(pickup_sound, true)
