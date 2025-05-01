@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bsx4edi7xetfm" path="res://Assets/Models/New Folder/rock2-col.glb" id="17_icopk"]
 [ext_resource type="PackedScene" uid="uid://lrji2c754rot" path="res://Assets/Models/New Folder/Rock3-col.glb" id="18_e7pit"]
 [ext_resource type="PackedScene" uid="uid://c4vbv6wostdc7" path="res://Scenes/NPCs/Menmo/MenmoNPC.tscn" id="18_f03ac"]
-[ext_resource type="PackedScene" path="res://Assets/Models/Blender/RedCoffeeTable.tscn" id="20_3quit"]
+[ext_resource type="PackedScene" uid="uid://djve82n2facgh" path="res://Assets/Models/Blender/RedCoffeeTable.tscn" id="20_3quit"]
 [ext_resource type="PackedScene" uid="uid://cg6hm1qxqxvfn" path="res://Assets/Models/Lookables/TrashBin.tscn" id="20_icopk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bsuyt"]
