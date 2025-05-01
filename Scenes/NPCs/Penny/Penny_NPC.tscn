@@ -13,6 +13,7 @@ look_at_modifier = NodePath("char_grp/rig/Skeleton3D/LookAtModifier3D")
 look_at = NodePath("LookAt")
 animation_player = NodePath("AnimationPlayer")
 animation_idle = "BunnyIdle"
+npc_timeline = "Penumbra"
 
 [node name="Skeleton3D" parent="Bunny/char_grp/rig" index="1"]
 bones/2/position = Vector3(0, -0.00184485, 0.285886)
