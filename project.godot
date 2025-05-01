@@ -25,7 +25,6 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"Menmo": "res://Dialogic Timelines/Characters/Menmo.dch",
 "Penumbra": "res://Dialogic Timelines/Characters/Penumbra.dch"
 }
 directories/dtl_directory={
@@ -75,8 +74,6 @@ audio/channel_defaults={
 }
 }
 animations/leave_default="Fade Out Down"
-text/split_at_new_lines=false
-text/autoadvance_fixed_delay=0.0
 
 [display]
 
