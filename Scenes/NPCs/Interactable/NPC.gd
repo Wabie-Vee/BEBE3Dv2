@@ -25,6 +25,9 @@ func _ready() -> void:
 	interactable.custom_interact_handler = _on_interacted
 
 func _on_interacted():
+	if !GameManager.can_start_dialogue():
+		print("⏳ Timeline still cooling down...")
+		return
 	Dialogic.start(npc_timeline)
 	# Base interaction (you override this in child classes)
 	print("👋", npc_name, "says hello!")

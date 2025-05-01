@@ -28,6 +28,9 @@ var current_tree = null
 var current_node_id = ""
 var debug_draw_raycast := false
 
+var timeline_cooldown := 1.0
+var last_timeline_end_time := -999.0
+
 # 🧰 Inventory system
 var inventory := {}
 
@@ -67,8 +70,13 @@ func _physics_process(delta: float) -> void:
 		
 func on_timeline_ended():
 	timeline_is_running = false
-	print("timeline ended!")
 	player_state = PlayerState.FREE
+	last_timeline_end_time = Time.get_ticks_msec() / 1000.0
+	
+func can_start_dialogue() -> bool:
+	var now := Time.get_ticks_msec() / 1000.0
+	return !timeline_is_running and (now - last_timeline_end_time > timeline_cooldown)
+
 	
 func start_dialogue(dialog_array: Array[String], voice_clip: AudioStream, audio_gain: float = 1.00):
 	if current_textbox:

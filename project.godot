@@ -30,13 +30,14 @@ directories/dch_directory={
 "Penumbra": "res://Dialogic Timelines/Characters/Penumbra.dch"
 }
 directories/dtl_directory={
-"Menmo": "res://Assets/Audio/Menmo.dtl",
+"Menmo": "res://Dialogic Timelines/Menmo.dtl",
 "Penumbra": "res://Dialogic Timelines/Penumbra.dtl"
 }
 layout/style_directory={
-"DefaultStyle": "res://Dialogic Timelines/Characters/DefaultStyle.tres"
+"DefaultStyle": "res://Dialogic Timelines/Characters/DefaultStyle.tres",
+"testStyle": "res://Assets/Audio/testStyle.tres"
 }
-layout/style_list=["res://Dialogic Timelines/Characters/DefaultStyle.tres"]
+layout/style_list=["res://Dialogic Timelines/Characters/DefaultStyle.tres", "res://Assets/Audio/testStyle.tres"]
 layout/default_style=""
 glossary/default_case_sensitive=true
 variables={

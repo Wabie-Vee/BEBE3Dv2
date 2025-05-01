@@ -1,9 +1,6 @@
 if {Penny.frog_quest_done} == false:
-<<<<<<< HEAD
 	if {Penny.talked_to_penny} == false:
-=======
 	if {Penny.talked_to_penny} == false
->>>>>>> parent of 24fb623 (Revert "some stuff")
 		if {Penny.penny_rejected} == false:
 			Penumbra: [wave]Hiiii bebe!
 			Penumbra: I already asked Menmo earlier, but he was busy...
