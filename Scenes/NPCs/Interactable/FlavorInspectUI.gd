@@ -24,7 +24,6 @@ func _ready():
 	icon.visible = false
 	icon.position = Vector2.ZERO
 
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	label.visible_ratio = 0.0
 	open_animation_playing = true

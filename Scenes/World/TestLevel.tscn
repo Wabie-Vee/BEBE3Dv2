@@ -1,6 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://deg0ed4p0oypm"]
+[gd_scene load_steps=32 format=3 uid="uid://deg0ed4p0oypm"]
 
 [ext_resource type="PackedScene" uid="uid://eksp5e7et5mc" path="res://Scenes/Player/Player.tscn" id="1_jsl5n"]
+[ext_resource type="PackedScene" uid="uid://bl348xtw3lyar" path="res://Scenes/UI/QuestTracker/QuestTracker.tscn" id="2_3quit"]
 [ext_resource type="PackedScene" uid="uid://c7pumljxmqew5" path="res://Assets/Models/Blender/Bench.blend" id="2_766ta"]
 [ext_resource type="PackedScene" uid="uid://d4jfi8qfnkpna" path="res://Assets/Models/Blender/LampPost.blend" id="3_fxw30"]
 [ext_resource type="AudioStream" uid="uid://cnxksq3xyegls" path="res://Assets/Audio/sfx_penny.wav" id="3_stwyq"]
@@ -92,6 +93,8 @@ shadow_enabled = true
 
 [node name="DebugPanel" parent="UILayer" node_paths=PackedStringArray("player") instance=ExtResource("7_fxw30")]
 player = NodePath("../../Player")
+
+[node name="QuestTracker" parent="UILayer" instance=ExtResource("2_3quit")]
 
 [node name="Interactable" parent="." instance=ExtResource("7_766ta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05586, 0.0121707, -4.22818)

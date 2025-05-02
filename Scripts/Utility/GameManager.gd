@@ -39,20 +39,22 @@ var quest_flags := {}  # e.g. { "talked_to_penny": true, "got_frog": true }
 
 func _ready():
 	print("GameManager initialized.")
-	QuestManager.autoload_all_quests_from_folder("res://Quests/")
 	Dialogic.timeline_started.connect(on_timeline_started)
 	Dialogic.timeline_ended.connect(on_timeline_ended)
-	await get_tree().process_frame  # Delay one frame
-	if Dialogic.VAR:
-		Dialogic.VAR.connect("variable_changed", _on_dialogic_var_changed)
-		print("✅ Connected to Dialogic.VAR.variable_changed")
-	else:
-		print("❌ Dialogic.VAR is null")
+	print("🎮 Forcing mouse lock...")
+	await get_tree().create_timer(0.1).timeout
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	print("🎮 Mouse mode is now:", Input.get_mouse_mode())
+
 	
-func _on_dialogic_var_changed(name: String, value):
-	quest_flags[name] = value
-	QuestManager.check_quests(quest_flags)
-	print("💾 Synced Dialogic var to quest flag:", name, "=", value)
+
+
+func wait_for_dialogic_var_ready() -> void:
+	while Dialogic.VAR == null:
+		print("⏳ Waiting for Dialogic.VAR...")
+		await get_tree().process_frame
+	print("✅ Dialogic.VAR is ready!")
+
 
 func is_timeline_active() -> bool:
 	var timeline := Dialogic.current_timeline
@@ -126,7 +128,6 @@ func update_quest_flag(flag: String, value: bool):
 	quest_flags[flag] = value
 	print("🧠 Flag set:", flag, "=", value)
 	print("🧠 All quest flags now:", quest_flags)
-	QuestManager.check_quests(quest_flags)
 	
 func add_to_inventory(item_name: String):
 	inventory[item_name] = true

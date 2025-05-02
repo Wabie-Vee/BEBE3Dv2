@@ -310,7 +310,7 @@ metadata/_edit_layout_mode = 1
 position = Vector2(448.5, 133)
 scale = Vector2(0.75074, 0.671937)
 sprite_frames = SubResource("SpriteFrames_5g6th")
-frame_progress = 0.536133
+frame_progress = 0.0168276
 
 [node name="DialogicNode_DialogText" type="RichTextLabel" parent="Anchor/AnimationParent/Sizer/DialogTextPanel" node_paths=PackedStringArray("textbox_root")]
 unique_name_in_owner = true

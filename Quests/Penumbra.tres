@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=2 format=3 uid="uid://3brubhh3dwow"]
+
+[ext_resource type="Script" uid="uid://cb3w064k15yuv" path="res://Quests/QuestData.gd" id="1_j15up"]
+
+[resource]
+script = ExtResource("1_j15up")
+id = "Penny"
+display_name = "Frog Search"
+description = "Penumbra asked you to find a frog!"
+tracked_vars = Array[String](["talked_to_penny", "got_frog", "frog_quest_done", "penny_rejected"])
+required_flags_to_complete = Array[String](["frog_quest_done"])
+is_main_quest = false
+metadata/_custom_type_script = "uid://cb3w064k15yuv"

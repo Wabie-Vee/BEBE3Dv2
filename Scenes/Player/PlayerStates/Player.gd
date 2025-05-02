@@ -57,6 +57,16 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	state_machine.init(self)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("key_journal"):
+		var journal = $"../UILayer/QuestTracker"
+		journal.visible = !journal.visible
+		if journal.visible:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			GameManager.player_state = GameManager.PlayerState.LOCKED
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			GameManager.player_state = GameManager.PlayerState.FREE
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE and !GameManager.is_in_dialogue:
 		if mouse_look_enabled:
@@ -128,6 +138,7 @@ func debug_draw_interact():
 			print("🔘 Nothing hit.")
 
 func _physics_process(delta):
+	
 	if GameManager.player_state == GameManager.PlayerState.FREE:
 		canvas_layer.visible = true
 	else:
