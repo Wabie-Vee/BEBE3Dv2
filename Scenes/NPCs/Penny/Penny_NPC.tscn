@@ -9,11 +9,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00099656, 0)
 
 [node name="Bunny" parent="." index="1" node_paths=PackedStringArray("look_at_modifier", "look_at", "animation_player") instance=ExtResource("2_ypwo2")]
 script = ExtResource("3_0oc7c")
+animation_idle = "BunnyIdle"
+npc_timeline = "Penumbra"
 look_at_modifier = NodePath("char_grp/rig/Skeleton3D/LookAtModifier3D")
 look_at = NodePath("LookAt")
 animation_player = NodePath("AnimationPlayer")
-animation_idle = "BunnyIdle"
-npc_timeline = "Penumbra"
 
 [node name="Skeleton3D" parent="Bunny/char_grp/rig" index="1"]
 bones/2/position = Vector3(0, -0.00184485, 0.285886)
