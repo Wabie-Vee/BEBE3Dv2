@@ -14,6 +14,7 @@ var folder_notes = {
 }
 
 func _ready():
+	
 	await wait_for_dialogic_var_ready()
 	refresh_all_dialogic_vars()
 	Dialogic.VAR.variable_changed.connect(_on_var_changed)

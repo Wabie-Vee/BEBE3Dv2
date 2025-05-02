@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxg2yglkonodv"]
+
+[ext_resource type="PackedScene" uid="uid://bmrk03a4fhk30" path="res://Assets/Models/Blender/Journal.blend" id="1_yb50b"]
+[ext_resource type="PackedScene" uid="uid://bl348xtw3lyar" path="res://Scenes/UI/QuestTracker/QuestTracker.tscn" id="2_3uy5j"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bn3kp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sydi"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_bn3kp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uuajh"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_2sydi")
+
+[node name="Journal" instance=ExtResource("1_yb50b")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(-0.00327174, -0.32199, 0.422978)
+bones/0/rotation = Quaternion(-0.00780215, -0.988009, 0.150099, 0.0353259)
+bones/6/position = Vector3(0.00285755, 0.18929, 0.282636)
+bones/6/rotation = Quaternion(-0.149932, -0.0852072, 0.0105274, 0.984962)
+
+[node name="Torus" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(-0.0318648, 0.00230435, 0.000162912, 0.00083136, 0.00933687, 0.0305423, 0.00215532, 0.0304666, -0.00937239, 0.00351549, 0.00771666, 0.338334)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.997383, 0.0375552, 0.00509924, 0.026022, 0.152168, 0.955989, 0.0674625, 0.496531, -0.29336, 0.0114923, 0.00750854, 0.337794)
+
+[node name="Cube_003" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.133093, 0.000570004, 0.000878947, 0.00347244, 0.00230957, 0.164782, 0.00900237, 0.00753623, -0.050566, 0.152564, 0.00615181, 0.335825)
+
+[node name="PaperUI" type="MeshInstance3D" parent="Armature/Skeleton3D/Cube_003" index="1"]
+mesh = SubResource("PlaneMesh_uuajh")
+
+[node name="Plane_002" parent="Armature/Skeleton3D" index="3"]
+transform = Transform3D(-0.0843553, 0.00610028, 0.000431276, 0.00220085, 0.0247174, 0.0808543, 0.00570575, 0.0806539, -0.0248114, 0.203842, 0.0650442, 0.298423)
+
+[node name="Plane_003" parent="Armature/Skeleton3D" index="4"]
+transform = Transform3D(-0.0843553, 0.00610028, 0.000431276, 0.00220085, 0.0247174, 0.0808543, 0.00570575, 0.0806539, -0.0248114, 0.11284, -0.0856376, 0.347001)
+
+[node name="Cube_002" parent="Armature/Skeleton3D" index="5"]
+transform = Transform3D(0.985258, 0.0890301, 0.00549226, 0.0462888, -0.154827, 0.953645, 0.164695, -0.489092, -0.300886, -0.00764832, 0.00770101, 0.338103)
+
+[node name="Cube_001" parent="Armature/Skeleton3D" index="6"]
+transform = Transform3D(0.131475, 0.00135128, 0.000946691, 0.0061769, -0.00234993, 0.164378, 0.0219773, -0.00742332, -0.0518632, -0.145091, -0.00116902, 0.307481)
+
+[node name="Plane" parent="Armature/Skeleton3D" index="7"]
+transform = Transform3D(0.0833298, 0.0144616, 0.000464517, 0.00391495, -0.0251493, 0.0806561, 0.0139293, -0.0794455, -0.0254479, -0.200063, -0.0742195, 0.323292)
+
+[node name="Plane_001" parent="Armature/Skeleton3D" index="8"]
+transform = Transform3D(0.0833298, 0.0144616, 0.000464517, 0.00391495, -0.0251493, 0.0806561, 0.0139293, -0.0794455, -0.0254479, -0.0922767, 0.0891567, 0.287689)
+
+[node name="SubViewport" type="SubViewport" parent="." index="2"]
+transparent_bg = true
+msaa_2d = 2
+size = Vector2i(500, 500)
+size_2d_override = Vector2i(325, 375)
+
+[node name="QuestTracker" parent="SubViewport" index="0" instance=ExtResource("2_3uy5j")]
+
+[editable path="SubViewport/QuestTracker"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://eksp5e7et5mc"]
+[gd_scene load_steps=29 format=3 uid="uid://eksp5e7et5mc"]
 
 [ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scenes/Player/PlayerStates/Player.gd" id="1_ft8w5"]
 [ext_resource type="PackedScene" uid="uid://b20ifxdcjdda4" path="res://Scenes/Player/BebeBear.blend" id="2_h54ih"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bhyu1y1gw25hs" path="res://Assets/Audio/sfx_land.ogg" id="4_0kmp4"]
 [ext_resource type="Script" uid="uid://t7f315gvt78o" path="res://Scenes/Player/PlayerStates/BaseState.gd" id="4_4wape"]
 [ext_resource type="Script" uid="uid://bvut87bk1i5g2" path="res://Scenes/Player/PlayerStates/IdleState.gd" id="5_t26db"]
+[ext_resource type="PackedScene" uid="uid://dxg2yglkonodv" path="res://Journal.tscn" id="6_8t5qx"]
 [ext_resource type="Script" uid="uid://br0luw1pliqnm" path="res://Scenes/Player/PlayerStates/WalkState.gd" id="6_fk5o5"]
 [ext_resource type="Script" uid="uid://b2v6jg3d7i71a" path="res://Scenes/Player/PlayerStates/JumpState.gd" id="7_t26db"]
 [ext_resource type="Script" uid="uid://cgbvjhh0deebq" path="res://Scenes/Player/FallState.gd" id="8_fk5o5"]
@@ -164,8 +165,11 @@ shape = SubResource("CapsuleShape3D_kpjcp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.742, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.140864)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.0970239)
 fov = 87.5
+
+[node name="Journal" parent="CameraRig/Camera3D" instance=ExtResource("6_8t5qx")]
+transform = Transform3D(0.996041, -0.0320017, -0.0829342, 0, 0.932954, -0.359997, 0.0888943, 0.358572, 0.92926, -0.156, -0.022, -0.277)
 
 [node name="Marker3D" type="Marker3D" parent="CameraRig/Camera3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.75242e-08, -0.00896215, -0.658)

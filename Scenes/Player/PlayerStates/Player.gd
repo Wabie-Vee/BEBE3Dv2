@@ -42,11 +42,15 @@ var max_headbob_frequency := 12.0  # full speed bob
 var headbob_enabled := true
 var last_headbob_value := 0.0
 var footstep_played_this_cycle := false
+@onready var journal_animator: AnimationPlayer = $CameraRig/Camera3D/Journal/AnimationPlayer
+
+var journal_animation_played := false;
 
 @export var cursor_interact = Sprite2D
 @export var cursor_default = Sprite2D
 var cursor = cursor_default
-
+@onready var journal = $"../UILayer/QuestTracker"
+var journal_visible = false
 var turn_threshold := 0
 var turn_speed := 15
 
@@ -59,12 +63,13 @@ func _ready():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("key_journal"):
-		var journal = $"../UILayer/QuestTracker"
-		journal.visible = !journal.visible
-		if journal.visible:
+		journal_visible = !journal_visible
+		if journal_visible:
+			journal_animator.play("JournalOpen")
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			GameManager.player_state = GameManager.PlayerState.LOCKED
 		else:
+			journal_animator.play("JournalClose")
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			GameManager.player_state = GameManager.PlayerState.FREE
 func _input(event):
