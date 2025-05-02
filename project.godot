@@ -41,13 +41,16 @@ layout/style_list=["res://Dialogic/Styles/DefaultStyle.tres"]
 layout/default_style="res://Dialogic/Styles/DefaultStyle.tres"
 glossary/default_case_sensitive=true
 variables={
+"Inventory": {
+"Frog": true
+},
 "Menmo": {
 "talked_to_menmo": false
 },
 "Penny": {
 "frog_quest_done": false,
 "got_frog": false,
-"penny_rejected": false,
+"penny_rejected_invis": false,
 "talked_to_penny": false
 }
 }

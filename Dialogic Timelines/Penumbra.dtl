@@ -1,6 +1,6 @@
 if {Penny.frog_quest_done} == false:
 	if {Penny.talked_to_penny} == false:
-		if {Penny.penny_rejected} == false:
+		if {Penny.penny_rejected_invis} == false:
 			Penumbra: [wave]Hiiii bebe!
 			Penumbra: I already asked Menmo earlier, but he was busy...
 			Penumbra: Can you help me find a frog?
@@ -9,14 +9,14 @@ if {Penny.frog_quest_done} == false:
 				set {Penny.talked_to_penny} = true
 			- nah im gud
 				Penumbra: oh...
-				set {Penny.penny_rejected} = true
+				set {Penny.penny_rejected_invis} = true
 		else:
 			Penumbra: Do you still not want to help me [wave]find a frog...?
 			- I changed my mind!
 				Penumbra: [wave][shake]YAYY!!!!
 				set {Penny.talked_to_penny} = true
 			- ya. u suk
-				set {Penny.penny_rejected} = true
+				set {Penny.penny_rejected_invis} = true
 				Penumbra: [shake]...
 	else:
 		if {Penny.got_frog} == false:

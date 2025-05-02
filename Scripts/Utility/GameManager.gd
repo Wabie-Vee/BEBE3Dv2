@@ -130,15 +130,22 @@ func update_quest_flag(flag: String, value: bool):
 	print("🧠 All quest flags now:", quest_flags)
 	
 func add_to_inventory(item_name: String):
-	inventory[item_name] = true
-	print("🎒 Collected:", item_name)
-	
-	# If this item is a quest flag trigger
-	if item_name == "frog":
-		update_quest_flag("got_frog", true)
+	var var_path = "Inventory." + item_name
+	Dialogic.VAR.set_variable(var_path, true)
+	print("🎒 Added to inventory:", item_name)
+	match(item_name):
+		"Frog":
+			Dialogic.VAR.Penny.got_frog = true
+
+func remove_from_inventory(item_name: String):
+	var var_path = "Inventory." + item_name
+	Dialogic.VAR.set_variable(var_path, false)
+	print("🗑️ Removed from inventory:", item_name)
 
 func has_item(item_name: String) -> bool:
-	return inventory.get(item_name, false)
+	var var_path = "Inventory." + item_name
+	return Dialogic.VAR.get_variable(var_path) == true
+
 
 
 func show_flavor_image_and_text(image: Texture2D, text: String):

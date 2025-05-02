@@ -32,6 +32,9 @@ func refresh_all_dialogic_vars():
 	# Loop over each folder (e.g. Penny, Menmo)
 	for folder in Dialogic.VAR.folders():
 		var folder_name = folder.path
+		if folder_name == "Inventory":
+			continue
+		
 		var folder_box := VBoxContainer.new()
 
 		# 🟡 Folder title
@@ -52,6 +55,9 @@ func refresh_all_dialogic_vars():
 
 		# ✅ Loop through each tracked variable
 		for var_name in folder.variables():
+			if var_name.ends_with("_invis"):
+				continue  # 🚫 Skip display-only vars
+
 			var full_path = folder_name + "." + var_name
 			var value = Dialogic.VAR.get_variable(full_path)
 			var label = Label.new()
@@ -65,6 +71,7 @@ func refresh_all_dialogic_vars():
 				label.text = "🔸 " + display_name + ": " + str(value)
 
 			folder_box.add_child(label)
+
 
 		quest_list.add_child(folder_box)
 
