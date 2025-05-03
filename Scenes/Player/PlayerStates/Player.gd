@@ -134,6 +134,9 @@ func _input(event):
 			debug_panel.raycast_debug_enabled = GameManager.debug_draw_raycast
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("key_b"):
+		state_machine.change_state("BikeState")
+	
 	if footstep_ray.is_colliding():
 		var target = footstep_ray.get_collider()
 		while target and not (target is Floor):

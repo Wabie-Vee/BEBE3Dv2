@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsdwtbuce30p1"]
+
+[ext_resource type="PackedScene" uid="uid://bwld0226crlxm" path="res://Scenes/NPCs/Interactable/LookableTemplate.tscn" id="1_1nbfn"]
+[ext_resource type="PackedScene" uid="uid://xwm3jd761iua" path="res://Assets/Models/Blender/BebeBead.blend" id="2_nbccm"]
+
+[node name="LookableTemplate" instance=ExtResource("1_1nbfn")]
+flavor_text = "*bebe's bed...*"
+
+[node name="BebeBead" parent="." index="1" instance=ExtResource("2_nbccm")]

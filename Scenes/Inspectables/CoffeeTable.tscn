@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt15s6p2wg3b2"]
+
+[ext_resource type="PackedScene" uid="uid://bwld0226crlxm" path="res://Scenes/NPCs/Interactable/LookableTemplate.tscn" id="1_3rg3n"]
+[ext_resource type="PackedScene" uid="uid://bo1mrjlhd8gop" path="res://Assets/Models/Blender/RedCoffeeTable.blend" id="2_20evx"]
+
+[node name="LookableTemplate" instance=ExtResource("1_3rg3n")]
+flavor_text = "*that's a [wave]grooooovy[/wave] coffee table*"
+
+[node name="RedCoffeeTable" parent="." index="0" instance=ExtResource("2_20evx")]

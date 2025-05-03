@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwld0226crlxm"]
 
 [ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_1160t"]
-[ext_resource type="Script" path="res://Scenes/NPCs/Interactable/Lookable.gd" id="2_m32fg"]
+[ext_resource type="Script" uid="uid://bdnk5qa4qy88t" path="res://Scenes/NPCs/Interactable/Lookable.gd" id="2_m32fg"]
 
 [node name="LookableTemplate" instance=ExtResource("1_1160t")]
 script = ExtResource("2_m32fg")

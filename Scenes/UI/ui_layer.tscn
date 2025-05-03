@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5xjaqy6fc0h8"]
+
+[ext_resource type="PackedScene" uid="uid://bphkafnnxtl07" path="res://Scenes/UI/DebugPanel/DebugPanel.tscn" id="1_k3nm5"]
+
+[node name="UILayer" type="CanvasLayer"]
+
+[node name="DebugPanel" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_k3nm5")]
+player = NodePath("")

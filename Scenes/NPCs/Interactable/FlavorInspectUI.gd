@@ -18,7 +18,7 @@ var tween: Tween
 var open_animation_playing := false
 @onready var label_initial_y = label.position.y
 func _ready():
-	SoundManager.play_sfx(open_sound, true)
+	SoundManager.play_sfx(open_sound, true, .5)
 	set_process_input(true)
 	label.text = ""
 	icon.visible = false

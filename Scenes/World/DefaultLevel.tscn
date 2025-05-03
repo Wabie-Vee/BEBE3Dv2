@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbuqsp4wngedx"]
+
+[ext_resource type="PackedScene" uid="uid://5xjaqy6fc0h8" path="res://Scenes/UI/ui_layer.tscn" id="1_jhe50"]
+[ext_resource type="PackedScene" uid="uid://1k7nwxsa7oou" path="res://Scenes/UI/world_environment.tscn" id="2_je3el"]
+[ext_resource type="PackedScene" uid="uid://dclas7liffkfe" path="res://Scenes/UI/Pixel Shader/PixelShader.tscn" id="3_vottg"]
+[ext_resource type="PackedScene" uid="uid://eksp5e7et5mc" path="res://Scenes/Player/Player.tscn" id="4_nnlik"]
+
+[node name="DefaultLevel" type="Node3D"]
+
+[node name="UILayer" parent="." instance=ExtResource("1_jhe50")]
+
+[node name="LevelGeometry" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_je3el")]
+
+[node name="PixelShader" parent="WorldEnvironment" instance=ExtResource("3_vottg")]
+
+[node name="Player" parent="." instance=ExtResource("4_nnlik")]

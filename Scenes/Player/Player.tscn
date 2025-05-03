@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://eksp5e7et5mc"]
+[gd_scene load_steps=34 format=3 uid="uid://eksp5e7et5mc"]
 
 [ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scenes/Player/PlayerStates/Player.gd" id="1_ft8w5"]
 [ext_resource type="PackedScene" uid="uid://b20ifxdcjdda4" path="res://Scenes/Player/BebeBear.blend" id="2_h54ih"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://du3kfrvyaeof7" path="res://Assets/Textures/UI/CursorGrab3.png" id="15_1e6p3"]
 [ext_resource type="Texture2D" uid="uid://yswaegd7kygy" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT1.png" id="16_e5iqy"]
 [ext_resource type="Texture2D" uid="uid://bx4f3ot05xkvr" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT2.png" id="17_8t5qx"]
+[ext_resource type="Script" uid="uid://bi81doea8njpy" path="res://Scenes/Player/PlayerStates/BikeState.gd" id="17_g7gci"]
 [ext_resource type="Texture2D" uid="uid://y1s8ejjsqipu" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT3.png" id="18_8rd5p"]
 [ext_resource type="Texture2D" uid="uid://srivuxdlkskp" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT4.png" id="19_wwmao"]
 [ext_resource type="Texture2D" uid="uid://b6tiynnp2witt" path="res://Assets/Textures/UI/Inspect/CURSORINSPECT5.png" id="20_7xdrn"]
@@ -204,6 +205,9 @@ script = ExtResource("7_t26db")
 
 [node name="FallState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("8_fk5o5")
+
+[node name="BikeState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("17_g7gci")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
