@@ -22,6 +22,7 @@ func _process(_delta):
 		debug_text += "Raycast Debug: " + raycast_text + "\n"
 		debug_text += "FPS: " + str(Engine.get_frames_per_second()) + "\n"
 		debug_text += "Frogs: " + str(GameManager.has_item("Frog")) + "\n"
-		debug_text += "Journal Open" + str(player.journal_visible)
+		debug_text += "Journal Open " + str(player.journal_visible) + "\n"
+		debug_text += "Floor Type: " + str(player.footstep.resource_path) + "\n"
 
 	debug_label.text = debug_text

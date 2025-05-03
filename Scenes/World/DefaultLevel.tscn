@@ -9,6 +9,9 @@
 
 [node name="UILayer" parent="." instance=ExtResource("1_jhe50")]
 
+[node name="DebugPanel" parent="UILayer" index="0" node_paths=PackedStringArray("player")]
+player = NodePath("../../Player")
+
 [node name="LevelGeometry" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_je3el")]
@@ -16,3 +19,5 @@
 [node name="PixelShader" parent="WorldEnvironment" instance=ExtResource("3_vottg")]
 
 [node name="Player" parent="." instance=ExtResource("4_nnlik")]
+
+[editable path="UILayer"]

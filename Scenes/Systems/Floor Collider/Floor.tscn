@@ -1,21 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm5ukltsmruxa"]
+[gd_scene load_steps=5 format=3 uid="uid://cm5ukltsmruxa"]
 
 [ext_resource type="Script" uid="uid://dsggyd61t8pem" path="res://Scenes/Systems/Floor Collider/FloorCollider.gd" id="1_0qb6v"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_b45f0"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0qb6v"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qb6v"]
+transparency = 1
+albedo_color = Color(1, 0.482353, 0.243137, 0.388235)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b45f0"]
+material = SubResource("StandardMaterial3D_0qb6v")
+
 [node name="Floor" type="Node3D"]
 script = ExtResource("1_0qb6v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_b45f0")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0qb6v")
+debug_color = Color(0.921569, 0.2, 0.494118, 0.505882)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_b45f0")

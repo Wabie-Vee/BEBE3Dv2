@@ -4,5 +4,4 @@
 
 [node name="UILayer" type="CanvasLayer"]
 
-[node name="DebugPanel" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_k3nm5")]
-player = NodePath("")
+[node name="DebugPanel" parent="." instance=ExtResource("1_k3nm5")]
