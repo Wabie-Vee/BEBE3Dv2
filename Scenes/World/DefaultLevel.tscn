@@ -21,3 +21,4 @@ player = NodePath("../../Player")
 [node name="Player" parent="." instance=ExtResource("4_nnlik")]
 
 [editable path="UILayer"]
+[editable path="WorldEnvironment"]

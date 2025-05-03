@@ -140,12 +140,13 @@ sfx_land = ExtResource("4_0kmp4")
 journal_open_sound = ExtResource("5_wwmao")
 journal_close_sound = ExtResource("6_wwmao")
 jump_velocity = 5.0
+move_speed = 2.7
 camera_lean_angle = 2.0
 
 [node name="BebePivot" type="Node3D" parent="."]
 
 [node name="BebeBear" parent="BebePivot" instance=ExtResource("2_h54ih")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.235136)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0307634, -0.235136)
 
 [node name="cs_grp" parent="BebePivot/BebeBear/char_grp" index="0"]
 visible = false
@@ -176,7 +177,7 @@ shape = SubResource("CapsuleShape3D_kpjcp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.742, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.0970239)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.0116018, 0.119278)
 fov = 87.5
 
 [node name="Journal" parent="CameraRig/Camera3D" instance=ExtResource("6_8t5qx")]

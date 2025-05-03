@@ -53,7 +53,7 @@ var rotation_speed: float = 8.0
 
 # === HEADBOB SYSTEM ===
 var headbob_timer: float = 0.0
-var headbob_amplitude: float = 0.07
+var headbob_amplitude: float = 0.045
 var base_headbob_frequency: float = 6.0
 var max_headbob_frequency: float = 12.0
 var last_headbob_value: float = 0.0
