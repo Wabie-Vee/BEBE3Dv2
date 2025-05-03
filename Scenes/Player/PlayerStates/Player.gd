@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+# === NODE REFERENCES ===
 @onready var state_machine = $PlayerStateMachine
 @onready var camera_rig = $CameraRig
 @onready var camera = $CameraRig/Camera3D
@@ -8,73 +9,98 @@ extends CharacterBody3D
 @onready var bebe_pivot: Node3D = $BebePivot
 @onready var cursor_animator: AnimatedSprite2D = $CanvasLayer/Control/AnimatedSprite2D
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var footstep_ray: RayCast3D = $FootstepRay
+@onready var journal_animator: AnimationPlayer = $CameraRig/Camera3D/Journal/AnimationPlayer
+@onready var journal = $"../UILayer/QuestTracker"
 
+# === EXPORTED AUDIO ===
+@export_group("Footstep Sounds")
+@export var step_grass: AudioStream
+@export var step_stone: AudioStream
+@export var step_wood: AudioStream
+
+@export_group("General SFX")
+@export var sfx_step: AudioStream
+@export var sfx_jump: AudioStream
+@export var sfx_land: AudioStream
+@export var journal_open_sound: AudioStream 
+@export var journal_close_sound: AudioStream
+
+# === EXPORTED RETICLES ===
+@export_group("Cursor Reticles")
+@export var cursor_interact: Sprite2D
+@export var cursor_default: Sprite2D
+
+# === EXPORTED CONFIGURATION ===
+@export var interact_distance: float = 3.0
+@export var jump_velocity: float = 10.0
+@export var sprint_speed: float = 6.0
+@export var move_speed: float = 4.0
+@export var mouse_sensitivity: float = 0.0025
+@export var camera_lean_angle: float = 3.0
+
+# === CAMERA CONTROL ===
+var pitch: float = 0.0
+var camera_lean_speed: float = 6.0
 @onready var cam_origin_y: float = camera_rig.position.y
 
-@export var sfx_step = AudioStream
-@export var sfx_jump = AudioStream
-@export var sfx_land = AudioStream
-@export var interact_distance := 3.0
+# === MOVEMENT STATE ===
+var is_jumping: bool = false
+var jump_held_time: float = 0.0
+var sprinting: bool = false
+var slide_factor: float = 10.0
+var rotation_speed: float = 8.0
 
-var is_jumping := false
-@export var jump_velocity := 10.0
-var jump_held_time := 0.0
+# === HEADBOB SYSTEM ===
+var headbob_timer: float = 0.0
+var headbob_amplitude: float = 0.07
+var base_headbob_frequency: float = 6.0
+var max_headbob_frequency: float = 12.0
+var last_headbob_value: float = 0.0
+var footstep_played_this_cycle: bool = false
+var headbob_enabled: bool = true
 
-var sprinting := false
-@export var sprint_speed := 6.0
-var slide_factor := 10.0
-var rotation_speed := 8.0
-
-@export var move_speed := 4.0
-
-var mouse_look_enabled := true
-@export var mouse_sensitivity := 0.0025
-var pitch := 0.0
-
-@export var camera_lean_angle := 3.0  # Max degrees of tilt
-var camera_lean_speed := 6.0  # How fast it lerps in/out
-
-var headbob_timer := 0.0
-var headbob_amplitude := .07
-var headbob_frequency := 16
-var base_headbob_frequency := 6.0  # low speed bob
-var max_headbob_frequency := 12.0  # full speed bob
-var headbob_enabled := true
-var last_headbob_value := 0.0
-var footstep_played_this_cycle := false
-@onready var journal_animator: AnimationPlayer = $CameraRig/Camera3D/Journal/AnimationPlayer
-
-var journal_animation_played := false
-
-@export var cursor_interact = Sprite2D
-@export var cursor_default = Sprite2D
+# === INTERNAL STATE ===
+var journal_animation_played: bool = false
+var journal_visible: bool = false
 var cursor = cursor_default
-@onready var journal = $"../UILayer/QuestTracker"
-var journal_visible = false
-var turn_threshold := 0
-var turn_speed := 15
-
-var last_input_dir := Vector3.ZERO
-var air_direction := Vector3.ZERO
-
+var turn_threshold: float = 0
+var turn_speed: float = 15
+var last_input_dir: Vector3 = Vector3.ZERO
+var air_direction: Vector3 = Vector3.ZERO
+@onready var footstep: AudioStream = step_grass
+var mouse_look_enabled: bool = true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	state_machine.init(self)
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("key_journal"):
-		journal_visible = !journal_visible
-		if journal_visible:
-			journal_animator.play("JournalOpen")
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			GameManager.player_state = GameManager.PlayerState.LOCKED
-		else:
-			journal_animator.play("JournalClose")
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			GameManager.player_state = GameManager.PlayerState.FREE
+		var anim_player := journal_animator
+		var opening_anim := "JournalOpen"
+		var closing_anim := "JournalClose"
 
+		if journal_visible:
+			if anim_player.is_playing() and anim_player.current_animation == opening_anim and anim_player.speed_scale > 0:
+				anim_player.speed_scale = -1
+				anim_player.seek(anim_player.current_animation_position)
+			else:
+				anim_player.speed_scale = 1
+				anim_player.play(closing_anim)
+				SoundManager.play_sfx(journal_close_sound, false)
+			journal_visible = false
+			GameManager.player_state = GameManager.PlayerState.FREE
+		else:
+			if anim_player.is_playing() and anim_player.current_animation == closing_anim and anim_player.speed_scale > 0:
+				anim_player.speed_scale = -1
+				anim_player.seek(anim_player.current_animation_position)
+			else:
+				anim_player.speed_scale = 1
+				anim_player.play(opening_anim)
+				SoundManager.play_sfx(journal_open_sound, false)
+			journal_visible = true
+			GameManager.player_state = GameManager.PlayerState.LOCKED
 
 func _input(event):
 	if (
@@ -83,102 +109,63 @@ func _input(event):
 		and event.keycode == KEY_ESCAPE
 		and !GameManager.is_in_dialogue
 	):
-		if mouse_look_enabled:
-			mouse_look_enabled = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			mouse_look_enabled = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		mouse_look_enabled = !mouse_look_enabled
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if mouse_look_enabled else Input.MOUSE_MODE_VISIBLE)
 
-	if event is InputEventMouseMotion and mouse_look_enabled:
-		if GameManager.player_state == GameManager.PlayerState.FREE:
-			# Yaw: rotate player left/right
-			camera_rig.rotation.y -= event.relative.x * mouse_sensitivity
+	if event is InputEventMouseMotion and mouse_look_enabled and GameManager.player_state == GameManager.PlayerState.FREE:
+		camera_rig.rotation.y -= event.relative.x * mouse_sensitivity
+		pitch -= -event.relative.y * mouse_sensitivity
+		pitch = clamp(pitch, deg_to_rad(-80), deg_to_rad(80))
+		camera.rotation.x = -pitch
 
-			# Pitch: rotate camera up/down (through camera rig)
-			pitch -= -event.relative.y * mouse_sensitivity
-			pitch = clamp(pitch, deg_to_rad(-80), deg_to_rad(80))
-			camera.rotation.x = -pitch
+	sprinting = Input.is_action_pressed("key_sprint")
 
-	#Sprint check
-	if Input.is_action_pressed("key_sprint"):
-		sprinting = true
-	else:
-		sprinting = false
 	if GameManager.player_state == GameManager.PlayerState.FREE:
 		if event.is_action_pressed("key_interact") or event.is_action_pressed("left_click"):
 			handle_interact()
 
 	if event is InputEventKey and event.pressed:
-		if event.is_pressed() and event.keycode == KEY_F3:
+		if event.keycode == KEY_F3:
 			var debug_panel = get_tree().current_scene.get_node("UILayer/DebugPanel")
 			debug_panel.visible = not debug_panel.visible
-
-		if event.is_pressed() and event.keycode == KEY_F4:
+		if event.keycode == KEY_F4:
 			GameManager.debug_draw_raycast = not GameManager.debug_draw_raycast
 			var debug_panel = get_tree().current_scene.get_node("UILayer/DebugPanel")
 			debug_panel.raycast_debug_enabled = GameManager.debug_draw_raycast
 
-
-func debug_draw_interact():
-	if raycast:
-		raycast.force_raycast_update()
-
-		if raycast.is_colliding():
-			var target = raycast.get_collider()
-			var distance = raycast.global_transform.origin.distance_to(
-				raycast.get_collision_point()
-			)
-
-			var within_range = target.is_in_group("interactables") and distance <= interact_distance
-			var color = Color.RED
-			if within_range:
-				color = Color.GREEN
-
-			# Draw line from camera to hit point
-			var start = raycast.global_transform.origin
-			var end = raycast.get_collision_point()
-
-			DebugDraw3D.draw_line(start, end, color, 0.05)
-
-			# Print debug info
-			print("🎯 Hit:", target.name, "| Distance:", distance, "| In Range:", within_range)
-			print("🎯 Target groups:", target.get_groups())
-			print("📏 interact_distance:", interact_distance)
-		else:
-			var forward = -raycast.global_transform.basis.z
-			var end = raycast.global_transform.origin + forward * interact_distance
-			DebugDraw3D.draw_line(raycast.global_transform.origin, end, Color.GRAY, 0.05)
-			print("🔘 Nothing hit.")
-
-
 func _physics_process(delta):
-	if GameManager.player_state == GameManager.PlayerState.FREE:
-		canvas_layer.visible = true
-	else:
-		canvas_layer.visible = false
+	if footstep_ray.is_colliding():
+		var target = footstep_ray.get_collider()
+		while target and not (target is Floor):
+			target = target.get_parent()
+		if target and target is Floor:
+			match target.floor_type:
+				Floor.FloorType.GRASS:
+					footstep = step_grass
+				Floor.FloorType.STONE:
+					footstep = step_stone
+				Floor.FloorType.WOOD:
+					footstep = step_wood
+
+	canvas_layer.visible = GameManager.player_state == GameManager.PlayerState.FREE
+
 	if (
 		Input.is_action_just_pressed("left_click")
 		and !mouse_look_enabled
 		and !GameManager.is_in_dialogue
 	):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		if !mouse_look_enabled:
-			mouse_look_enabled = !mouse_look_enabled
+		mouse_look_enabled = true
+
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-
-	# Calculate target tilt
-	var target_tilt = input.x * camera_lean_angle  # Left = positive Z rotation
-
-	# Lerp the camera rig's Z-rotation toward target
+	var target_tilt = input.x * camera_lean_angle
 	var current_tilt = camera_rig.rotation_degrees.z
 	if GameManager.player_state == GameManager.PlayerState.LOCKED:
 		target_tilt = 0.0
-	var new_tilt = lerp(current_tilt, target_tilt, delta * camera_lean_speed)
-	camera_rig.rotation_degrees.z = new_tilt
+	camera_rig.rotation_degrees.z = lerp(current_tilt, target_tilt, delta * camera_lean_speed)
 
 	if GameManager.player_state == GameManager.PlayerState.LOCKED:
-		return  #freeze player
+		return
 
 	if (
 		headbob_enabled
@@ -186,11 +173,9 @@ func _physics_process(delta):
 		and is_on_floor()
 		and GameManager.player_state == GameManager.PlayerState.FREE
 	):
-		# Get horizontal speed (ignoring vertical movement)
 		var horizontal_velocity = velocity
 		horizontal_velocity.y = 0
 		var speed_factor = clamp(horizontal_velocity.length() / sprint_speed, 0.0, 1.0)
-
 		var current_bob_freq = lerp(base_headbob_frequency, max_headbob_frequency, speed_factor)
 		headbob_timer += delta * current_bob_freq * 2
 		var bob_value = sin(headbob_timer)
@@ -200,86 +185,55 @@ func _physics_process(delta):
 		current_pos.y = lerp(current_pos.y, cam_origin_y + y_offset, delta * 10.0)
 		camera_rig.position = current_pos
 
-		# Footstep SFX sync (optional)
 		if (
 			last_headbob_value < -0.95
 			and bob_value >= last_headbob_value
 			and not footstep_played_this_cycle
 		):
-			SoundManager.play_sfx(sfx_step, true)  # optional step sound
+			SoundManager.play_sfx(footstep, true)
 			footstep_played_this_cycle = true
 		if bob_value > 0.1:
 			footstep_played_this_cycle = false
 
 		last_headbob_value = bob_value
 	else:
-		# Reset Y position if not walking
 		var current_pos = camera_rig.position
 		current_pos.y = lerp(current_pos.y, cam_origin_y, delta * 10.0)
 		camera_rig.position = current_pos
 
 	handle_reticle()
-
 	state_machine.update_state(delta)
-
-	if GameManager.debug_draw_raycast:
-		debug_draw_interact()
-
 
 func handle_mesh_pivot(delta):
 	var pivot_yaw = wrapf(camera_rig.rotation_degrees.y, 0, 360)
 	var mesh_yaw = wrapf(bebe_pivot.rotation_degrees.y, 0, 360)
 	var angle_diff = abs(pivot_yaw - mesh_yaw)
-
 	if angle_diff > turn_threshold:
 		var target_yaw = deg_to_rad(pivot_yaw)
 		var current_yaw = bebe_pivot.rotation.y
 		bebe_pivot.rotation.y = lerp_angle(current_yaw, target_yaw, delta * turn_speed)
 
-
 func handle_reticle():
 	var next_anim = "Default"
-
 	if raycast.is_colliding():
 		var target = raycast.get_collider()
-
 		while target and not target.has_method("interact"):
 			target = target.get_parent()
-
-		if target and target.has_method("interact"):
-			if "interaction_type" in target:
-				match target.interaction_type:
-					"talk":
-						next_anim = "Speak"
-					"grab":
-						next_anim = "Grab"
-					"inspect":
-						next_anim = "Inspect"
-
-	# 🔁 Only play the animation if it's different
+		if target and target.has_method("interact") and "interaction_type" in target:
+			match target.interaction_type:
+				"talk": next_anim = "Speak"
+				"grab": next_anim = "Grab"
+				"inspect": next_anim = "Inspect"
 	if cursor_animator.animation != next_anim:
 		cursor_animator.play(next_anim)
 
-
 func handle_interact():
 	if raycast == null:
-		print("Raycast not found!")
 		return
-
 	raycast.force_raycast_update()
-
 	if raycast.is_colliding():
 		var target = raycast.get_collider()
-		var start = target  # Keep the original for debug
-
-		# Traverse upward to find a node with interact()
 		while target and not target.has_method("interact"):
 			target = target.get_parent()
-
-		if target and target.is_in_group("interactables"):
-			target.interact()
-
-	if raycast.is_colliding():
-		var target = raycast.get_collider()
 		if target and target.is_in_group("interactables") and target.has_method("interact"):
 			target.interact()

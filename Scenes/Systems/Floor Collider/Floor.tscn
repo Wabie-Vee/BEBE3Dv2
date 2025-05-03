@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm5ukltsmruxa"]
+
+[ext_resource type="Script" uid="uid://dsggyd61t8pem" path="res://Scenes/Systems/Floor Collider/FloorCollider.gd" id="1_0qb6v"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b45f0"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0qb6v"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Floor" type="Node3D"]
+script = ExtResource("1_0qb6v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_b45f0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_0qb6v")

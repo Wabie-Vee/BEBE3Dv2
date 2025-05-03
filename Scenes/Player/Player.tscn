@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://eksp5e7et5mc"]
+[gd_scene load_steps=33 format=3 uid="uid://eksp5e7et5mc"]
 
 [ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scenes/Player/PlayerStates/Player.gd" id="1_ft8w5"]
 [ext_resource type="PackedScene" uid="uid://b20ifxdcjdda4" path="res://Scenes/Player/BebeBear.blend" id="2_h54ih"]
@@ -8,10 +8,14 @@
 [ext_resource type="AudioStream" uid="uid://bhyu1y1gw25hs" path="res://Assets/Audio/sfx_land.ogg" id="4_0kmp4"]
 [ext_resource type="Script" uid="uid://t7f315gvt78o" path="res://Scenes/Player/PlayerStates/BaseState.gd" id="4_4wape"]
 [ext_resource type="Script" uid="uid://bvut87bk1i5g2" path="res://Scenes/Player/PlayerStates/IdleState.gd" id="5_t26db"]
+[ext_resource type="AudioStream" uid="uid://ea4cdj81an8t" path="res://Assets/Audio/sfx_journal_open.ogg" id="5_wwmao"]
 [ext_resource type="PackedScene" uid="uid://dxg2yglkonodv" path="res://Journal.tscn" id="6_8t5qx"]
 [ext_resource type="Script" uid="uid://br0luw1pliqnm" path="res://Scenes/Player/PlayerStates/WalkState.gd" id="6_fk5o5"]
+[ext_resource type="AudioStream" uid="uid://cdu4hqm6i13vf" path="res://Assets/Audio/sfx_journal_close(2).ogg" id="6_wwmao"]
+[ext_resource type="AudioStream" uid="uid://dn6d0grkw6acq" path="res://Assets/Audio/sfx_step_grass.ogg" id="7_7xdrn"]
 [ext_resource type="Script" uid="uid://b2v6jg3d7i71a" path="res://Scenes/Player/PlayerStates/JumpState.gd" id="7_t26db"]
 [ext_resource type="Script" uid="uid://cgbvjhh0deebq" path="res://Scenes/Player/FallState.gd" id="8_fk5o5"]
+[ext_resource type="AudioStream" uid="uid://dfh53loud363t" path="res://Assets/Audio/sfx_step_wood.ogg" id="8_wid83"]
 [ext_resource type="Texture2D" uid="uid://du7vshng5swf6" path="res://Assets/Textures/UI/CursorDefault.png" id="12_esmjy"]
 [ext_resource type="Texture2D" uid="uid://cvrmc1lhidbjd" path="res://Assets/Textures/UI/CursorGrab1.png" id="13_0objx"]
 [ext_resource type="Texture2D" uid="uid://db30tr3w2cbt5" path="res://Assets/Textures/UI/CursorSpeak1.png" id="13_6tu5v"]
@@ -125,9 +129,14 @@ animations = [{
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_ft8w5")
+step_grass = ExtResource("7_7xdrn")
+step_stone = ExtResource("8_wid83")
+step_wood = ExtResource("8_wid83")
 sfx_step = ExtResource("2_ji083")
 sfx_jump = ExtResource("3_0kmp4")
 sfx_land = ExtResource("4_0kmp4")
+journal_open_sound = ExtResource("5_wwmao")
+journal_close_sound = ExtResource("6_wwmao")
 jump_velocity = 5.0
 camera_lean_angle = 2.0
 
@@ -213,5 +222,9 @@ scale = Vector2(0.1875, 0.1875)
 sprite_frames = SubResource("SpriteFrames_w71ue")
 animation = &"Inspect"
 frame_progress = 0.379834
+
+[node name="FootstepRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545193, 0)
+collision_mask = 2
 
 [editable path="BebePivot/BebeBear"]

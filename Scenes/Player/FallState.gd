@@ -6,7 +6,7 @@ func enter():
 	player.is_jumping = false
 	
 func exit():
-	SoundManager.play_sfx(player.sfx_land, true, 4.0)
+	SoundManager.play_sfx(player.footstep, true, 4.0)
 	player.air_direction = Vector3.ZERO
 
 func update(delta):
