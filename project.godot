@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bebe3D"
-run/main_scene="uid://d0ra5ajai3g0h"
+run/main_scene="uid://bgqd3bqel6u1w"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
