@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgjdw604b4mwn"]
+
+[ext_resource type="Script" uid="uid://cyuynru4yrrm6" path="res://Scenes/Decor/flickering_light.gd" id="1_i3m3m"]
+
+[node name="FlickeringLight" type="OmniLight3D"]
+shadow_enabled = true
+script = ExtResource("1_i3m3m")
