@@ -55,7 +55,7 @@ func set_image_and_text(image: Texture2D, text: String):
 
 func _process(delta):
 	var t = Time.get_ticks_msec() / 1000.0
-	label.position.y = label_initial_y + wave(t, 2.0, 1.0)
+	label.position.y = label_initial_y + wave(t, .5, 1.0)
 	if not ready_for_input:
 		return
 
@@ -64,7 +64,7 @@ func _process(delta):
 
 	if current_char > last_char and current_char % 2 == 0 and voice:
 		SoundManager.stop_sfx(voice)
-		SoundManager.play_sfx(voice, true, voice_volume)
+		SoundManager.play_sfx(voice, true, .2)
 
 	last_visible_ratio = label.visible_ratio
 	if label.visible_ratio == 1.0:

@@ -3,5 +3,13 @@
 [ext_resource type="Script" uid="uid://cyuynru4yrrm6" path="res://Scenes/Decor/flickering_light.gd" id="1_i3m3m"]
 
 [node name="FlickeringLight" type="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00703936, 0.0148154, 0.0175405)
+light_energy = 1.57539
+light_size = 0.114
 shadow_enabled = true
+shadow_blur = 2.141
+distance_fade_enabled = true
+distance_fade_begin = 24.6
 script = ExtResource("1_i3m3m")
+positional_flicker_speed = 1.0
+positional_flicker_intensity = 0.2

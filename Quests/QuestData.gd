@@ -1,4 +1,3 @@
-@icon("res://icon.png") # Swap with a cool quest icon
 extends Resource
 class_name QuestData
 

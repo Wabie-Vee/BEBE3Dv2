@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgqd3bqel6u1w"]
+[gd_scene load_steps=10 format=3 uid="uid://bgqd3bqel6u1w"]
 
 [ext_resource type="PackedScene" uid="uid://cbuqsp4wngedx" path="res://Scenes/World/DefaultLevel.tscn" id="1_4bud6"]
 [ext_resource type="Material" uid="uid://dkdl6l3pk3nb3" path="res://Assets/Textures/DevMaterialBlue.tres" id="2_4h8x4"]
 [ext_resource type="PackedScene" uid="uid://cm5ukltsmruxa" path="res://Scenes/Systems/Floor Collider/Floor.tscn" id="2_dcicu"]
-[ext_resource type="PackedScene" uid="uid://bsdwtbuce30p1" path="res://Scenes/Inspectables/BebeBed.tscn" id="2_xfr3m"]
-[ext_resource type="PackedScene" uid="uid://dt15s6p2wg3b2" path="res://Scenes/Inspectables/CoffeeTable.tscn" id="3_dcicu"]
+[ext_resource type="PackedScene" uid="uid://bsdwtbuce30p1" path="res://Scenes/Lookables/BebeBed.tscn" id="2_xfr3m"]
+[ext_resource type="PackedScene" uid="uid://dt15s6p2wg3b2" path="res://Scenes/Lookables/CoffeeTable.tscn" id="3_dcicu"]
 [ext_resource type="PackedScene" uid="uid://c4vbv6wostdc7" path="res://Scenes/NPCs/Menmo/MenmoNPC.tscn" id="5_3y2bi"]
 [ext_resource type="PackedScene" uid="uid://kdhh2u8bwstf" path="res://Scenes/NPCs/Penny/Penny_NPC.tscn" id="6_4h8x4"]
 [ext_resource type="PackedScene" uid="uid://bgjdw604b4mwn" path="res://Scenes/Decor/FlickeringLight.tscn" id="8_mb1m8"]
+[ext_resource type="PackedScene" uid="uid://05vq3qyystyt" path="res://BebeFridge.tscn" id="9_65e60"]
 
 [node name="DefaultLevel2" instance=ExtResource("1_4bud6")]
 
@@ -27,14 +28,14 @@ use_collision = true
 size = Vector3(12.9651, 5.73727, 0.661239)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes/CSGBox3D8" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49707, -1.17432, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49707, -1.67627, 0)
 operation = 2
-size = Vector3(1.99414, 3.34863, 1)
+size = Vector3(1.99414, 2.34473, 1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes/CSGBox3D8" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5679, -1.16772, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5679, -1.45721, 0)
 operation = 2
-size = Vector3(1.99414, 3.33545, 1)
+size = Vector3(1.99414, 2.75647, 1)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="2"]
 transform = Transform3D(0.717981, 0.696063, 0, -0.696063, 0.717981, 0, 0, 0, 1, 2.29304, 3.5843, -5.38412)
@@ -103,65 +104,80 @@ operation = 2
 size = Vector3(1.09326, 1.48584, 1.99402)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="9"]
-transform = Transform3D(-0.999919, 0.0127056, 3.55271e-15, -0.0127056, -0.999919, 5.55111e-17, 3.55271e-15, 0, 1, -6.19977, 2.14828, 0.0345201)
+transform = Transform3D(-0.999919, 0.0127056, 3.55271e-15, -0.0127056, -0.999919, 5.55111e-17, 3.55271e-15, 0, 1, -6.33565, 2.14655, 1.92564)
 material_override = ExtResource("2_4h8x4")
 use_collision = true
-size = Vector3(0.218384, 5.27162, 17.3662)
+size = Vector3(0.490173, 5.27162, 21.1484)
 
-[node name="Floor3" parent="LevelGeometry/Placeholder Meshes" index="10" instance=ExtResource("2_dcicu")]
+[node name="CSGBox3D19" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="10"]
+transform = Transform3D(-0.999919, 0.0127056, 3.55271e-15, -0.0127056, -0.999919, 5.55111e-17, 3.55271e-15, 0, 1, -2.96748, 2.1064, 10.882)
+material_override = ExtResource("2_4h8x4")
+use_collision = true
+size = Vector3(0.490173, 5.27162, 3.22754)
+
+[node name="Floor3" parent="LevelGeometry/Placeholder Meshes" index="11" instance=ExtResource("2_dcicu")]
 transform = Transform3D(0.65808, 0, 0, 0, 1, 0, 0, 0, 1.4074, 5.47122, 0.469067, -7.04051)
+visible = false
 floor_type = 1
 
-[node name="Floor2" parent="LevelGeometry/Placeholder Meshes" index="11" instance=ExtResource("2_dcicu")]
+[node name="Floor2" parent="LevelGeometry/Placeholder Meshes" index="12" instance=ExtResource("2_dcicu")]
 transform = Transform3D(6.3877, 0, 0, 0, 1, 0, 0, 0, 10.0834, -0.0925094, -0.0175291, 0.325958)
+visible = false
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="12"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.24927, 2.30764, 4.09994)
 material_override = ExtResource("2_4h8x4")
 use_collision = true
 size = Vector3(0.501465, 5.6153, 12.571)
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57602, 2.37659, 1.8827)
+[node name="CSGBox3D10" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.324, 2.37659, 1.8827)
 material_override = ExtResource("2_4h8x4")
 use_collision = true
-size = Vector3(9.77026, 5.75317, 1)
+size = Vector3(10.2743, 5.75317, 1)
 
-[node name="CSGBox3D16" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.78445, 2.37659, 9.88709)
+[node name="CSGBox3D16" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67602, 2.37659, 9.88709)
 material_override = ExtResource("2_4h8x4")
 use_collision = true
-size = Vector3(5.35339, 5.75317, 1)
+size = Vector3(9.57025, 5.75317, 1)
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="15"]
+[node name="CSGBox3D14" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10676, 0.172474, 4.76039)
 material_override = ExtResource("2_4h8x4")
 use_collision = true
 size = Vector3(0.843689, 1.34495, 5.08893)
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="16"]
+[node name="CSGBox3D15" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10676, 3.84765, 4.66841)
 material_override = ExtResource("2_4h8x4")
 use_collision = true
 size = Vector3(0.843689, 2.45226, 4.90497)
 
-[node name="CSGBox3D17" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="17"]
+[node name="CSGBox3D17" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10676, 2.54284, 4.77322)
 material_override = ExtResource("2_4h8x4")
 use_collision = true
 size = Vector3(1.29395, 0.620173, 5.11459)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="18"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.290283, 0.891955)
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.290283, 1.9337)
 material_override = ExtResource("2_4h8x4")
 use_collision = true
-size = Vector3(12.9958, 0.419434, 19.0381)
+size = Vector3(12.9958, 0.419434, 21.1216)
+material = ExtResource("2_4h8x4")
 
-[node name="CSGBox3D18" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="19"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0068, 4.0498)
+[node name="CSGBox3D18" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.65588, 4.0498)
 material_override = ExtResource("2_4h8x4")
 use_collision = true
-size = Vector3(12.9958, 0.830689, 12.7224)
+size = Vector3(12.9958, 1.53253, 12.7224)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68791, 3.51476, 10.8891)
+material_override = ExtResource("2_4h8x4")
+use_collision = true
+size = Vector3(3.61997, 1.81477, 2.96698)
 
 [node name="DirectionalLight3D" parent="WorldEnvironment" index="0"]
 transform = Transform3D(-0.96341, -0.163956, 0.212036, -0.0154145, 0.823669, 0.566861, -0.267588, 0.542851, -0.796059, 0, 0, 0)
@@ -171,13 +187,13 @@ directional_shadow_fade_start = 0.755
 directional_shadow_max_distance = 134.5
 
 [node name="Player" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586972, 1.05811, 4.56802)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586972, 0.104765, 4.56802)
 
 [node name="LookableTemplate" parent="." index="4" instance=ExtResource("2_xfr3m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.49729, -0.0773434, -6.99897)
 
 [node name="LookableTemplate2" parent="." index="5" instance=ExtResource("3_dcicu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0423622, -0.0804262, 6.14047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.31304, -0.0804262, 8.46184)
 
 [node name="Floor" parent="LookableTemplate2" index="2" instance=ExtResource("2_dcicu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209805, 0.599816, -0.148705)
@@ -186,17 +202,58 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209805, 0.599816, -0.148705
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53683, -0.0159066, -0.87064)
 
 [node name="Interactable" parent="." index="7" instance=ExtResource("6_4h8x4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34335, -0.0909, 2.50297)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.253023, -0.0909, 8.18424)
 
 [node name="Lighting" type="Node3D" parent="." index="8"]
 editor_description = "This is where the lighting goes!"
 
 [node name="FlickeringLight" parent="Lighting" index="0" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60028, 0.719859, -3.7302)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60396, 0.514571, -4.48369)
 light_color = Color(1, 0.523232, 0.296128, 1)
+light_energy = 2.23134
 omni_range = 135.176
 light_intensity = 2.39
 flicker_speed = 12.325
+flicker_intensity = 0.5
+
+[node name="FlickeringLight2" parent="Lighting" index="1" instance=ExtResource("8_mb1m8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90855, 2.32819, 3.71202)
+light_color = Color(1, 0.781873, 0.585495, 1)
+light_energy = 4.81868
+omni_range = 135.176
+light_intensity = 5.0
+flicker_speed = 12.325
+flicker_intensity = 0.5
+
+[node name="FlickeringLight5" parent="Lighting" index="2" instance=ExtResource("8_mb1m8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25662, 2.32204, 6.37163)
+light_color = Color(1, 0.781873, 0.585495, 1)
+light_energy = 4.83101
+omni_range = 135.176
+light_intensity = 5.0
+flicker_speed = 12.325
+flicker_intensity = 0.5
+
+[node name="FlickeringLight3" parent="Lighting" index="3" instance=ExtResource("8_mb1m8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1258, 2.72292, 0.0171943)
+light_color = Color(1, 0.523232, 0.296128, 1)
+light_energy = 4.83116
+omni_range = 135.176
+light_intensity = 5.0
+flicker_speed = 12.325
+flicker_intensity = 0.5
+
+[node name="FlickeringLight4" parent="Lighting" index="4" instance=ExtResource("8_mb1m8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12405, 1.74904, -6.6267)
+light_color = Color(0.968418, 0.657694, 0.509684, 1)
+light_energy = 4.84891
+omni_range = 135.176
+light_intensity = 5.0
+flicker_speed = 12.325
+flicker_intensity = 0.5
+
+[node name="LookableTemplate3" parent="." index="9" instance=ExtResource("9_65e60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22399, -0.0857645, 2.61203)
 
 [editable path="UILayer"]
 [editable path="WorldEnvironment"]
