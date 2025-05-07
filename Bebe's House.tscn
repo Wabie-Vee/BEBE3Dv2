@@ -208,45 +208,45 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 editor_description = "This is where the lighting goes!"
 
 [node name="FlickeringLight" parent="Lighting" index="0" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60396, 0.514571, -4.48369)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5865, 0.515261, -4.47151)
 light_color = Color(1, 0.523232, 0.296128, 1)
-light_energy = 2.23134
+light_energy = 2.50282
 omni_range = 135.176
 light_intensity = 2.39
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight2" parent="Lighting" index="1" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90855, 2.32819, 3.71202)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91004, 2.32815, 3.71798)
 light_color = Color(1, 0.781873, 0.585495, 1)
-light_energy = 4.81868
+light_energy = 5.13948
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight5" parent="Lighting" index="2" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25662, 2.32204, 6.37163)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24937, 2.32302, 6.37634)
 light_color = Color(1, 0.781873, 0.585495, 1)
-light_energy = 4.83101
+light_energy = 5.13754
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight3" parent="Lighting" index="3" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1258, 2.72292, 0.0171943)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13523, 2.72679, 0.0180304)
 light_color = Color(1, 0.523232, 0.296128, 1)
-light_energy = 4.83116
+light_energy = 5.14036
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight4" parent="Lighting" index="4" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12405, 1.74904, -6.6267)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.13445, 1.74981, -6.6272)
 light_color = Color(0.968418, 0.657694, 0.509684, 1)
-light_energy = 4.84891
+light_energy = 5.13977
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
@@ -254,6 +254,7 @@ flicker_intensity = 0.5
 
 [node name="LookableTemplate3" parent="." index="9" instance=ExtResource("9_65e60")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22399, -0.0857645, 2.61203)
+flavor_text = "*gee I sure want a popsicle. Maybe one day I'll be tall enough to reach the freezer...*"
 
 [editable path="UILayer"]
 [editable path="WorldEnvironment"]

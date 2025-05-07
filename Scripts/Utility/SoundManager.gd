@@ -25,6 +25,7 @@ func _ready():
 	music.bus = "Music"
 	add_child(music)
 	players[Bus.MUSIC] = music
+	
 
 	# One for UI
 	var ui = AudioStreamPlayer.new()

@@ -25,7 +25,7 @@ func _ready():
 	icon.position = Vector2.ZERO
 
 
-	label.visible_ratio = 0.0
+	label.visible_ratio = 1
 	open_animation_playing = true
 	animation.play("open")
 	await animation.animation_finished
@@ -38,7 +38,7 @@ func _ready():
 
 func set_image_and_text(image: Texture2D, text: String):
 	image_rect.texture = image
-	label.visible_ratio = 0.0
+	label.visible_ratio = 1.0
 	label.bbcode_text = text
 
 	var regex = RegEx.new()
