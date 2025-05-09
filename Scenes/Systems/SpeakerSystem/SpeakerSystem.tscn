@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkri25lf3nnuk"]
+
+[ext_resource type="Script" uid="uid://c4myqas1gs1cs" path="res://Scenes/Systems/SpeakerSystem/speaker_system.gd" id="1_d14m1"]
+
+[node name="SpeakerSystem" type="Node3D"]
+script = ExtResource("1_d14m1")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+
+[node name="ObstructionCheckTimer" type="Timer" parent="."]

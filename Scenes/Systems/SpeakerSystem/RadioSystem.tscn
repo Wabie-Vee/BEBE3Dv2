@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bba0fx82lsamk"]
+
+[ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_mki6y"]
+[ext_resource type="PackedScene" uid="uid://bkri25lf3nnuk" path="res://Scenes/Systems/SpeakerSystem/SpeakerSystem.tscn" id="2_ddmw3"]
+
+[node name="Radio" instance=ExtResource("1_mki6y")]
+
+[node name="SpeakerSystem" parent="." index="0" instance=ExtResource("2_ddmw3")]
