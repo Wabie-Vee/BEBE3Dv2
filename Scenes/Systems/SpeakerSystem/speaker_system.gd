@@ -1,7 +1,7 @@
 extends Node3D
 class_name SpeakerSystem
 
-@onready var player: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var player: AudioStreamPlayer3D = $AudioPlayer
 @onready var obstruction_timer: Timer = $ObstructionCheckTimer
 
 @export var bus_name := "Speaker"
