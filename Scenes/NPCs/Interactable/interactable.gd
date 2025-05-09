@@ -19,4 +19,4 @@ func interact():
 	if custom_interact_handler != null:
 		custom_interact_handler.call()
 	else:
-		GameManager.start_dialogue(dialog_lines, voice_clip, audio_gain)
+		Dialogic.start("error_timeline")

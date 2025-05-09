@@ -31,7 +31,8 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "Menmo": "res://Dialogic Timelines/Menmo.dtl",
-"Penumbra": "res://Dialogic Timelines/Penumbra.dtl"
+"Penumbra": "res://Dialogic Timelines/Penumbra.dtl",
+"error_timeline": "res://Dialogic Timelines/error_timeline.dtl"
 }
 layout/style_directory={
 "": "res://Dialogic/Styles/DefaultStyle.tres",
@@ -55,7 +56,7 @@ variables={
 }
 }
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.06
+text/letter_speed=0.03
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.05
 text/advance_delay=0.05
@@ -213,7 +214,13 @@ key_journal={
 }
 key_b={
 "deadzone": 0.2,
-"events": []
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
+]
+}
+key_f={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)
+]
 }
 
 [rendering]

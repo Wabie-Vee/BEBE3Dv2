@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://daqxhikulwpys"]
+
+[ext_resource type="PackedScene" uid="uid://bwld0226crlxm" path="res://Scenes/NPCs/Interactable/LookableTemplate.tscn" id="1_vdc41"]
+[ext_resource type="PackedScene" uid="uid://bhhddusk2fcsr" path="res://Assets/Models/Blender/BebeBookcase.blend" id="2_jjgbt"]
+
+[node name="LookableTemplate" instance=ExtResource("1_vdc41")]
+
+[node name="BebeBookcase" parent="." index="0" instance=ExtResource("2_jjgbt")]

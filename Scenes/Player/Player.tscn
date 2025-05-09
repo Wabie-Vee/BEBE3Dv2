@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://eksp5e7et5mc"]
+[gd_scene load_steps=36 format=3 uid="uid://eksp5e7et5mc"]
 
 [ext_resource type="Script" uid="uid://cbh302tk8p5nj" path="res://Scenes/Player/PlayerStates/Player.gd" id="1_ft8w5"]
 [ext_resource type="PackedScene" uid="uid://b20ifxdcjdda4" path="res://Scenes/Player/BebeBear.blend" id="2_h54ih"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://b2v6jg3d7i71a" path="res://Scenes/Player/PlayerStates/JumpState.gd" id="7_t26db"]
 [ext_resource type="Script" uid="uid://cgbvjhh0deebq" path="res://Scenes/Player/FallState.gd" id="8_fk5o5"]
 [ext_resource type="AudioStream" uid="uid://dfh53loud363t" path="res://Assets/Audio/sfx_step_wood.ogg" id="8_wid83"]
+[ext_resource type="AudioStream" uid="uid://c3uw4nft0de13" path="res://addons/dialogic/Example Assets/sound-effects/typing2.wav" id="10_6rswy"]
 [ext_resource type="Texture2D" uid="uid://du7vshng5swf6" path="res://Assets/Textures/UI/CursorDefault.png" id="12_esmjy"]
 [ext_resource type="Texture2D" uid="uid://cvrmc1lhidbjd" path="res://Assets/Textures/UI/CursorGrab1.png" id="13_0objx"]
 [ext_resource type="Texture2D" uid="uid://db30tr3w2cbt5" path="res://Assets/Textures/UI/CursorSpeak1.png" id="13_6tu5v"]
@@ -139,6 +140,7 @@ sfx_jump = ExtResource("3_0kmp4")
 sfx_land = ExtResource("4_0kmp4")
 journal_open_sound = ExtResource("5_wwmao")
 journal_close_sound = ExtResource("6_wwmao")
+flashlight_sound = ExtResource("10_6rswy")
 jump_velocity = 5.0
 move_speed = 2.7
 camera_lean_angle = 2.0
@@ -179,6 +181,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.742, 0)
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.0116018, 0.119278)
 fov = 87.5
+
+[node name="Flashlight" type="SpotLight3D" parent="CameraRig/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016, 0)
+visible = false
+light_color = Color(1, 0.818978, 0.670989, 1)
+light_energy = 4.81
+spot_angle = 37.9688
 
 [node name="Journal" parent="CameraRig/Camera3D" instance=ExtResource("6_8t5qx")]
 transform = Transform3D(0.996041, -0.0320017, -0.0829342, 0, 0.932954, -0.359997, 0.0888943, 0.358572, 0.92926, -0.156, -0.022, -0.277)

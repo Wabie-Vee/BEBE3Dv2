@@ -12,6 +12,7 @@ extends CharacterBody3D
 @onready var footstep_ray: RayCast3D = $FootstepRay
 @onready var journal_animator: AnimationPlayer = $CameraRig/Camera3D/Journal/AnimationPlayer
 @onready var journal = $"../UILayer/QuestTracker"
+@onready var flashlight: SpotLight3D = $CameraRig/Camera3D/Flashlight
 
 # === EXPORTED AUDIO ===
 @export_group("Footstep Sounds")
@@ -25,6 +26,7 @@ extends CharacterBody3D
 @export var sfx_land: AudioStream
 @export var journal_open_sound: AudioStream 
 @export var journal_close_sound: AudioStream
+@export var flashlight_sound: AudioStream
 
 # === EXPORTED RETICLES ===
 @export_group("Cursor Reticles")
@@ -72,6 +74,7 @@ var air_direction: Vector3 = Vector3.ZERO
 var mouse_look_enabled: bool = true
 
 func _ready():
+	flashlight.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	state_machine.init(self)
 
@@ -136,6 +139,11 @@ func _input(event):
 func _physics_process(delta):
 	if Input.is_action_just_pressed("key_b"):
 		state_machine.change_state("BikeState")
+	
+	if GameManager.player_state == GameManager.PlayerState.FREE:
+		if Input.is_action_just_pressed("key_f"):
+			flashlight.visible = !flashlight.visible
+			SoundManager.play_sfx(flashlight_sound)
 	
 	if footstep_ray.is_colliding():
 		var target = footstep_ray.get_collider()

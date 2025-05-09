@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://df2d3qnsfm0p0"]
+
+[ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_ahen7"]
+[ext_resource type="Script" uid="uid://bhrpw2be18dki" path="res://Scenes/Bebe's House/green_radio.gd" id="2_buek2"]
+[ext_resource type="PackedScene" uid="uid://dapgj3rgyfqh8" path="res://Assets/Models/Blender/GreenRadio.blend" id="2_k52hg"]
+[ext_resource type="AudioStream" uid="uid://v5y8rmq3dlfr" path="res://Assets/Audio/RadioSongs/Everything Put Together Falls Apart.ogg" id="3_04df4"]
+[ext_resource type="AudioStream" uid="uid://msv0aayvy7d2" path="res://Assets/Audio/RadioSongs/1000000000aire 3.wav" id="4_exrwk"]
+[ext_resource type="AudioStream" uid="uid://d3afn4maj3135" path="res://Assets/Audio/RadioSongs/Like Someone In Love.wav" id="5_exrwk"]
+[ext_resource type="AudioStream" uid="uid://7nglg2slbct2" path="res://Assets/Audio/RadioSongs/radioclick_sfx.ogg" id="7_a6pk3"]
+[ext_resource type="AudioStream" uid="uid://bdnjcvwcku60t" path="res://Assets/Audio/RadioSongs/radioclickonly_sfx.ogg" id="7_dsr76"]
+
+[sub_resource type="Animation" id="Animation_u2eri"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GreenRadio/Cube_003")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.179294, 0.0370169, 0.0672561)
+
+[sub_resource type="Animation" id="Animation_hlas2"]
+resource_name = "interacted"
+length = 0.36
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GreenRadio/Cube_003")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.179294, 0.0370169, 0.0672561, 0.166667, 1, -0.179294, 0.0370169, 0.06039, 0.333333, 1, -0.179294, 0.0370169, 0.0672561)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfim8"]
+_data = {
+&"RESET": SubResource("Animation_u2eri"),
+&"interacted": SubResource("Animation_hlas2")
+}
+
+[node name="Interactable2" instance=ExtResource("1_ahen7")]
+script = ExtResource("2_buek2")
+tracklist = Array[AudioStream]([ExtResource("4_exrwk"), ExtResource("3_04df4"), ExtResource("5_exrwk")])
+radio_click_sound = ExtResource("7_a6pk3")
+click_sound = ExtResource("7_dsr76")
+interaction_type = "grab"
+
+[node name="GreenRadio" parent="." index="0" instance=ExtResource("2_k52hg")]
+
+[node name="Cube_003" parent="GreenRadio" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179294, 0.0370169, 0.0672561)
+
+[node name="RadioPlayer" type="AudioStreamPlayer3D" parent="." index="2"]
+transform = Transform3D(-0.999942, 0, 0.0108033, 0, 1, 0, -0.0108033, 0, -0.999942, 0, 0.241449, 0.17677)
+stream = ExtResource("7_a6pk3")
+max_distance = 15.0
+emission_angle_enabled = true
+emission_angle_degrees = 84.7
+emission_angle_filter_attenuation_db = -3.5
+
+[node name="ClickPlayer" type="AudioStreamPlayer3D" parent="." index="3"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_nfim8")
+}
+
+[node name="ObstructionCheckTimer" type="Timer" parent="." index="5"]
+wait_time = 0.1
+autostart = true
+
+[editable path="GreenRadio"]

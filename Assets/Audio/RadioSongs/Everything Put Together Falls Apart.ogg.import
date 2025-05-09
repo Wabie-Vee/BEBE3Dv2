@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://v5y8rmq3dlfr"
+path="res://.godot/imported/Everything Put Together Falls Apart.ogg-c77814a245627a53b244cd007f7feeaa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/RadioSongs/Everything Put Together Falls Apart.ogg"
+dest_files=["res://.godot/imported/Everything Put Together Falls Apart.ogg-c77814a245627a53b244cd007f7feeaa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

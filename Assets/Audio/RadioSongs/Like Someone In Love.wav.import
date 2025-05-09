@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3afn4maj3135"
+path="res://.godot/imported/Like Someone In Love.wav-2633a9e928f3aa8473cab1dd73ab04e6.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/RadioSongs/Like Someone In Love.wav"
+dest_files=["res://.godot/imported/Like Someone In Love.wav-2633a9e928f3aa8473cab1dd73ab04e6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
