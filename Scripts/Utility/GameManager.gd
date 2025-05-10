@@ -7,6 +7,10 @@ enum PlayerState {
 	FREE,
 }
 
+var camera_focus_tween: Tween
+var original_camera_position: Vector3
+var is_camera_focused: bool = false
+
 var player_state = PlayerState.FREE
 var is_in_dialogue = false
 var current_textbox = null
@@ -148,7 +152,7 @@ func has_item(item_name: String) -> bool:
 
 
 
-func show_flavor_image_and_text(image: Texture2D, text: String):
+func show_flavor_text(text: String, image: Texture2D = null):
 	if active_flavor_ui:
 		active_flavor_ui.queue_free()
 
@@ -156,7 +160,70 @@ func show_flavor_image_and_text(image: Texture2D, text: String):
 	active_flavor_ui = flavor_ui_scene.instantiate()
 
 	active_flavor_ui.initial_text = text
-	active_flavor_ui.initial_image = image
+	if image:
+		active_flavor_ui.initial_image = image
 
 	ui_layer.add_child(active_flavor_ui)
 	player_state = PlayerState.LOCKED
+
+func camera_focus_on(target: Variant, duration: float = 1.0, return_after: float = -1.0):
+	var player = get_tree().current_scene.get_node_or_null("Player")
+	if player == null or not player.has_method("get_camera_rig"):
+		print("❌ Player or camera rig not found")
+		return
+
+	var camera = player.get_camera_rig()
+	if camera == null:
+		print("❌ Camera rig not found")
+		return
+
+	var target_node: Node3D = null
+
+	# 🧠 Handle both string path or actual Node
+	if typeof(target) == TYPE_STRING:
+		target_node = get_tree().current_scene.get_node_or_null(target)
+	elif target is Node3D:
+		target_node = target
+	else:
+		print("❌ Invalid target passed to camera_focus_on():", target)
+		return
+
+	if target_node == null:
+		print("❌ Couldn't resolve target node:", target)
+		return
+
+	# 👀 Look at target using basis tween
+	var from_position = camera.global_transform.origin
+	var to_position = target_node.global_transform.origin
+	var direction = -(to_position - from_position).normalized()
+	var target_basis = Basis().looking_at(direction, Vector3.UP)
+
+	var tween = create_tween()
+	tween.tween_method(
+		func(value):
+			var transform = camera.global_transform
+			transform.basis = value
+			camera.global_transform = transform,
+		camera.global_transform.basis,
+		target_basis,
+		duration
+	).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+
+	# Optionally return camera to original state
+	if return_after > 0:
+		tween.tween_callback(func(): camera_focus_reset(duration)).set_delay(return_after)
+
+func camera_focus_reset(duration: float = 1.0):
+	var player = get_node_or_null("Player")
+	if player == null or not player.has_method("get_camera_rig"):
+		return
+
+	var camera = player.get_camera_rig()
+	if camera and is_camera_focused:
+		var tween = create_tween()
+		tween.tween_property(
+			camera, "global_transform:origin", 
+			original_camera_position, duration
+		).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+
+	is_camera_focused = false

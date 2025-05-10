@@ -8,7 +8,6 @@ var raycast_text := "OFF"
 
 
 func _process(_delta):
-	print("debuglabel running!")
 	visible = true
 	if raycast_debug_enabled:
 		raycast_text = "ON"

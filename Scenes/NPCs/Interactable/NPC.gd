@@ -7,6 +7,7 @@ class_name NPC
 @onready var interactable: Interactable = $".."
 @export var animation_idle: String
 @export var npc_timeline: String = "default"
+@export var npc_eyeline: Marker3D
 
 # 🧠 Default values NPCs can override
 var npc_name: String = "Unnamed NPC"    
@@ -28,6 +29,8 @@ func _on_interacted():
 	if !GameManager.can_start_dialogue():
 		print("⏳ Timeline still cooling down...")
 		return
+	if npc_eyeline:
+		GameManager.camera_focus_on(npc_eyeline)
 	Dialogic.start(npc_timeline)
 	# Base interaction (you override this in child classes)
 	print("👋", npc_name, "says hello!")

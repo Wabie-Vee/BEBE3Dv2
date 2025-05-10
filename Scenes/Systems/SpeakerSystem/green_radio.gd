@@ -4,6 +4,7 @@ extends Interactable
 @export var dial: MeshInstance3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var click_player: AudioStreamPlayer3D = $ClickPlayer
+@onready var audio_player: AudioStreamPlayer3D = $SpeakerSystem/AudioPlayer
 
 @export var click_sound: AudioStream
 @export var tracklist: Array[AudioStream] = []
@@ -14,10 +15,15 @@ func _ready():
 	# Do not auto-play — radio starts off
 
 func interact():
+	
 	click_player.stream = click_sound
 	click_player.play()
 	animation_player.play("interacted")
 	_change_station()
+	if audio_player.playing:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -100)  # duck it
+	else:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), 0.0)   # restore it
 
 func _change_station():
 	if tracklist.is_empty():

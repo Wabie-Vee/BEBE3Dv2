@@ -12,9 +12,13 @@ sky_material = SubResource("ProceduralSkyMaterial_bsuyt")
 background_mode = 2
 sky = SubResource("Sky_stwyq")
 tonemap_mode = 4
+ssr_enabled = true
 ssao_enabled = true
 sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_y_scale = 0
 glow_enabled = true
+glow_strength = 0.62
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_0axbc")

@@ -1,7 +1,11 @@
-if {Menmo.talked_to_menmo} == false:
-	Menmo: <Hi Bebe!/Sup bro!/What's shakin Bebe!/Secred fourth option!!!>
-	Menmo: This is a little test. Say hi to Penny for me!
-	set {Menmo.talked_to_menmo} = true
-
+if {Inventory.Key} == false:
+	if {Menmo.talked_to_menmo} == false:
+		Menmo: Hi Bebe!
+		Menmo: I heard a lil something something about a key over there!
+		do GameManager.camera_focus_on("NightStand")
+		Menmo: Let me know if you grab it!
+		do GameManager.camera_focus_reset()
+	else:
+		Menmo: Did you find the key?
 else:
-	Menmo: i already talked to you today...
+	Menmo: You found the key!

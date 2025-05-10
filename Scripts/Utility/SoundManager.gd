@@ -3,14 +3,20 @@ extends Node
 enum Bus {
 	SFX,
 	MUSIC,
-	UI
+	UI,
+	AMBIENCE
 }
+
 
 var players = {}
 
 # You can preload some reusable sound players if you want
 var max_sfx_players := 10
 var sfx_players := []
+
+func is_music_playing() -> bool:
+	var music = players[Bus.MUSIC]
+	return music.playing
 
 func _ready():
 	# Create multiple SFX players so you can overlap sounds
@@ -32,6 +38,13 @@ func _ready():
 	ui.bus = "UI"
 	add_child(ui)
 	players[Bus.UI] = ui
+	
+	# One for ambience
+	var ambience = AudioStreamPlayer.new()
+	ambience.bus = "Ambience"
+	add_child(ambience)
+	players[Bus.AMBIENCE] = ambience
+
 
 func play_sfx(stream: AudioStream, pitch_randomize := true, volume_db := 0.0):
 	for sfx in sfx_players:
@@ -69,3 +82,16 @@ func play_ui(stream: AudioStream):
 	var ui = players[Bus.UI]
 	ui.stream = stream
 	ui.play()
+	
+func play_ambience(stream: AudioStream, restart := false):
+	var ambience = players[Bus.AMBIENCE]
+	if ambience.stream != stream or restart:
+		ambience.stop()
+		ambience.stream = stream
+		ambience.play()
+
+func stop_ambience():
+	players[Bus.AMBIENCE].stop()
+
+func is_ambience_playing() -> bool:
+	return players[Bus.AMBIENCE].playing

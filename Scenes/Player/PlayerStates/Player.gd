@@ -13,6 +13,7 @@ extends CharacterBody3D
 @onready var journal_animator: AnimationPlayer = $CameraRig/Camera3D/Journal/AnimationPlayer
 @onready var journal = $"../UILayer/QuestTracker"
 @onready var flashlight: SpotLight3D = $CameraRig/Camera3D/Flashlight
+@onready var journal_mesh: Node3D = $CameraRig/Camera3D/Journal
 
 # === EXPORTED AUDIO ===
 @export_group("Footstep Sounds")
@@ -74,16 +75,23 @@ var air_direction: Vector3 = Vector3.ZERO
 var mouse_look_enabled: bool = true
 
 func _ready():
+
 	flashlight.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	state_machine.init(self)
+
+
+
+
+func get_camera_rig() -> Node3D:
+	return camera_rig  # assuming you already have something like @onready var camera_rig = $CameraRig
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("key_journal"):
 		var anim_player := journal_animator
 		var opening_anim := "JournalOpen"
 		var closing_anim := "JournalClose"
-
+	
 		if journal_visible:
 			if anim_player.is_playing() and anim_player.current_animation == opening_anim and anim_player.speed_scale > 0:
 				anim_player.speed_scale = -1
@@ -103,6 +111,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				anim_player.play(opening_anim)
 				SoundManager.play_sfx(journal_open_sound, false)
 			journal_visible = true
+			journal_mesh.visible = true
 			GameManager.player_state = GameManager.PlayerState.LOCKED
 
 func _input(event):
@@ -137,6 +146,10 @@ func _input(event):
 			debug_panel.raycast_debug_enabled = GameManager.debug_draw_raycast
 
 func _physics_process(delta):
+	if not journal_visible and not journal_animator.is_playing():
+		journal_mesh.visible = false
+	
+	handle_mesh_pivot(delta)
 	if Input.is_action_just_pressed("key_b"):
 		state_machine.change_state("BikeState")
 	

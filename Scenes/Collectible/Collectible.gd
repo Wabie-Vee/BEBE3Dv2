@@ -13,6 +13,7 @@ func _ready():
 
 func interact():
 	print("🧲 Interacted to collect:", item_name)
+	GameManager.show_flavor_text("You got a " + str(item_name)+"!")
 	GameManager.add_to_inventory(item_name)
 	Dialogic.VAR.Penny.got_frog = true
 

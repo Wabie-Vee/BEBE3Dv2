@@ -9,4 +9,4 @@ func _ready():
 	custom_interact_handler = _on_interacted
 
 func _on_interacted():
-	GameManager.show_flavor_image_and_text(image, flavor_text)
+	GameManager.show_flavor_text(flavor_text, image)

@@ -14,6 +14,11 @@ func _ready():
 
 func interact():
 	animation_player.play("interacted")
+	if speaker.playing:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -15.0)  # duck it
+	else:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), 0.0)   # restore it
+
 	_change_station()
 
 func _change_station():

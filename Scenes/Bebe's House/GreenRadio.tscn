@@ -83,3 +83,4 @@ libraries = {
 [node name="ClickPlayer" type="AudioStreamPlayer3D" parent="." index="4"]
 
 [editable path="GreenRadio"]
+[editable path="SpeakerSystem"]
