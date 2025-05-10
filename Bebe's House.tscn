@@ -188,81 +188,81 @@ directional_shadow_split_1 = 0.051
 directional_shadow_fade_start = 0.755
 directional_shadow_max_distance = 134.5
 
-[node name="Player" parent="." index="3"]
+[node name="Player" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586972, 0.104765, 4.56802)
 
-[node name="LookableTemplate" parent="." index="4" instance=ExtResource("2_xfr3m")]
+[node name="LookableTemplate" parent="." index="3" instance=ExtResource("2_xfr3m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.49729, -0.0773434, -6.99897)
 
-[node name="LookableTemplate2" parent="." index="5" instance=ExtResource("3_dcicu")]
+[node name="LookableTemplate2" parent="." index="4" instance=ExtResource("3_dcicu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36604, -0.0804262, 5.99883)
 
 [node name="Floor" parent="LookableTemplate2" index="2" instance=ExtResource("2_dcicu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209805, 0.599816, -0.148705)
 
-[node name="Menmo" parent="." index="6" instance=ExtResource("5_3y2bi")]
+[node name="Menmo" parent="." index="5" instance=ExtResource("5_3y2bi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53683, -0.0159066, -0.87064)
 
-[node name="Interactable" parent="." index="7" instance=ExtResource("6_4h8x4")]
+[node name="Interactable" parent="." index="6" instance=ExtResource("6_4h8x4")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.253023, -0.0909, 8.18424)
 
-[node name="Lighting" type="Node3D" parent="." index="8"]
+[node name="Lighting" type="Node3D" parent="." index="7"]
 editor_description = "This is where the lighting goes!"
 
 [node name="FlickeringLight" parent="Lighting" index="0" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59283, 0.519437, -4.45803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60724, 0.479692, -4.41728)
 light_color = Color(1, 0.523232, 0.296128, 1)
-light_energy = 2.17826
+light_energy = 2.45434
 omni_range = 135.176
 light_intensity = 2.39
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight2" parent="Lighting" index="1" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91172, 2.34399, 3.72728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89739, 2.37423, 3.72447)
 light_color = Color(1, 0.781873, 0.585495, 1)
-light_energy = 4.82534
+light_energy = 5.04093
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight5" parent="Lighting" index="2" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23933, 2.32603, 6.34492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26167, 2.29445, 6.30629)
 light_color = Color(1, 0.781873, 0.585495, 1)
-light_energy = 4.81427
+light_energy = 5.05715
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight3" parent="Lighting" index="3" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10831, 2.73997, -0.00141234)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09955, 2.70443, 0.00215275)
 light_color = Color(1, 0.523232, 0.296128, 1)
-light_energy = 4.80904
+light_energy = 5.04006
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight4" parent="Lighting" index="4" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11272, 1.73066, -6.6335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11051, 1.75168, -6.60336)
 light_color = Color(0.968418, 0.657694, 0.509684, 1)
-light_energy = 4.79975
+light_energy = 5.0556
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
-[node name="LookableTemplate3" parent="." index="9" instance=ExtResource("9_65e60")]
+[node name="LookableTemplate3" parent="." index="8" instance=ExtResource("9_65e60")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22399, -0.0857645, 2.61203)
 flavor_text = "*gee I sure want a popsicle. Maybe one day I'll be tall enough to reach the freezer...*"
 
-[node name="LookableTemplate4" parent="." index="10" instance=ExtResource("10_42yg7")]
+[node name="LookableTemplate4" parent="." index="9" instance=ExtResource("10_42yg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47707, -0.0763453, 2.70239)
 
-[node name="Radio" parent="." index="11" instance=ExtResource("11_hb5vg")]
+[node name="Radio" parent="." index="10" instance=ExtResource("11_hb5vg")]
 transform = Transform3D(-0.998596, 0, 0.0529808, 0, 1, 0, -0.0529808, 0, -0.998596, -2.72709, 0.519501, 4.91878)
 
-[editable path="UILayer"]
 [editable path="WorldEnvironment"]
+[editable path="DebugPanel"]

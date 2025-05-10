@@ -63,6 +63,7 @@ _data = {
 [node name="Radio" node_paths=PackedStringArray("dial") instance=ExtResource("1_hr8bi")]
 script = ExtResource("2_04df4")
 dial = NodePath("GreenRadio/Cylinder")
+click_sound = ExtResource("7_a6pk3")
 tracklist = Array[AudioStream]([ExtResource("4_exrwk"), ExtResource("3_04df4"), ExtResource("5_exrwk")])
 interaction_type = "grab"
 

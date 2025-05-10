@@ -55,6 +55,7 @@ func _check_obstruction():
 	var avg_thickness = thickness_accum / max(hit_count, 1)
 	var obstruction = clamp(occlusion * clamp(avg_thickness / max_thickness, 0.0, 1.0), 0.0, 1.0)
 
+
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	var filter = AudioServer.get_bus_effect(bus_index, 0) as AudioEffectLowPassFilter
 	if filter:
