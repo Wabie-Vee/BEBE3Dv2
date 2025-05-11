@@ -216,54 +216,54 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36604, -0.0804262, 5.99883
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209805, 0.599816, -0.148705)
 
 [node name="Menmo" parent="." index="5" instance=ExtResource("5_3y2bi")]
-transform = Transform3D(-0.233717, 0, -0.972305, 0, 1, 0, 0.972305, 0, -0.233717, 5.57195, -0.0555438, -4.33084)
+transform = Transform3D(-0.233717, 0, -0.972305, 0, 1, 0, 0.972305, 0, -0.233717, 5.24018, 0.00777921, -4.29153)
 
 [node name="Interactable" parent="." index="6" instance=ExtResource("6_4h8x4")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.253023, -0.0909, 8.18424)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.519535, -0.0175291, 8.25736)
 
 [node name="Lighting" type="Node3D" parent="." index="7"]
 editor_description = "This is where the lighting goes!"
 
 [node name="FlickeringLight" parent="Lighting" index="0" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59483, 0.534282, -4.45656)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58293, 0.540034, -4.43984)
 light_color = Color(1, 0.523232, 0.296128, 1)
-light_energy = 2.26443
+light_energy = 2.30646
 omni_range = 135.176
 light_intensity = 2.39
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight2" parent="Lighting" index="1" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91662, 2.36215, 3.73392)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90223, 2.37221, 3.71359)
 light_color = Color(1, 0.781873, 0.585495, 1)
-light_energy = 4.85935
+light_energy = 4.91715
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight5" parent="Lighting" index="2" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.27903, 2.27878, 6.31034)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2899, 2.29121, 6.31967)
 light_color = Color(1, 0.781873, 0.585495, 1)
-light_energy = 4.86125
+light_energy = 4.90184
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight3" parent="Lighting" index="3" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11731, 2.65991, -0.00438852)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13091, 2.65288, -0.0131256)
 light_color = Color(1, 0.523232, 0.296128, 1)
-light_energy = 4.86908
+light_energy = 4.91781
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight4" parent="Lighting" index="4" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09972, 1.76472, -6.57755)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08771, 1.76751, -6.5817)
 light_color = Color(0.968418, 0.657694, 0.509684, 1)
-light_energy = 4.85935
+light_energy = 4.91936
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
