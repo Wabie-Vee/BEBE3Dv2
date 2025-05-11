@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx6cgukmmiyie"]
+[gd_scene load_steps=10 format=3 uid="uid://dx6cgukmmiyie"]
 
 [ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_ylmhf"]
 [ext_resource type="Script" uid="uid://ctuch5rbgxlw7" path="res://BebeNightstand.gd" id="2_o6r8w"]
 [ext_resource type="PackedScene" uid="uid://dlhnf2n1sf3i6" path="res://Assets/Models/Blender/BebeNightStand.blend" id="3_uh7d1"]
 [ext_resource type="PackedScene" uid="uid://br2ycqki6b5h3" path="res://Key.tscn" id="4_o6r8w"]
+[ext_resource type="AudioStream" uid="uid://csb35l8cvyi2j" path="res://Assets/Audio/key_pickup_sfx.ogg" id="5_uh7d1"]
 
 [sub_resource type="Animation" id="Animation_u3gaq"]
 resource_name = "DrawerClose"
@@ -70,6 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.335398, 0.00591885)
 
 [node name="Collectible" parent="BebeNightStand/Drawer/Drawer" index="0" instance=ExtResource("4_o6r8w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106287, 0.233597)
+pickup_sound = ExtResource("5_uh7d1")
 
 [node name="CollisionShape3D" parent="BebeNightStand/Drawer/Drawer" index="1"]
 disabled = true
