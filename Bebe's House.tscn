@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cbuqsp4wngedx" path="res://Scenes/World/DefaultLevel.tscn" id="1_4bud6"]
 [ext_resource type="Material" uid="uid://dkdl6l3pk3nb3" path="res://Assets/Textures/DevMaterialBlue.tres" id="2_4h8x4"]
-[ext_resource type="AudioStream" uid="uid://bv0mmpratrtjh" path="res://Assets/Audio/snd_HereComesBebe.wav" id="2_22qvk"]
 [ext_resource type="PackedScene" uid="uid://cm5ukltsmruxa" path="res://Scenes/Systems/Floor Collider/Floor.tscn" id="2_dcicu"]
 [ext_resource type="AudioStream" uid="uid://0t8lcf6xxsv8" path="res://Assets/Audio/bgm_nature.ogg" id="2_k3gxg"]
 [ext_resource type="PackedScene" uid="uid://bsdwtbuce30p1" path="res://Scenes/Lookables/BebeBed.tscn" id="2_xfr3m"]
 [ext_resource type="PackedScene" uid="uid://dt15s6p2wg3b2" path="res://Scenes/Lookables/CoffeeTable.tscn" id="3_dcicu"]
 [ext_resource type="PackedScene" uid="uid://c4vbv6wostdc7" path="res://Scenes/NPCs/Menmo/MenmoNPC.tscn" id="5_3y2bi"]
+[ext_resource type="PackedScene" uid="uid://ctrqkf6c1spvi" path="res://Assets/Models/Blender/BebeHouseLevelMesh.blend" id="5_22qvk"]
 [ext_resource type="PackedScene" uid="uid://kdhh2u8bwstf" path="res://Scenes/NPCs/Penny/Penny_NPC.tscn" id="6_4h8x4"]
 [ext_resource type="PackedScene" uid="uid://bgjdw604b4mwn" path="res://Scenes/Decor/FlickeringLight.tscn" id="8_mb1m8"]
 [ext_resource type="PackedScene" uid="uid://05vq3qyystyt" path="res://BebeFridge.tscn" id="9_65e60"]
@@ -20,10 +20,10 @@ metallic = 1.0
 roughness = 0.0
 
 [node name="DefaultLevel2" instance=ExtResource("1_4bud6")]
-background_music = ExtResource("2_22qvk")
 background_ambience = ExtResource("2_k3gxg")
 
 [node name="Placeholder Meshes" type="Node3D" parent="LevelGeometry" index="0"]
+visible = false
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/Placeholder Meshes" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16509, 2.12128, -5.38412)
@@ -201,6 +201,8 @@ material_override = ExtResource("2_4h8x4")
 use_collision = true
 size = Vector3(3.61997, 1.81477, 2.96698)
 
+[node name="BebeHouseLevelMesh" parent="LevelGeometry" index="1" instance=ExtResource("5_22qvk")]
+
 [node name="DirectionalLight3D" parent="WorldEnvironment" index="0"]
 transform = Transform3D(-0.96341, -0.163956, 0.212036, -0.0154145, 0.823669, 0.566861, -0.267588, 0.542851, -0.796059, 0, 0, 0)
 directional_shadow_mode = 1
@@ -227,45 +229,45 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 editor_description = "This is where the lighting goes!"
 
 [node name="FlickeringLight" parent="Lighting" index="0" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58083, 0.524067, -4.45157)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57403, 0.530833, -4.4501)
 light_color = Color(1, 0.523232, 0.296128, 1)
-light_energy = 2.5884
+light_energy = 2.3816
 omni_range = 135.176
 light_intensity = 2.39
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight2" parent="Lighting" index="1" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89575, 2.34961, 3.72534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90427, 2.37167, 3.72122)
 light_color = Color(1, 0.781873, 0.585495, 1)
-light_energy = 5.17712
+light_energy = 5.01864
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight5" parent="Lighting" index="2" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.28753, 2.26803, 6.32778)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.28113, 2.27789, 6.3093)
 light_color = Color(1, 0.781873, 0.585495, 1)
-light_energy = 5.17683
+light_energy = 5.01487
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight3" parent="Lighting" index="3" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10299, 2.67647, 0.012545)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11548, 2.66157, 0.000303934)
 light_color = Color(1, 0.523232, 0.296128, 1)
-light_energy = 5.17529
+light_energy = 4.99393
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight4" parent="Lighting" index="4" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11294, 1.76069, -6.5875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.10167, 1.76081, -6.57619)
 light_color = Color(0.968418, 0.657694, 0.509684, 1)
-light_energy = 5.17
+light_energy = 5.00558
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
