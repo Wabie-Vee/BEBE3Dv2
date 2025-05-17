@@ -19,5 +19,8 @@ script = ExtResource("1_je3el")
 
 [node name="Player" parent="." instance=ExtResource("4_nnlik")]
 
+[node name="SpawnPoints" type="Node3D" parent="."]
+
 [editable path="UILayer"]
 [editable path="WorldEnvironment"]
+[editable path="WorldEnvironment/PixelShader"]

@@ -15,23 +15,23 @@ shader = ExtResource("1_ld6mq")
 shader_parameter/enable_fog = false
 shader_parameter/fog_color = Color(0.652566, 0.853953, 0.898916, 1)
 shader_parameter/noise_color = Color(0, 0, 0, 1)
-shader_parameter/fog_distance = 9.405
-shader_parameter/fog_fade_range = 8.18
+shader_parameter/fog_distance = 18.065
+shader_parameter/fog_fade_range = 11.28
 shader_parameter/enable_noise = false
 shader_parameter/noise_time_fac = 4.0
-shader_parameter/enable_color_limitation = true
+shader_parameter/enable_color_limitation = false
 shader_parameter/color_levels = 32
 shader_parameter/enable_dithering = false
 shader_parameter/dither_strength = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fr0tr"]
 shader = ExtResource("2_0cvri")
-shader_parameter/shake = 6.83
+shader_parameter/shake = 10.0
 shader_parameter/noiseQuality = 0.1
 shader_parameter/noiseIntensity = 0.0
 shader_parameter/offsetIntensity = 0.0
 shader_parameter/colorOffsetIntensity = 0.1
-shader_parameter/pixelSize = 2.0
+shader_parameter/pixelSize = 3.0
 shader_parameter/grainIntensity = 0.0
 shader_parameter/use_overlay = false
 shader_parameter/use_lens_distortion = false
@@ -41,7 +41,6 @@ shader_parameter/lens_distortion_strength = 0.0
 [node name="PixelShader" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_0cvri")
 surface_material_override/0 = SubResource("ShaderMaterial_clu5m")

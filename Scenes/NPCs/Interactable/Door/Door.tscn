@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://r0n41xxwjp0d"]
+
+[ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_3hnat"]
+[ext_resource type="Script" uid="uid://cell28e2xgi8f" path="res://Scenes/NPCs/Interactable/Door/door.gd" id="2_qhrda"]
+
+[node name="Door" instance=ExtResource("1_3hnat")]
+script = ExtResource("2_qhrda")
+target_scene_path = ""
+target_spawn_point = ""
+interaction_type = "grab"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="2"]
+use_collision = true

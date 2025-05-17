@@ -10,6 +10,7 @@ enum PlayerState {
 var camera_focus_tween: Tween
 var original_camera_position: Vector3
 var is_camera_focused: bool = false
+var next_spawn_point: String = ""
 
 var player_state = PlayerState.FREE
 var is_in_dialogue = false

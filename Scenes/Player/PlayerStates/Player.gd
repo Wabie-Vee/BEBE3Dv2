@@ -75,7 +75,15 @@ var air_direction: Vector3 = Vector3.ZERO
 var mouse_look_enabled: bool = true
 
 func _ready():
-
+	var spawn_name = GameManager.next_spawn_point
+	if spawn_name != "":
+		var spawn_node = get_tree().current_scene.get_node_or_null("SpawnPoints/" + spawn_name)
+		if spawn_node:
+			global_transform.origin = spawn_node.global_transform.origin
+			camera_rig.global_transform.basis = spawn_node.global_transform.basis
+			
+			
+	GameManager.next_spawn_point = ""
 	flashlight.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	state_machine.init(self)
@@ -85,6 +93,9 @@ func _ready():
 
 func get_camera_rig() -> Node3D:
 	return camera_rig  # assuming you already have something like @onready var camera_rig = $CameraRig
+	
+func get_camera() -> Node3D:
+	return camera
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("key_journal"):

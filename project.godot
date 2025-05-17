@@ -21,6 +21,7 @@ SoundManager="*res://Scripts/Utility/SoundManager.gd"
 GameManager="*res://Scripts/Utility/GameManager.gd"
 QuestManager="*res://Scripts/QuestSystem/QuestManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+FadeController="*res://Scenes/Systems/Fade/FadeController.tscn"
 
 [dialogic]
 

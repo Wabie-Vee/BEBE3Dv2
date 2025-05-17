@@ -70,10 +70,19 @@ func stop_sfx(stream: AudioStream):
 
 func play_music(stream: AudioStream, restart := false):
 	var music = players[Bus.MUSIC]
+
+	# Only set loop if the stream supports it
+	if stream and stream.has_method("set_loop"):
+		stream.set_loop(true)
+
 	if music.stream != stream or restart:
+		print("🎼 [SoundManager] Playing music:", stream.resource_path)
 		music.stop()
 		music.stream = stream
 		music.play()
+	else:
+		print("🎧 [SoundManager] Music already playing.")
+
 
 func stop_music():
 	players[Bus.MUSIC].stop()
@@ -85,10 +94,17 @@ func play_ui(stream: AudioStream):
 	
 func play_ambience(stream: AudioStream, restart := false):
 	var ambience = players[Bus.AMBIENCE]
+
+	# Only set loop if the stream supports it
+	if stream and stream.has_method("set_loop"):
+		stream.set_loop(true)
+
 	if ambience.stream != stream or restart:
+		print("🔊 [SoundManager] Playing ambience:", stream.resource_path)
 		ambience.stop()
 		ambience.stream = stream
 		ambience.play()
+
 
 func stop_ambience():
 	players[Bus.AMBIENCE].stop()
