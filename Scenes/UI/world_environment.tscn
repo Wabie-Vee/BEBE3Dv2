@@ -19,6 +19,8 @@ sdfgi_use_occlusion = true
 sdfgi_y_scale = 0
 glow_enabled = true
 glow_strength = 0.62
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_0axbc")

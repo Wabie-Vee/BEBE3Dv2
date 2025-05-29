@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://r0n41xxwjp0d"]
+[gd_scene load_steps=4 format=3 uid="uid://r0n41xxwjp0d"]
 
 [ext_resource type="PackedScene" uid="uid://cbwwr11iexuaw" path="res://Scenes/NPCs/Interactable/Interactable.tscn" id="1_3hnat"]
 [ext_resource type="Script" uid="uid://cell28e2xgi8f" path="res://Scenes/NPCs/Interactable/Door/door.gd" id="2_qhrda"]
+[ext_resource type="AudioStream" uid="uid://csb35l8cvyi2j" path="res://Assets/Audio/key_pickup_sfx.ogg" id="3_qhrda"]
 
 [node name="Door" instance=ExtResource("1_3hnat")]
 script = ExtResource("2_qhrda")
-target_scene_path = ""
+target_scene_path = "uid://bgqd3bqel6u1w"
 target_spawn_point = ""
+door_open = ""
+door_sound = ExtResource("3_qhrda")
 interaction_type = "grab"
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." index="2"]

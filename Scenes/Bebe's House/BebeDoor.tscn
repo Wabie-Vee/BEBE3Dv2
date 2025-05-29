@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd3b4erbvrwqg"]
+
+[ext_resource type="PackedScene" uid="uid://r0n41xxwjp0d" path="res://Scenes/NPCs/Interactable/Door/Door.tscn" id="1_7klyy"]
+[ext_resource type="PackedScene" uid="uid://jgjkcfvd3qho" path="res://Assets/Models/Blender/BebeDoor.blend" id="2_vwyil"]
+
+[node name="Door" node_paths=PackedStringArray("anim_player") instance=ExtResource("1_7klyy")]
+anim_player = NodePath("BebeDoor/AnimationPlayer")
+door_open = "DoorOpen"
+
+[node name="CSGBox3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0932007, 1.11621, -0.0585938)
+visible = false
+size = Vector3(1.43445, 2.29297, 0.210938)
+
+[node name="BebeDoor" parent="." index="3" instance=ExtResource("2_vwyil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
+
+[editable path="BebeDoor"]

@@ -182,7 +182,7 @@ transform = Transform3D(-0.875726, 0, 0.482809, 0, 1, 0, -0.482809, 0, -0.875726
 
 [node name="Door" parent="." instance=ExtResource("22_gcvrv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01872, 0.487621, 1.07103)
-target_scene_path = "uid://bgqd3bqel6u1w"
 target_spawn_point = "SpawnTest"
+door_sound = null
 
 [editable path="LevelGeometry/BebeBead"]

@@ -187,7 +187,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016, 0)
 visible = false
 light_color = Color(1, 0.818978, 0.670989, 1)
 light_energy = 4.81
-spot_angle = 37.9688
+spot_angle = 57.43
 
 [node name="Journal" parent="CameraRig/Camera3D" instance=ExtResource("6_8t5qx")]
 transform = Transform3D(0.996041, -0.0320017, -0.0829342, 0, 0.932954, -0.359997, 0.0888943, 0.358572, 0.92926, -0.156, -0.022, -0.277)

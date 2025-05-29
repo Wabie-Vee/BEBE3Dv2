@@ -75,6 +75,13 @@ var air_direction: Vector3 = Vector3.ZERO
 var mouse_look_enabled: bool = true
 
 func _ready():
+	print("📦 Current Scene:", get_tree().current_scene.name)
+	print("🎯 Looking for spawn:", GameManager.next_spawn_point)
+
+	var spawn_noder = get_tree().current_scene.get_node_or_null("SpawnPoints/" + GameManager.next_spawn_point)
+	print("🔎 Found spawn node:", spawn_noder)
+	
+	
 	var spawn_name = GameManager.next_spawn_point
 	if spawn_name != "":
 		var spawn_node = get_tree().current_scene.get_node_or_null("SpawnPoints/" + spawn_name)
