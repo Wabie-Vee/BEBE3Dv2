@@ -10,12 +10,15 @@ class_name Collectible
 func _ready():
 	super._ready()  # Call Interactable's _ready if needed
 	add_child(sfx)
+	if GameManager.has_item("Frog"):
+		queue_free()
 
 func interact():
 	print("🧲 Interacted to collect:", item_name)
 	GameManager.show_flavor_text("You got a " + str(item_name)+"!")
 	GameManager.add_to_inventory(item_name)
 	Dialogic.VAR.Penny.got_frog = true
+
 
 	if pickup_sound:
 		SoundManager.play_sfx(pickup_sound, true)

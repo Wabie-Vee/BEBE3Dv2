@@ -242,4 +242,8 @@ frame_progress = 0.379834
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545193, 0)
 collision_mask = 2
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.895916, 0)
+light_energy = 0.225
+
 [editable path="BebePivot/BebeBear"]

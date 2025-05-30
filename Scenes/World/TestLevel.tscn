@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://deg0ed4p0oypm"]
+[gd_scene load_steps=32 format=3 uid="uid://deg0ed4p0oypm"]
 
 [ext_resource type="PackedScene" uid="uid://5xjaqy6fc0h8" path="res://Scenes/UI/ui_layer.tscn" id="1_3quit"]
 [ext_resource type="PackedScene" uid="uid://1k7nwxsa7oou" path="res://Scenes/UI/world_environment.tscn" id="1_icopk"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cm5ukltsmruxa" path="res://Scenes/Systems/Floor Collider/Floor.tscn" id="20_e7pit"]
 [ext_resource type="PackedScene" uid="uid://cg6hm1qxqxvfn" path="res://Assets/Models/Lookables/TrashBin.tscn" id="20_icopk"]
 [ext_resource type="PackedScene" uid="uid://r0n41xxwjp0d" path="res://Scenes/NPCs/Interactable/Door/Door.tscn" id="22_gcvrv"]
+[ext_resource type="AudioStream" uid="uid://kdxyvpktnlpf" path="res://Assets/Audio/snd_click.mp3" id="23_gcvrv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_llfhh"]
 size = Vector2(200, 200)
@@ -183,6 +184,6 @@ transform = Transform3D(-0.875726, 0, 0.482809, 0, 1, 0, -0.482809, 0, -0.875726
 [node name="Door" parent="." instance=ExtResource("22_gcvrv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01872, 0.487621, 1.07103)
 target_spawn_point = "SpawnTest"
-door_sound = null
+door_sound = ExtResource("23_gcvrv")
 
 [editable path="LevelGeometry/BebeBead"]

@@ -233,27 +233,27 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 editor_description = "This is where the lighting goes!"
 
 [node name="FlickeringLight" parent="Lighting" index="0" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52295, 0.566461, -4.44147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52595, 0.574495, -4.43329)
 light_color = Color(1, 0.523232, 0.296128, 1)
-light_energy = 2.32475
+light_energy = 2.33862
 omni_range = 135.176
 light_intensity = 2.39
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight2" parent="Lighting" index="1" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85269, 2.40367, 3.70202)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83044, 2.38709, 3.70802)
 light_color = Color(1, 0.781873, 0.585495, 1)
-light_energy = 4.95013
+light_energy = 4.94237
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
 flicker_intensity = 0.5
 
 [node name="FlickeringLight5" parent="Lighting" index="2" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22433, 2.31059, 6.291)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22923, 2.29776, 6.30182)
 light_color = Color(1, 0.781873, 0.585495, 1)
-light_energy = 4.94165
+light_energy = 4.93566
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
@@ -262,7 +262,7 @@ flicker_intensity = 0.5
 [node name="FlickeringLight3" parent="Lighting" index="3" instance=ExtResource("8_mb1m8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89702, 1.8251, 0.0421446)
 light_color = Color(1, 0.523232, 0.296128, 1)
-light_energy = 4.94212
+light_energy = 4.937
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
@@ -270,9 +270,9 @@ flicker_intensity = 0.5
 positional_flicker_toggle = false
 
 [node name="FlickeringLight4" parent="Lighting" index="4" instance=ExtResource("8_mb1m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14634, 1.77208, -6.59698)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14704, 1.77735, -6.58487)
 light_color = Color(0.968418, 0.657694, 0.509684, 1)
-light_energy = 4.91269
+light_energy = 4.93172
 omni_range = 135.176
 light_intensity = 5.0
 flicker_speed = 12.325
@@ -305,7 +305,8 @@ material = SubResource("FogMaterial_odvnh")
 
 [node name="Door" parent="." index="15" instance=ExtResource("15_odvnh")]
 transform = Transform3D(-6.0044e-08, 0, -1, 0, 0.932657, 0, 1.37365, 0, -4.37114e-08, 6.3194, -0.0502909, -0.444736)
-target_spawn_point = "SpawnTest"
+target_scene_path = "uid://deg0ed4p0oypm"
+target_spawn_point = "TestSpawn"
 
 [editable path="UILayer"]
 [editable path="WorldEnvironment"]
